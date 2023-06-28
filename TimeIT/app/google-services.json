@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "98309580634",
+    "project_id": "timeit-b386b",
+    "storage_bucket": "timeit-b386b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98309580634:android:bac150f6861d6f56423563",
+        "android_client_info": {
+          "package_name": "com.time.timeit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98309580634-0lqicmgt3ql4lel7a3mg8jd8emrmli8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxDgpaApGGpm2ng2LYFI8kqspqhr-kdPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98309580634-0lqicmgt3ql4lel7a3mg8jd8emrmli8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
