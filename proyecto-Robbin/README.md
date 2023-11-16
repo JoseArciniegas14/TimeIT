@@ -6,6 +6,8 @@ En la carpeta de server tengo otro README.md que explica un poco mejor la situac
 
 ##Cosas a tener en cuenta.
 
--La carpeta de Server esta mas enfocada al proyecto, asi que la de react_basics vale un poquito lo mismo que un gramo de sal en el mar (Es la carpeta donde estoy practicando los componentes).
--Probablemente no le corra el proyecto si lo va a iniciar. Porque lo agrege a la carpeta Proyecto-Robbin a ultima hora (era como la 1:30am), es decir npm no tiene su json donde deberia.
--Voy a arreglar el tema de tener las carpetas separadas (Ya me voy a mimir). Ya que Server y react_basics nos comparten un mismo run dev y pues le puede generar errores a ustedes
+\*La carpeta de Server esta mas enfocada al proyecto, asi que la de react_basics vale un poquito lo mismo que un gramo de sal en el mar (Es la carpeta donde estoy practicando los componentes).
+
+\*Probablemente no le corra el proyecto si lo va a iniciar. Porque lo agrege a la carpeta Proyecto-Robbin a ultima hora (era como la 1:30am), es decir npm no tiene su json donde deberia.
+
+\*Voy a arreglar el tema de tener las carpetas separadas (Ya me voy a mimir). Ya que Server y react_basics nos comparten un mismo run dev y pues le puede generar errores a ustedes
