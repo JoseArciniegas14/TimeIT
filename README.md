@@ -32,13 +32,7 @@
 > [!Note]
 > Esto se hace para no mezclar todas las dependencias cliente/servidor en un mismo Json
 
-### Cosas importantes
-
-- El CRUD con el modelo de ususario en el servidor queo 100% funcional **(139)**
-- Las conexiones de las constantes estan en localhost
-- Cambiar las rutas de las constantes y tambien el JWT
-
-## Cosas a revisar:
+### Cosas a revisar:
 
 - [ ] Crear modelos (Api/controller/router) para guardar informacion de las notas en la db
 - [ ] Crear modelos (Api/controller/router) para guardar informacion de las alarmas en la db (??)
