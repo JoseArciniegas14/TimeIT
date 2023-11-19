@@ -12,6 +12,7 @@ Resumen del progreso:
 
 ## Documentacion que puede ser de utilidad
 [Mi Github personal](https://github.com/Robin1238/Timeit-personal-advances) <sub>Les recomiendo ver esto.</sub>
+
 [Aqui los docs](https://drive.google.com/drive/u/1/folders/173K2HvlfwT--za9sS1fVU6eSQmngf5ql)
 
 
