@@ -2,6 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Alarm from './components/alarm.jsx';
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,8 +30,16 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      
     </>
   )
 }
+
+    <div>
+      <h1>My App</h1>
+      <Alarm />
+    </div>
+  
 
 export default App
