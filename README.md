@@ -1,17 +1,20 @@
-# TimeIT
+# Aqui guardare una "copia de seguridad" XD
 
-Aquí subimos el proyecto y lo empezamos a trabajar :b
+## Cosas importantes
 
-Resumen del progreso:
+- El CRUD con el modelo de ususario en el servidor queo 100% funcional **(139)**
+- Las conexiones de las constantes estan en localhost
 
- - [x] Server
- - [ ] Configurar el server con el hosting/dominio que el instru compró
- - [ ] Hacer los componentes de la aplicación 
- - [ ] Programar la lógica de la aplicación
- - [ ] No saber cómo almacenar lo que sea que el usuario guarde en la aplicación
+## Cosas a revisar:
 
-## Documentacion que puede ser de utilidad
+- [ ] Crear modelos (Api/controller/router) para guardar informacion de las notas en la db
+- [ ] Crear modelos (Api/controller/router) para guardar informacion de las alarmas en la db (??)
+- [ ] Crear modelos (Api/controller/router) para guardar informacion de las rutinas en la db
+- [ ] REVISAR LO DE LA PAGINACION **(158)**
+- [ ] Frontend **(190)**
 
-[Aqui los docs](https://drive.google.com/drive/u/1/folders/173K2HvlfwT--za9sS1fVU6eSQmngf5ql)
+## Cosas interesantes
 
-
+- [ ] Modelos de menus **(140)** (??)
+- [ ] Modelo para blog/post **(168)** (??)
+- [ ] Modelo Newsletter **(182)** (??)
