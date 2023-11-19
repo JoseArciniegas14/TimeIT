@@ -18,7 +18,7 @@ function register(req, res) {
       phone,
     },
     role: "User",
-    active: false
+    active: true
   })
 
   const salt = bcrypt.genSaltSync(10)
@@ -86,5 +86,5 @@ function refreshAccessToken(req, res) {
 module.exports = {
   register,
   login,
-  refreshAccessToken
+  refreshAccessToken,
 }

@@ -1,5 +1,3 @@
-
-
 const DB_USER = "Admin"
 const DB_PASSWORD = "K9laePGAjBNBQ4no"
 const DB_HOST = "serverproyect.pigj6hb.mongodb.net"
@@ -14,5 +12,5 @@ module.exports = {
     DB_HOST,
     API_VERSION,
     IP_SERVER,
-    JWT_SECRET_KEY
+    JWT_SECRET_KEY,
 }

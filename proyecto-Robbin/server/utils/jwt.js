@@ -3,7 +3,7 @@ const { JWT_SECRET_KEY } = require("../constants")
 
 function createAccessToken(user) {
   const expirationToken = new Date()
-  expirationToken.setHours(expirationToken.getHours() + 1)
+  expirationToken.setHours(expirationToken.getHours() + 3)
 
   const payLoad = {
     token_type: "access",
@@ -36,5 +36,5 @@ function decoded(token) {
 module.exports = {
   createAccessToken,
   createRefreshToken,
-  decoded
+  decoded,
 }
