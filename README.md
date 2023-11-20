@@ -20,9 +20,12 @@
 
 > [!WARNING]
 > El cliente esta construido con Vite y React.
-
-- react: 18.2.0
-- react-dom: 18.2.0
+> formik: 2.4.5
+> lodash: 4.17.21
+> react: 18.2.0
+> react-dom: 18.2.0
+> react-router-dom: 6.19.0
+> yup: 1.3.2
 
 ## Iniciar el servidor/cliente
 
