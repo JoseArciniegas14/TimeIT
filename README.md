@@ -2,8 +2,9 @@
 
 > [!IMPORTANT]
 > Tener en cuenta las dependencias que se usan y las
-> versiones de estas, tambien unas del lado
+> versiones de estas, también unas del lado
 > del servidor y otras del lado del cliente.
+> El cliente está construido con Vite y React.
 
 ## Dependencias del server:
 
@@ -18,14 +19,12 @@
 
 ## Dependencias actuales del Cliente:
 
-> [!WARNING]
-> El cliente esta construido con Vite y React.
-> formik: 2.4.5
-> lodash: 4.17.21
-> react: 18.2.0
-> react-dom: 18.2.0
-> react-router-dom: 6.19.0
-> yup: 1.3.2
+- formik: 2.4.5
+- lodash: 4.17.21
+- react: 18.2.0
+- react-dom: 18.2.0
+- react-router-dom: 6.19.0
+- yup: 1.3.2
 
 ## Iniciar el servidor/cliente
 
@@ -48,4 +47,4 @@
 
 ## Organizacion
 
-Panas, tratemos de llevar un orden el el proyecto y no llenar de archivos/codigo inncesesario las carpetas ya que podemos comprometer todo.
+Panas, tratemos de llevar un orden en el proyecto y no llenar de archivos/Código innecesario las carpetas ya que podemos comprometer todo.
