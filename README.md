@@ -28,11 +28,11 @@
 
 ## Iniciar el servidor/cliente
 
-- Entrar en la carpeta [server o client]
-- Ejecutar: yarn dev [Siendo la carpeta principal alguna de las 2]
-
 > [!Note]
 > Esto se hace para no mezclar todas las dependencias cliente/servidor en un mismo Json
+
+- Entrar en la carpeta [server o client]
+- Ejecutar: yarn dev [Siendo la carpeta principal alguna de las 2]
 
 ### Cosas a revisar:
 
