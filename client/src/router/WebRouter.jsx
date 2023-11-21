@@ -1,16 +1,8 @@
-import React from 'react'
-import {Routes, Route} from "react-router-dom"
-import WelcomePage from '../pages/Welcome/WelcomePage'
+import { Routes, Route } from "react-router-dom";
+import WelcomePage from "../pages/Welcome/WelcomePage";
 
-const user = null
+const user = null;
 
 export function WebRouter() {
-
-  return (
-    <Routes>
-      
-    </Routes>
-  )
+  return <Routes></Routes>;
 }
-
- 
