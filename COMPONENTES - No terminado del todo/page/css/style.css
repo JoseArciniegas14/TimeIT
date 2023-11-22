@@ -1,0 +1,211 @@
+*{
+    margin: 0;
+}
+
+body {
+    background-color: #060F10;
+}
+
+.MENU {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: #2d3033;
+}
+
+.MENU .logo-with-text {
+    position: absolute;
+    width: 177px;
+    height: 50px;
+    top: 25px;
+    left: 62px;
+}
+
+.MENU .icono-menu {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+}
+
+.MENU .titulo {
+    position: absolute;
+    height: 40px;
+    top: 10px;
+    left: 60px;
+    font-family: "Rubik One-Regular", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.MENU .HABITOS-MENU-BUTTON {
+    position: absolute;
+    width: 80px;
+    height: 35px;
+    top: 35px;
+    left: 826px;
+}
+
+.MENU .text--menu {
+    position: absolute;
+    color: #878787;
+    font-family: "Poppins-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    top: -1px;
+    left: 0;
+    height: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+
+.text--menu--active {
+    position: absolute;
+    color: #ffffff;
+    font-family: "Poppins", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    top: -1px;
+    left: 0;
+    height: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+    text-decoration: none;
+
+  }
+
+.MENU .rectangle {
+    width: 100%;
+    background-color: #878787;
+    opacity: 0.2;
+    position: absolute;
+    height: 5px;
+    top: 30px;
+    left: 0;
+    border-radius: 5px;
+}
+
+.MENU .rectangle--active {
+    width: 100%;
+    background-color: #d9d9d9;
+    position: absolute;
+    height: 5px;
+    top: 30px;
+    left: 0;
+    border-radius: 5px;
+}
+
+.MENU .NOTAS-MENU-BUTTON {
+    position: absolute;
+    width: 61px;
+    height: 30px;
+    top: 35px;
+    left: 700px;
+}
+
+
+.MENU .RECORDATORIO-MENU {
+    position: absolute;
+    width: 146px;
+    height: 35px;
+    top: 35px;
+    left: 491px;
+}
+
+.MENU .INICIO-MENU-BUTTON {
+    position: absolute;
+    width: 57px;
+    height: 35px;
+    top: 35px;
+    left: 384px;
+}
+
+
+
+.MENU .titulo-2 {
+    position: absolute;
+    height: 30px;
+    top: -1px;
+    left: 0;
+    font-family: "Poppins-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.MENU .PROFILE {
+    position: absolute;
+    width: 178px;
+    height: 50px;
+    top: 25px;
+    right: 50px ; /* Align to the right */
+}
+
+.MENU .PROFILE-ICON {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 128px;
+    object-fit: cover;
+}
+
+.MENU .PROFILE-MENU {
+    position: absolute;
+    width: 178px;
+    height: 50px;
+    top: 25px;
+    right: 50px; /* Align to the right */
+    display: none; /* Ocultar el menú desplegable de forma predeterminada */
+}
+
+.MENU .PROFILE-MENU.show {
+    display: block; /* Mostrar el menú desplegable cuando se le agrega la clase "show" */
+}
+
+
+
+
+.MENU .PROFILE-NAME {
+    position: absolute;
+    height: 30px;
+    top: 9px;
+    left: 0;
+    font-family: "Poppins-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #878787;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+
+.box {
+    width: 300px;
+    height: 823px;
+}
+
+.box .BACKGROUND-CINTA {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #1d2125;
+}
+
+
