@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.profile-menu {
+  background-color: #22272b;
+  border-radius: 5px;
+  display: inline-block;
+  position: relative;
+}
+
+.profile-menu-trigger {
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: #22272b;
+}
+
+.dropdown-item {
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background-color: #3d444a;
+}

@@ -1,0 +1,71 @@
+.ALARM-CONTAINER {
+    position: relative;
+    width: 240px;
+    height: 122px;
+    background-color: #22272b;
+    border-radius: 5px;
+}
+
+.ALARM-CONTAINER .line {
+    position: absolute;
+    width: 3px;
+    height: 90px;
+    top: 13px;
+    left: 117px;
+}
+
+.ALARM-CONTAINER .alarm-name {
+    position: absolute;
+    width: 110px;
+    height: 30px;
+    top: 42px;
+    left: 6px;
+    font-family: "Poppins-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.ALARM-CONTAINER .time {
+    position: absolute;
+    width: 93px;
+    height: 25px;
+    top: 22px;
+    left: 129px;
+    font-family: "Poppins-ExtraBold", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.ALARM-CONTAINER .overlap-group {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    top: 65px;
+    left: 143px;
+    background-color: #12d60e33;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.ALARM-CONTAINER .swich {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    top: 2px;
+    left: 32px;
+    background-color: #d9d9d9;
+    border-radius: 13px;
+    transition: transform 0.3s ease;
+}
+
+.ALARM-CONTAINER .swich.left {
+    transform: translateX(-30px);
+}

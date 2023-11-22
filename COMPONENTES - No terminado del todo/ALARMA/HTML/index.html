@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="globals.css" />
+        <link rel="stylesheet" href="styleguide.css" />
+        <link rel="stylesheet" href="style.css" />
+ 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="ALARM-CONTAINER">
+            <img class="line" src="img/line.svg" />
+            <div class="alarm-name">Alarma</div>
+            <div class="time">4:50 AM</div>
+            <div class="overlap-group">
+            <div class="swich"></div>
+        </div>
+        <script >const switchButton = document.querySelector('.swich');
+            switchButton.addEventListener('click', () => {
+                switchButton.classList.toggle('left');
+            });
+            </script>
+    </body>
+ 
+</html>

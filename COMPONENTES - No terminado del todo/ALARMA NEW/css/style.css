@@ -1,0 +1,89 @@
+.alarm-container {
+    position: relative;
+    width: 240px;
+    height: 100px;
+    background-color: #22272b;
+    border-radius: 5px;
+}
+
+.alarm-container .Time-set {
+    position: absolute;
+    height: 36px;
+    top: 17px;
+    left: 12px;
+    font-family: "Poppins-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.alarm-container .time--day--night {
+    position: absolute;
+    height: 18px;
+    top: 28px;
+    left: 68px;
+    font-family: "Poppins-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.alarm-container .sphere-container {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    top: 35px;
+    left: 159px;
+    background-color: #12d60e33;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.alarm-container .sphere-container.left {
+    background-color: #D60E0E33;
+
+}
+
+.alarm-container .sphere {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    top: 2px;
+    left: 32px;
+    background-color: #d9d9d9;
+    border-radius: 13px;
+    transition: transform 0.3s ease;
+}
+
+.alarm-container .sphere.left {
+    transform: translateX(-30px);
+}
+
+.alarm-container .bell-fill {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 66px;
+    left: 10px;
+}
+
+.alarm-container .Time-set-2 {
+    position: absolute;
+    height: 18px;
+    top: 68px;
+    left: 39px;
+    opacity: 0.6;
+    font-family: "Poppins-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="globals.css" />
+        <link rel="stylesheet" href="css/styleguide.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div class="alarm-container relative w-56 h-24 rounded">
+            <div class="Time-set absolute h-8 font-medium text-white text-2xl text-center tracking-normal">4:50</div>
+            <div class="time--day--night absolute h-4 font-medium text-white text-xs text-center tracking-normal">a. m.</div>
+            <div class="sphere-container absolute w-14 h-8">
+                <div class="sphere relative w-6 h-6 "></div>
+            </div>
+            <img class="bell-fill absolute w-6 h-6" src="img/bell-fill.svg" />
+            <div class="Time-set-2 absolute h-4 font-medium text-white text-xs text-center tracking-normal">13h y 31m</div>
+        </div>
+
+
+        <script >const switchButton = document.querySelector('.sphere');
+            switchButton.addEventListener('click', () => {
+                switchButton.classList.toggle('left');
+            });
+
+            const sphereContainer = document.querySelector('.sphere-container');
+
+            switchButton.addEventListener('click', () => {
+                sphereContainer.classList.toggle('left');
+            });
+   
+            </script>
+
+
+
+    </body>
+</html>

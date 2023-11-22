@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="css/styleguide.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Menú Desplegable</title>
+  </head>
+  <body>
+    <div class="profile-menu">
+      <div class="profile-menu-trigger" onclick="toggleDropdown()">Menú</div>
+      <div class="dropdown" id="dropdown">
+        <a href="#" class="dropdown-item">Opción 1</a>
+        <a href="#" class="dropdown-item">Opción 2</a>
+        <a href="#" class="dropdown-item">Opción 3</a>
+      </div>
+    </div>
+
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.style.display =
+          dropdown.style.display === "none" ? "block" : "none";
+      }
+    </script>
+  </body>
+</html>

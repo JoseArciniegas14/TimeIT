@@ -1,0 +1,23 @@
+/* Estilos para pantallas grandes */
+@media screen and (min-width: 1200px) {
+    /* Agrega aquí tus estilos para pantallas grandes */
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Estilos para pantallas medianas */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+    /* Agrega aquí tus estilos para pantallas medianas */
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 767px) {
+    /* Agrega aquí tus estilos para pantallas pequeñas */
+    body {
+        font-size: 14px;
+    }
+}

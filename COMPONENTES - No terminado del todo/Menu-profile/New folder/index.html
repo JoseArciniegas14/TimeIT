@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Style.css" />
+    <title>Menu Despegable</title>
+  </head>
+  <body>
+    <div class="menu dropdown">
+      <p>Menu</p>
+      <div class="menu-dropdown">
+        <a href="#" class="dropdown-item">Opción 1</a>
+        <a href="#" class="dropdown-item">Opción 2</a>
+        <div href="#" class="dropdown-item dropdown">
+          <p>Opcion 3</p>
+          <div class="menu-dropdown">
+            <a href="#" class="dropdown-item">Opción 3.1</a>
+            <a href="#" class="dropdown-item">Opción 3.2</a>
+            <a href="#" class="dropdown-item">Opción 3.3</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("click", (e) => {
+        if (e.target.matches(".dropdown")) {
+          e.target.classList.toggle("is-active");
+        }
+      });
+    </script>
+  </body>
+</html>

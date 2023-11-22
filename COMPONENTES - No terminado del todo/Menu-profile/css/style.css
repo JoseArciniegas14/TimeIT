@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
+  font-family: "Poppins", arial;
+}
+
+body {
+  background-color: #ddd;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+}
+
+.menu {
+  background-color: #0b0e14;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: 20px 40px;
+  cursor: pointer;
+  position: relative;
+}
+
+.menu .menu-dropdown {
+  background-color: inherit;
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 100%;
+  width: auto;
+  min-width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #000;
+}
+
+.dropdown-item {
+  background-color: inherit;
+  color: #fff;
+  display: block;
+  padding: 10px 0px;
+  text-decoration: none;
+}
+
+.dropdown p {
+  pointer-events: none;
+}
+
+.dropdown.is-active > .menu-dropdown {
+  display: block;
+}
