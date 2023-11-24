@@ -15,6 +15,8 @@ mongoose.connect(
       console.log("######################");
       console.log("### Backend Server ###");
       console.log("######################");
+      console.log(".");
+      console.log(".");
       console.log(`http://${IP_SERVER}:${PORT}/api/${API_VERSION}`);
 
     })

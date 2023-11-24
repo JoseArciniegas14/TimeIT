@@ -1,3 +1,5 @@
+// Controlador de imagenes de Hector
+
 function getFilePath(file) {
   const filePath = file.path
   const fileSplit = filePath.split("\\")

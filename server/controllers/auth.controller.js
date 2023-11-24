@@ -1,90 +1,78 @@
 const bcrypt = require("bcryptjs")
 const User = require("../models/user.model")
-const jwt = require("../utils/jwt")
 
+async function register(req, res) {
+  try {
+    const { name, age, country, city, email, phone, password } = req.body;
 
-function register(req, res) {
-  const { name, age, region, contact: { email, phone }, password } = req.body
+    const emailLowerCase = email.toLowerCase();
+    if (!password || !email || !phone) {
+      return res.status(400).send({ msg: "Todos los campos son obligatorios" });
+    }
 
-  if (!email) res.status(400).send({ msg: "El correo es obligatorio" })
-  if (!password) res.status(400).send({ msg: "La contraseña es obligatoria" })
-
-  const user = new User({
-    name,
-    age,
-    region,
-    contact: {
-      email: email.toLowerCase(),
+    const user = new User({
+      email: emailLowerCase,
       phone,
-    },
-    role: "User",
-    active: true
-  })
+      name,
+      country,
+      city,
+      age,
+      active: true,
+      role: "user"
+    });
 
-  const salt = bcrypt.genSaltSync(10)
-  const hashPassword = bcrypt.hashSync(password, salt)
+    // Hash de la contraseña
+    const salt = bcrypt.genSaltSync(10);
+    const hashPassword = bcrypt.hashSync(password, salt);
+    user.password = hashPassword;
 
-  user.password = hashPassword
+    const userStore = await user.save();
 
-  user.save((error, userStorage) => {
-    if (error) {
-      res.status(400).send({ msg: "Error al registrar el usuario" })
-    } else {
-      res.status(200).send(userStorage)
-    }
-  })
+    res.status(201).send(userStore);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ msg: "Error al registrar el usuario" });
+  }
 }
 
-function login(req, res) {
-  const { password, email } = req.body
-
-  if (!email) res.status(400).send({ msg: "El correo es obligatorio" })
-  if (!password) res.status(400).send({ msg: "La contraseña es obligatoria" })
-
-  const emailLowerCase = email.toLowerCase()
-
-  User.findOne({ email: emailLowerCase }, (error, userStorage) => {
-    if (error) {
-      res.status(500).send({ msg: "Error del servidor" })
-    } else {
-      bcrypt.compare(password, userStorage.password, (bcryptError, check) => {
-        if (bcryptError) {
-          res.status(500).send({ msg: "Error del servidor" })
-        } else if (!check) {
-          res.status(400).send({ msg: "Usuario o contraseña incorrecta" })
-        } else if (!userStorage.active) {
-          res.status(401).send({ msg: "Usuario no activo" })
-        } else {
-          res.status(200).send({
-            access: jwt.createAccessToken(userStorage),
-            refresh: jwt.createRefreshToken(userStorage)
-          })
-        }
-      })
+async function login(req, res) {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).send({ msg: "Todos los campos son obligatorios" });
     }
-  })
+
+    const emailLowerCase = email.toLowerCase();
+
+    const userStore = await User.findOne({ email: emailLowerCase });
+    if (!userStore) {
+      return res.status(400).send({ msg: "Usuario no encontrado" });
+    }
+
+    const check = await bcrypt.compare(password, userStore.password);
+    if (!check) {
+      return res.status(400).send({ msg: "Usuario o contraseña incorrecta" });
+    }
+
+    if (req.session.user) {
+      delete req.session.user
+    }
+
+    req.session.user = {
+      userId: userStore._id,
+      email: userStore.email,
+      userPhone: userStore.phone
+    };
+
+    res.status(200).send({ msg: "Inicio de sesion exitoso" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ msg: "Error del servidor" });
+  }
 }
 
-function refreshAccessToken(req, res) {
-  const { token } = req.body
-
-  if (!token) res.status(400).send({ msg: "Error token requerido" })
-
-  const { user_id } = jwt.decoded(token)
-
-  User.findOne({ _id: user_id }, (error, userStorage) => {
-    if (error) {
-      res.status(500).send({ msg: "Error del servidor" })
-    } else {
-      res.status(200).send({
-        accessToken: jwt.createAccessToken(userStorage)
-      })
-    }
-  })
-}
 
 module.exports = {
-  register,
   login,
-  refreshAccessToken,
+  register,
 }
