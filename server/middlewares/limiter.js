@@ -9,6 +9,7 @@ const limiter = rateLimit({
 
 //Verificar el limite de solicitudes por usuario
 function userRateLimit(req, res, next) {
+  console.log("WIIIIIIIIIIIIIIIIIIIIIIII");
   const userId = req.session.user ? req.session.user.userId : null;
 
   if (userId) {

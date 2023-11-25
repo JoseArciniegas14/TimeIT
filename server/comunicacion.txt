@@ -34,7 +34,7 @@ ALARMAS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Aun estoy implementando la logica para tomar la fecha d ejecucion
 ademas esto no funciona mas alla de mandar/recibir datos sin el front
 
-POST http://localhost:3000/api/v1/alarms/
+POST http://localhost:3000/api/v1/alarms/create
 {
   "title": "Nombre de la Alarma",
   "execution": "2023-11-30T12:00:00Z", 
@@ -55,7 +55,7 @@ POST http://localhost:3000/api/v1/alarms/
   }
 }
 
-PATCH http://localhost:3000/api/v1/alarms/
+PATCH http://localhost:3000/api/v1/alarms/update
 {
   "alarmId": "idRealdealarma",
   "title": "Nuevo contenido",
@@ -80,7 +80,7 @@ PATCH http://localhost:3000/api/v1/alarms/
 Pueden borrarse una o varias alarmas, 
 toca colocar el ID real de la ALARMA no usuario, ALARMA lo encuentran en la db
 
-DELETE http://localhost:3000/api/v1/alarms/
+DELETE http://localhost:3000/api/v1/alarms/delete
 {
   "alarmIds": ["ID", "ID"] 
 }
@@ -88,7 +88,7 @@ DELETE http://localhost:3000/api/v1/alarms/
 USUARIO++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-GET http://localhost:3000/api/v1/user/
+GET http://localhost:3000/api/v1/user/getme
 {
 
 }
@@ -103,7 +103,7 @@ tiene el elemento en su base de datos
 (es canson pero toca de momento xd)
 Ejemplo: http://localhost:3000/api/v1/user/ng378b50448ghngtvyywcn/update 
 
-PATCH http://localhost:3000/api/v1/user/:id/
+PATCH http://localhost:3000/api/v1/user/:id/update
 
 {
 	"name": "Lokesea",
@@ -115,7 +115,7 @@ PATCH http://localhost:3000/api/v1/user/:id/
 	"password": "54321"
 }
 
-DELETE http://localhost:3000/api/v1/user/:id/
+DELETE http://localhost:3000/api/v1/user/:id/delete
 {
 
 }

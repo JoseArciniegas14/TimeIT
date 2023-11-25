@@ -80,6 +80,7 @@ async function login(req, res) {
       userPhone: userStore.phone
     };
 
+
     res.status(200).send({ msg: "Inicio de sesion exitoso" });
   } catch (error) {
     console.error(error);

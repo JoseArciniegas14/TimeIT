@@ -15,24 +15,23 @@
       "action": "login"
     }
   ],
-
   "alarms": [
     {
-      "path": "/",
+      "path": "/create",
       "method": "POST",
       "middlewares": ["ensureAuthenticated", "userRateLimit"],
       "controller": "AlarmController",
       "action": "createAlarm"
     },
     {
-      "path": "/",
+      "path": "/delete",
       "method": "DELETE",
       "middlewares": ["ensureAuthenticated", "userRateLimit"],
       "controller": "AlarmController",
       "action": "deleteAlarms"
     },
     {
-      "path": "/",
+      "path": "/update",
       "method": "PATCH",
       "middlewares": ["ensureAuthenticated", "userRateLimit"],
       "controller": "AlarmController",
@@ -41,7 +40,7 @@
   ],
   "user": [
     {
-      "path": "/",
+      "path": "/getme",
       "method": "GET",
       "middlewares": ["ensureAuthenticated", "userRateLimit"],
       "controller": "UserController",
@@ -55,14 +54,14 @@
       "action": "logoutUser"
     },
     {
-      "path": "/:id",
+      "path": "/:id/update",
       "method": "PATCH",
       "middlewares": ["ensureAuthenticated", "userRateLimit"],
       "controller": "UserController",
       "action": "updateUser"
     },
     {
-      "path": "/:id",
+      "path": "/:id/delete",
       "method": "DELETE",
       "middlewares": ["ensureAuthenticated"],
       "controller": "UserController",
