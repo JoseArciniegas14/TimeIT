@@ -1,7 +1,8 @@
-router
 queue
-utils
-uploads
+router_old
+utils_old
+
+
 
 
 # Estas carpetas son de info antigua no necesaria para ustedes
