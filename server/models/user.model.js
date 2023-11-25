@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
 
+// Lo que se mueva aqui se vera reflejado en la base de datos
+
 const UserSchema = mongoose.Schema({
   name: {
     type: String,
@@ -42,6 +44,5 @@ const UserSchema = mongoose.Schema({
   avatar: String
 })
 
-// Dato interesante, quise usar objetos aqui, pero era mi primera vez usandolos que me generaron muchos errores
-// Sobretodo con las solicitudes, pero esta vez en el modelo de alarmas voy a luchar por usar los objetos SI o SI XD 
+
 module.exports = mongoose.model("User", UserSchema)

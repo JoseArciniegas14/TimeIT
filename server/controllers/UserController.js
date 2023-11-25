@@ -1,6 +1,5 @@
 const bcrypt = require("bcryptjs")
 const User = require("../models/user.model")
-// const image = require("../utils/image") ESTO QUEDA PA DESPUES
 
 
 async function getMe(req, res) {
@@ -66,7 +65,7 @@ async function updateUser(req, res) {
       console.log(error);
       res.status(500).send({ msg: "Error al actualizar el usuario" });
     } else {
-      res.status(201).send(updatedUser);
+      res.status(201).send({ msg: "usuario actualizado con exito", updatedUser });
     }
   });
 }

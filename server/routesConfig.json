@@ -1,0 +1,72 @@
+{
+  "auth": [
+    {
+      "path": "/register",
+      "method": "POST",
+      "middlewares": [],
+      "controller": "AuthController",
+      "action": "register"
+    },
+    {
+      "path": "/login",
+      "method": "POST",
+      "middlewares": [],
+      "controller": "AuthController",
+      "action": "login"
+    }
+  ],
+
+  "alarms": [
+    {
+      "path": "/",
+      "method": "POST",
+      "middlewares": ["ensureAuthenticated", "userRateLimit"],
+      "controller": "AlarmController",
+      "action": "createAlarm"
+    },
+    {
+      "path": "/",
+      "method": "DELETE",
+      "middlewares": ["ensureAuthenticated", "userRateLimit"],
+      "controller": "AlarmController",
+      "action": "deleteAlarms"
+    },
+    {
+      "path": "/",
+      "method": "PATCH",
+      "middlewares": ["ensureAuthenticated", "userRateLimit"],
+      "controller": "AlarmController",
+      "action": "updateAlarm"
+    }
+  ],
+  "user": [
+    {
+      "path": "/",
+      "method": "GET",
+      "middlewares": ["ensureAuthenticated", "userRateLimit"],
+      "controller": "UserController",
+      "action": "getMe"
+    },
+    {
+      "path": "/logout",
+      "method": "POST",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "UserController",
+      "action": "logoutUser"
+    },
+    {
+      "path": "/:id",
+      "method": "PATCH",
+      "middlewares": ["ensureAuthenticated", "userRateLimit"],
+      "controller": "UserController",
+      "action": "updateUser"
+    },
+    {
+      "path": "/:id",
+      "method": "DELETE",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "UserController",
+      "action": "deleteUser"
+    }
+  ]
+}

@@ -1,17 +1,13 @@
-const express = require('express')
+const fs = require('fs');
+const path = require('path');
+const express = require('express');
 const session = require('express-session');
-const MongoStore = require("connect-mongo")
-const bodyParser = require('body-parser')
-const cors = require("cors")
+const MongoStore = require("connect-mongo");
+const bodyParser = require('body-parser');
+const cors = require("cors");
 const { DB_USER, DB_PASSWORD, DB_HOST, API_VERSION, SECRET_KEY } = require("./constants.js");
 
-const app = express()
-
-//importar rutas
-const authRoutes = require("./router/auth.router")
-const userRoutes = require("./router/user.router")
-const alarmRoutes = require("./router/alarms.router.js")
-
+const app = express();
 
 // Sesion con express
 app.use(session({
@@ -24,17 +20,37 @@ app.use(session({
   }),
 }));
 
-//Configurar body parse
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+// Configurar body parse
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-//Configurar header http - Cors
-app.use(cors())
+// Configurar header http - Cors
+app.use(cors());
+
+// Automatizar la importación de middlewares
+const middlewaresFolder = path.join(__dirname, 'middlewares');
+const middlewareFiles = fs.readdirSync(middlewaresFolder);
+const middlewares = middlewareFiles.map(filename => require(path.join(middlewaresFolder, filename)));
+
+// Importar rutas desde el JSON
+const routesConfig = require("./routesConfig.json");
+
+// Configurar rutas desde el JSON
+for (const routeGroup in routesConfig) {
+  const routes = routesConfig[routeGroup];
+  routes.forEach(route => {
+    const path = `/api/${API_VERSION}/${routeGroup}${route.path}`;
+    console.log(path);
+    const controller = require(`./controllers/${route.controller}`);
+    const action = route.action;
+
+    // Filtrar los middlewares válidos para esta ruta
+    const validMiddlewares = route.middlewares.map(middlewareName => middlewares[middlewareName]).filter(Boolean);
+
+    app[route.method.toLowerCase()](path, validMiddlewares, controller[action]);
+  });
+}
+
+module.exports = app;
 
 
-//Configurar rutas
-app.use(`/api/${API_VERSION}`, authRoutes)
-app.use(`/api/${API_VERSION}`, userRoutes)
-app.use(`/api/${API_VERSION}`, alarmRoutes)
-
-module.exports = app

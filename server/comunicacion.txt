@@ -1,0 +1,121 @@
+Aqui les dejo las comunicaciones que tengo para enviar datos al servidor, junto con los datos que se esperan, 
+pueden usar thunder client (Extension de VSC) para mandar las peticiones, pueden usar insomnia
+Lo de insmonia lo pueden ver desde la pagina 70 de la guia de Hector. (Prefiero Thunder client)
+
+Tengan en cuenta el metodo usado:[POST, GET, PATCH, DELETE, PUT] y demas
+Cada ratico voy a estar moviendo las rutas asi que esten pendientes que actualizare esto tambien
+
+
+
+AUTENTIFICACION++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+POST http://localhost:3000/api/v1/auth/register
+{
+	"name": "Lokesea",
+	"age": 19,
+	"country": "LoKesea",
+	"city": "",
+	"email": "lokesea@gmail.com",
+	"phone": 987654321,
+	"password": "54321"
+}
+
+
+POST http://localhost:3000/api/v1/auth/login
+{
+	"email": "lokesea.com",
+	"password": "54321"
+}
+
+
+
+ALARMAS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Aun estoy implementando la logica para tomar la fecha d ejecucion
+ademas esto no funciona mas alla de mandar/recibir datos sin el front
+
+POST http://localhost:3000/api/v1/alarms/
+{
+  "title": "Nombre de la Alarma",
+  "execution": "2023-11-30T12:00:00Z", 
+  "state": true,
+  "interval": {
+		"time": 0,
+		"count": 0
+	},
+	"postpone": 0,
+  "days": {
+    "monday": true,
+    "tuesday": false,
+    "wednesday": true,
+    "thursday": false,
+    "friday": true,
+    "saturday": false,
+    "sunday": true
+  }
+}
+
+PATCH http://localhost:3000/api/v1/alarms/
+{
+  "alarmId": "idRealdealarma",
+  "title": "Nuevo contenido",
+  "execution": "2023-11-30T12:00:00Z", 
+  "state": true,
+  "interval": {
+		"time": 0,
+		"count": 0
+	},
+	"postpone": 0,
+  "days": {
+    "monday": true,
+    "tuesday": false,
+    "wednesday": true,
+    "thursday": false,
+    "friday": true,
+    "saturday": false,
+    "sunday": true
+  }
+}
+
+Pueden borrarse una o varias alarmas, 
+toca colocar el ID real de la ALARMA no usuario, ALARMA lo encuentran en la db
+
+DELETE http://localhost:3000/api/v1/alarms/
+{
+  "alarmIds": ["ID", "ID"] 
+}
+
+USUARIO++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+GET http://localhost:3000/api/v1/user/
+{
+
+}
+
+POST http://localhost:3000/api/v1/user/logout
+{
+
+}
+
+*Donde dice /:id/ eso lo modifican por el id que 
+tiene el elemento en su base de datos 
+(es canson pero toca de momento xd)
+Ejemplo: http://localhost:3000/api/v1/user/ng378b50448ghngtvyywcn/update 
+
+PATCH http://localhost:3000/api/v1/user/:id/
+
+{
+	"name": "Lokesea",
+	"age": 19,
+	"country": "Lokesea",
+	"city": "Lokesea",
+	"email": "Lokesea@gmail.com",
+	"phone": 987654321,
+	"password": "54321"
+}
+
+DELETE http://localhost:3000/api/v1/user/:id/
+{
+
+}

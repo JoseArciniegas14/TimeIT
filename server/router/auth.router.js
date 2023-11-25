@@ -1,7 +1,7 @@
 const express = require("express")
-const multiparty = require("connect-multiparty")
 const AuthController = require("../controllers/auth.controller")
 
+const multiparty = require("connect-multiparty")
 const multipart = multiparty()
 const api = express.Router()
 

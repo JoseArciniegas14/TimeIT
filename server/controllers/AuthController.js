@@ -10,6 +10,21 @@ async function register(req, res) {
       return res.status(400).send({ msg: "Todos los campos son obligatorios" });
     }
 
+    if (email) {
+      // DATO IMPORTANTE: $ne es una variable que significa Not_equal, y sirve como parametro en una busqueda
+      const usedEmail = await User.findOne({ email: email, _id: { $ne: User.email } });
+      if (usedEmail) {
+        return res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" });
+      }
+    }
+
+    if (phone) {
+      const usedPhone = await User.findOne({ phone: phone, _id: { $ne: User.phone } });
+      if (usedPhone) {
+        return res.status(400).send({ msg: "El numero de telefono ya esta en uso por otro usuario" });
+      }
+    }
+
     const user = new User({
       email: emailLowerCase,
       phone,
@@ -58,6 +73,7 @@ async function login(req, res) {
       delete req.session.user
     }
 
+    // Crear sesion para manejar multiples usuarios (Mi mayor win y orgullo XD)
     req.session.user = {
       userId: userStore._id,
       email: userStore.email,
@@ -70,7 +86,6 @@ async function login(req, res) {
     res.status(500).send({ msg: "Error del servidor" });
   }
 }
-
 
 module.exports = {
   login,

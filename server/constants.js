@@ -1,12 +1,13 @@
-const DB_USER = "Armin alert"
-const DB_PASSWORD = "R9k" // La contraseña no es esta LES ADELANTO
-const DB_HOST = "t.net" // La direccion tampoco
+const DB_USER = "Admin" //No se les olvide modificar estos 3
+const DB_PASSWORD = "24RWYJD5LrFjv81Q" //No se les olvide modificar estos 3
+const DB_HOST = "timeit.t3nmhiy.mongodb.net" //No se les olvide modificar estos 3
 
 const API_VERSION = "v1"
 const IP_SERVER = "localhost"
 
 
-//Cambiar esto plis ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Esto es un recordatorio para cuando se suba a produccion no lo cambien ustedes XD
+// Cambiar esto plis ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 const SECRET_KEY = "Ka1z0KuRoNiB0r3w4CnAruD19R3v1VeJS4torUSG0jom1sUeN03sT3nerJuN4v1Dan0Rm4Lp0SHhiT4"
 const JWT_SECRET_KEY = "Ka1z0KuRoNiB0r3w4CnAruD19R3v1VeJS4torUSG0jom1sUeN03sT3nerJuN4v1Dan0Rm4Lp0SHhiT4"
 

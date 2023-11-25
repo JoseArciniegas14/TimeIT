@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
 
+// Lo que se mueva aqui se vera reflejado en la base de datos
+
 const AlarmSchema = mongoose.Schema({
   userid: {
     type: mongoose.Schema.Types.ObjectId,
@@ -29,6 +31,8 @@ const AlarmSchema = mongoose.Schema({
     }
   },
   days: {
+    type: Boolean,
+    default: false,
     monday: {
       type: Boolean,
       default: false
@@ -65,8 +69,9 @@ const AlarmSchema = mongoose.Schema({
   }
 })
 
-// Esto es para buscar alarmas por index, segun GPT me ayuda con el rendimiento.
-AlarmSchema.index({ state: 1, execution: 1 }, { name: 'Valide_alarms' });
+// En implementación
+// AlarmSchema.index({ state: 1, execution: 1 }, { name: 'Valide_alarms', partialFilterExpression: { state: true } });
+// AlarmSchema.index({ days: 1, })
 
 module.exports = mongoose.model("Alarm", AlarmSchema)
 
