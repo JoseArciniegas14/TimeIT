@@ -10,28 +10,24 @@
   top: 126px;
   left: 135px;
   background-color: #ffffff05;
-
   border: 2px solid;
   border-color: #ffffff80;
 }
 
 .alarm-information .time-rectangle {
   width: 460px;
-
   top: 108px;
   left: 107px;
 }
 
 .alarm-information .rectangle {
   width: 460px;
-
   background-color: #22272b;
   opacity: 0.5;
 }
 
 .alarm-information .time-hour {
   width: 356px;
-
   top: 16px;
   left: 22px;
 }
@@ -43,27 +39,21 @@
   font-weight: 600;
   color: #ffffff;
   font-size: 32px;
-
   line-height: normal;
 }
 
 .alarm-information .time--tittle {
   width: 284px;
-
   top: -1px;
-
   font-family: "Poppins-SemiBold", Helvetica;
   font-weight: 600;
-
   font-size: 128px;
-
   line-height: normal;
 }
 
 .alarm-information .calendar-week {
   position: absolute;
   width: 460px;
-
   top: 357px;
   left: 107px;
 }
@@ -71,7 +61,6 @@
 
 .alarm-information .rectangle-2 {
   width: 460px;
-
   background-color: #22272b;
   opacity: 0.5;
 }
@@ -128,8 +117,7 @@
 }
 
 .alarm-information .text-calendar {
-  left: 22px;
-  top: 21px;
+  top: 12px;
   font-family: "Poppins-SemiBold", Helvetica;
   font-weight: 600;
   color: #000000;
@@ -137,80 +125,57 @@
 }
 
 .alarm-information .text-calendar-2 {
-  left: 83px;
-
-  top: 21px;
+  top: 12px;
   font-family: "Poppins-SemiBold", Helvetica;
-
   color: #000000;
-
   letter-spacing: 0;
   line-height: normal;
 }
 
 .alarm-information .text-calendar-3 {
-  left: 152px;
 
-  top: 21px;
+  top: 12px;
   font-family: "Poppins-SemiBold", Helvetica;
-
   color: #000000;
-
   letter-spacing: 0;
   line-height: normal;
 }
 
 .alarm-information .text-calendar-4 {
-  left: 214px;
 
-  top: 21px;
+  top: 12px;
   font-family: "Poppins-SemiBold", Helvetica;
-
   color: #000000;
-
   letter-spacing: 0;
   line-height: normal;
 }
 
 .alarm-information .text-calendar-5 {
-  left: 282px;
-
-  top: 21px;
+  top: 12px;
   font-family: "Poppins-SemiBold", Helvetica;
-
   color: #000000;
-
   letter-spacing: 0;
   line-height: normal;
 }
 
 .alarm-information .text-calendar-6 {
-  left: 348px;
-
-  top: 21px;
+  top: 12px;
   font-family: "Poppins-SemiBold", Helvetica;
-
   color: #000000;
-
   letter-spacing: 0;
   line-height: normal;
 }
 
 .alarm-information .text-calendar-7 {
-  left: 412px;
-
-  top: 21px;
+  top: 12px;
   font-family: "Poppins-SemiBold", Helvetica;
-
   color: #000000;
-
   letter-spacing: 0;
   line-height: normal;
 }
 
 .alarm-information .notification {
   width: 460px;
-
   top: 456px;
   left: 107px;
 }
@@ -220,7 +185,6 @@
   left: 100px;
   opacity: 0.8;
   font-family: "Poppins-SemiBold", Helvetica;
-
   line-height: normal;
 }
 
@@ -241,28 +205,24 @@
 
 .alarm-information .song {
   width: 460px;
-
   top: 555px;
   left: 107px;
 }
 
 .alarm-information .interval {
   width: 460px;
-
   top: 654px;
   left: 107px;
 }
 
 .alarm-information .overlap-2 {
   width: 460px;
-
   top: 110px;
   left: 589px;
 }
 
 .alarm-information .state-rectangle {
   width: 460px;
-
   background-color: #22272b80;
 }
 
@@ -271,7 +231,6 @@
   left: 58px;
   font-family: "Poppins-Medium", Helvetica;
   font-weight: 500;
-
   line-height: normal;
 }
 
@@ -279,7 +238,6 @@
   top: 21px;
   left: 168px;
   font-family: "Poppins-SemiBold", Helvetica;
-
   line-height: normal;
 }
 
@@ -378,11 +336,11 @@
   
 }
 .alarm-information .hover:hover {
-  transform: scale(1.2);
+  transform: scale(1.5);
   transition: transform 0.3s ease;
 }
 
 .alarm-information .hover:not(:hover) {
-  transform: scale(1);
+  transform: scale(1.2);
   transition: transform 0.3s ease;
 }
