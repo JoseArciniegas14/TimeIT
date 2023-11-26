@@ -1,8 +1,28 @@
-# React + Vite
+# Client Timeit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es una LadingPage del parte del servidor de la app TIMEIT
 
-Currently, two official plugins are available:
+## Dependencias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> [!IMPORTANT]
+> Puedes utilizar el gestor de paquetes que desees, ya sea npm, npx, yarn, etc... pero tener siempre en cuenta las dependencias que se usan y las versiones de estas, esta app usa React + Vite
+
+- formik: 2.4.5
+- react: 18.2.0
+- react-dom: 18.2.0
+- react-router-dom: 6.20.0
+- sass: 1.69.5,
+- yup: 1.3.2
+
+## Tareas por Hacer
+
+> [!Note]
+> Estas tareas seran reemplzadas o eliminadas mediante la creacion de la app,
+
+- [ ] Crear el sistema logico de los los layouts y los componentes app
+- [ ] Crear el sistema logico de las alarmas, notas y rutinas de la app
+- [ ] Crear la conexion con la base de datos local
+- [ ] Crear un sitema que me permita hacer peticion GET, POST, PUT, DELETE
+- [ ] Crear un sistema para el login, logout y register de la aplicacion que lleven a diferente rutas
+- [ ] Crear un sistema de rutas para auteticacion, contenido de inicio y contenido prinicipal de la app
+- [ ] Crear un sistema de renderizado condicional que permita cambiar solo el contenido principal por medio de parametros json y peticiones fetch
