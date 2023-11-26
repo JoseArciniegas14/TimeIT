@@ -1,0 +1,346 @@
+.alarm-information {
+  width: 1428px;
+  height: 1017px;
+  background-color: #050f0f;
+}
+
+.alarm-information .overlap {
+  width: 1158px;
+  height: 841px;
+  top: 126px;
+  left: 135px;
+  background-color: #ffffff05;
+  border: 2px solid;
+  border-color: #ffffff80;
+}
+
+.alarm-information .time-rectangle {
+  width: 460px;
+  top: 108px;
+  left: 107px;
+}
+
+.alarm-information .rectangle {
+  width: 460px;
+  background-color: #22272b;
+  opacity: 0.5;
+}
+
+.alarm-information .time-hour {
+  width: 356px;
+  top: 16px;
+  left: 22px;
+}
+
+.alarm-information .time--day--night {
+  top: 105px;
+  left: 284px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 32px;
+  line-height: normal;
+}
+
+.alarm-information .time--tittle {
+  width: 284px;
+  top: -1px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  font-size: 128px;
+  line-height: normal;
+}
+
+.alarm-information .calendar-week {
+  position: absolute;
+  width: 460px;
+  top: 357px;
+  left: 107px;
+}
+
+
+.alarm-information .rectangle-2 {
+  width: 460px;
+  background-color: #22272b;
+  opacity: 0.5;
+}
+
+.alarm-information .ellipse {
+  top: 12px;
+  left: 10px;
+  background-color: #00000033;
+  border-radius: 25px;
+  opacity: 0.5;
+}
+
+.alarm-information .ellipse-2 {
+  top: -35px;
+  left: 75px;
+  background-color: #00000033;
+  border-radius: 25px;
+}
+
+.alarm-information .ellipse-3 {
+  top: -85px;
+  left: 140px;
+  background-color: #00000033;
+  border-radius: 25px;
+}
+
+.alarm-information .ellipse-4 {
+  top: -135px;
+  left: 205px;
+  background-color: #00000033;
+  border-radius: 25px;
+}
+
+.alarm-information .ellipse-5 {
+  top: -180px;
+  left: 270px;
+  background-color: #00000033;
+  border-radius: 25px;
+}
+
+.alarm-information .ellipse-6 {
+  top: -235px;
+  left: 335px;
+  background-color: #00000033;
+  border-radius: 25px;
+}
+
+.alarm-information .ellipse-7 {
+  top: -280px;
+  left: 400px;
+  background-color: #00000033;
+  border-radius: 25px;
+  opacity: 0.5;
+}
+
+.alarm-information .text-calendar {
+  top: 12px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  line-height: normal;
+}
+
+.alarm-information .text-calendar-2 {
+  top: 12px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.alarm-information .text-calendar-3 {
+
+  top: 12px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.alarm-information .text-calendar-4 {
+
+  top: 12px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.alarm-information .text-calendar-5 {
+  top: 12px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.alarm-information .text-calendar-6 {
+  top: 12px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.alarm-information .text-calendar-7 {
+  top: 12px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.alarm-information .notification {
+  width: 460px;
+  top: 456px;
+  left: 107px;
+}
+
+.alarm-information .title-rectangle {
+  top: 21px;
+  left: 100px;
+  opacity: 0.8;
+  font-family: "Poppins-SemiBold", Helvetica;
+  line-height: normal;
+}
+
+.alarm-information .img {
+  top: 12px;
+  left: 10px;
+}
+
+.alarm-information .arrow {
+  top: 22px;
+  left: 410px;
+  transition: transform 0.3s ease;
+}
+
+.alarm-information .arrow.ejey {
+  transform: rotate(180deg);
+}
+
+.alarm-information .song {
+  width: 460px;
+  top: 555px;
+  left: 107px;
+}
+
+.alarm-information .interval {
+  width: 460px;
+  top: 654px;
+  left: 107px;
+}
+
+.alarm-information .overlap-2 {
+  width: 460px;
+  top: 110px;
+  left: 589px;
+}
+
+.alarm-information .state-rectangle {
+  width: 460px;
+  background-color: #22272b80;
+}
+
+.alarm-information .text-time-remaining {
+  top: 183px;
+  left: 58px;
+  font-family: "Poppins-Medium", Helvetica;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.alarm-information .state-text {
+  top: 21px;
+  left: 168px;
+  font-family: "Poppins-SemiBold", Helvetica;
+  line-height: normal;
+}
+
+.alarm-information .sphere-container {
+  top: 100px;
+  left: 154px;
+  background-color: #12d50e33;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.alarm-information .sphere-container.left {
+  background-color: #d60e0e33;
+}
+
+.alarm-information .sphere {
+  top: 3px;
+  left: 75px;
+  background-color: #d9d9d9;
+  border-radius: 26.5px/27px;
+  transition: transform 0.3s ease;
+}
+
+.alarm-information .sphere.left {
+  transform: translateX(-70px);
+}
+
+.alarm-information .rectangle-note {
+  width: 460px;
+
+  top: 357px;
+  left: 587px;
+  background-color: #22272b80;
+}
+
+.alarm-information .title-note {
+  top: 18px;
+  left: 156px;
+  font-family: "Poppins-Regular", Helvetica;
+
+  line-height: normal;
+}
+
+.alarm-information .rectangle-3 {
+  top: 55px;
+  left: 105px;
+  background-color: #d9d9d9;
+  opacity: 0.2;
+}
+
+.alarm-information .text-note {
+  top: 109px;
+  left: 30px;
+  opacity: 0.4;
+  font-family: "Poppins-Regular", Helvetica;
+
+  line-height: normal;
+}
+
+.alarm-information .edit-light {
+  top: 33px;
+  left: 1163px;
+}
+
+.alarm-information .menu {
+  top: 43px;
+  left: 1243px;
+  background-color: #ffffff05;
+
+  border: 2px solid;
+  border-color: #ffffff80;
+}
+
+.alarm-information .rectangle-4 {
+  top: 17px;
+  left: 8px;
+  background-color: #ffffff80;
+}
+
+.alarm-information .rectangle-5 {
+  top: 22px;
+  left: 8px;
+  background-color: #ffffff80;
+}
+
+.alarm-information .rectangle-6 {
+  top: 12px;
+  left: 8px;
+  background-color: #ffffff80;
+}
+
+
+.alarm-information .hover {
+  background-color: #ff0000;
+  border-radius: 50%;
+  
+}
+.alarm-information .hover:hover {
+  transform: scale(1.5);
+  transition: transform 0.3s ease;
+}
+
+.alarm-information .hover:not(:hover) {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
