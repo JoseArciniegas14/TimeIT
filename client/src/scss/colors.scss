@@ -1,1 +1,38 @@
+// # BTN & LINK
+$link-dark: #b3b4b5;
+$link-hover-dark: #0a9e56;
+$btn-dark: #b3b4b5;
+$btn-hover-dark: #0a9e56;
+$slider-active-dark: #0a9e56;
+$slider-inactive-dark: #9e0a0a;
 
+// # TEXT
+$text-light: #fff;
+$text-grey: #b7b9ba;
+$text-dark: #000;
+
+// # WEB
+$web-dark: #060f10;
+$header-dark: #2d3033;
+$aside-dark: #1d2125;
+$aside-empty-dark: #000;
+
+// # CARD
+$card-dark: #22272b;
+$card-hover-dark: #333c43;
+
+// # BOR DER
+$border-dark: #808080;
+
+// # STATUS
+$succes: #84b84c;
+$danger: #b8b34c;
+$error: #9f3a38;
+
+// # SOCIAL
+$youtube: #cd201f;
+$twitter: #1fa1f2;
+$facebook: #3b5998;
+$linkedin: #0077b5;
+
+@import "semantic-ui-css/semantic.min.css";
