@@ -1,1 +1,1 @@
-export * from "./DefaultLayout/DefaultLayout.jsx";
+export * from "./WebLayout";
