@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link rel="stylesheet" href="css/globals.css" />
+    <link rel="stylesheet" href="css/styleguide.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    
+</head>
+<body class="m-0">
+    <div class="MENU relative w-full h-24 ">
+        <div class="logo-with-text absolute w-48 h-12">
+            <img class="icono-menu absolute w-12 h-12 top-0 left-0" src="img/icono-menu.svg" />
+        <div class="titulo absolute h-10 font-semibold text-3xl text-center tracking-normal">TimeiT</div>
+        </div>
+            <div class="HABITOS-MENU-BUTTON absolute w-20 h-8">
+                <a class="text--menu absolute text-xl font-bold left-0 h-8 tracking-normal text-center no-underline" href="habitos.html">Hábitos</a>
+                <div class="rectangle w-full bg-gray-600 absolute h-1 left-0 rounded"></div>
+            </div>
+            <div class="NOTAS-MENU-BUTTON absolute w-16 h-8">
+                <a class="text--menu--active  absolute text-xl font-bold left-0 h-8 tracking-normal text-center no-underline" href="notas.html">Notas</a>
+                <div class="rectangle--active  w-full bg-gray-600 absolute h-1 left-0 rounded"></div>
+            </div>
+            <div class="RECORDATORIO-MENU absolute w-40 h-8">
+                <a class="text--menu absolute text-xl font-bold left-0 h-8 tracking-normal text-center no-underline" href="recordatorio.html">Recordatorios</a>
+                <div class="rectangle w-full bg-gray-600 absolute h-1 left-0 rounded"></div>
+            </div>
+            <div class="INICIO-MENU-BUTTON absolute w-16 h-8">
+                <a class="text--menu absolute  text-xl font-bold left-0 h-8 tracking-normal text-center no-underline" href="index.html">Inicio</a>
+                <div class="rectangle w-full bg-gray-400 absolute h-1 left-0 rounded"></div>
+            </div>
+            <div class="PROFILE absolute w-48 h-12">
+                <img class="PROFILE-ICON absolute w-12 h-12 top-0 object-cover" src="img/PROFILE-ICON.png" />
+                <div class="PROFILE-NAME absolute h-8 left-0 font-extrabold text-gray-600 text-xl text-center tracking-normal">NAME</div>
+            </div>
+
+            <script>
+                // Obtener todos los elementos del menú
+                const menuItems = document.querySelectorAll('.text--menu');
+
+                // Agregar evento de clic a cada elemento del menú
+                menuItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        // Remover la clase "--active" de todos los elementos del menú
+                        menuItems.forEach(item => {
+                            item.classList.remove('--active');
+                        });
+
+                        // Agregar la clase "--active" al elemento clickeado
+                        item.classList.add('--active');
+
+                        // Obtener el elemento "rectangle" correspondiente al elemento clickeado
+                        const rectangle = item.nextElementSibling;
+                        // Remover la clase "--active" de todos los elementos "rectangle"
+                        document.querySelectorAll('.rectangle').forEach(rect => {
+                            rect.classList.remove('--active');
+                        });
+                        // Agregar la clase "--active" al elemento "rectangle" correspondiente
+                        rectangle.classList.add('--active');
+                    });
+                });
+            </script>
+           
+
+    </div>
+
+
+    <div class="box">
+        <div class="BACKGROUND-CINTA relative h-full top-0 left-0 bg-gray-900"></div>
+    
+    </div>
+       
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/script.js"></script>
+    
+</body>
+</html>
