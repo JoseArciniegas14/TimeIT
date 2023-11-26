@@ -85,42 +85,42 @@
 }
 
 .alarm-information .ellipse-2 {
-  top: 12px;
+  top: -35px;
   left: 75px;
   background-color: #00000033;
   border-radius: 25px;
 }
 
 .alarm-information .ellipse-3 {
-  top: 12px;
+  top: -85px;
   left: 140px;
   background-color: #00000033;
   border-radius: 25px;
 }
 
 .alarm-information .ellipse-4 {
-  top: 12px;
+  top: -135px;
   left: 205px;
   background-color: #00000033;
   border-radius: 25px;
 }
 
 .alarm-information .ellipse-5 {
-  top: 12px;
+  top: -180px;
   left: 270px;
   background-color: #00000033;
   border-radius: 25px;
 }
 
 .alarm-information .ellipse-6 {
-  top: 12px;
+  top: -235px;
   left: 335px;
   background-color: #00000033;
   border-radius: 25px;
 }
 
 .alarm-information .ellipse-7 {
-  top: 12px;
+  top: -280px;
   left: 400px;
   background-color: #00000033;
   border-radius: 25px;
@@ -297,14 +297,14 @@
 
 .alarm-information .sphere {
   top: 3px;
-  left: 83px;
+  left: 75px;
   background-color: #d9d9d9;
   border-radius: 26.5px/27px;
   transition: transform 0.3s ease;
 }
 
 .alarm-information .sphere.left {
-  transform: translateX(-80px);
+  transform: translateX(-70px);
 }
 
 .alarm-information .rectangle-note {
@@ -369,4 +369,20 @@
   top: 12px;
   left: 8px;
   background-color: #ffffff80;
+}
+
+
+.alarm-information .hover {
+  background-color: #ff0000;
+  border-radius: 50%;
+  
+}
+.alarm-information .hover:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+.alarm-information .hover:not(:hover) {
+  transform: scale(1);
+  transition: transform 0.3s ease;
 }

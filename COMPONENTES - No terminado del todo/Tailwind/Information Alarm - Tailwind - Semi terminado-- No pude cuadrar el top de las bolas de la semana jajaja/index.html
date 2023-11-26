@@ -19,24 +19,23 @@
 
         </div>
 
-        <div class="calendar-week absolute h-20">
-          <div class="rectangulo--container relative h-20 rounded">
-            <div class="rectangle-2 h-20 top-0 left-0 bg-gray-900 absolute rounded"></div>
-            <div class="ellipse relative w-12 h-12"></div>
-            <div class="ellipse-2 relative w-12 h-12"></div>
-            <div class="ellipse-3 relative w-12 h-12"></div>
-            <div class="ellipse-4 relative w-12 h-12"></div>
-            <div class="ellipse-5 relative w-12 h-12"></div>
-            <div class="ellipse-6 relative w-12 h-12"></div>
-            <div class="ellipse-7 relative w-12 h-12"></div>
-            <div class="text-calendar absolute h-8 font-semibold text-black text-xl text-center tracking-normal">SU</div>
-            <div class="text-calendar-2 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">MO</div>
-            <div class="text-calendar-3 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">TU</div>
-            <div class="text-calendar-4 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">WE</div>
-            <div class="text-calendar-5 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">TH</div>
-            <div class="text-calendar-6 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">FR</div>
-            <div class="text-calendar-7 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">SA</div>
-          </div>
+        <div class="calendar-week relative h-20">
+              <div class="rectangle-2 h-20 top-0 left-0 bg-gray-900 rounded">
+                <div class="ellipse relative w-12 h-12"></div>
+                <div class="ellipse-2 relative w-12 h-12"></div>
+                <div class="ellipse-3 relative w-12 h-12"></div>
+                <div class="ellipse-4 relative w-12 h-12"></div>
+                <div class="ellipse-5 relative w-12 h-12"></div>
+                <div class="ellipse-6 relative w-12 h-12"></div>
+                <div class="ellipse-7 relative w-12 h-12"></div>
+                <div class="text-calendar absolute h-8 font-semibold text-black text-xl text-center tracking-normal">SU</div>
+                <div class="text-calendar-2 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">MO</div>
+                <div class="text-calendar-3 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">TU</div>
+                <div class="text-calendar-4 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">WE</div>
+                <div class="text-calendar-5 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">TH</div>
+                <div class="text-calendar-6 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">FR</div>
+                <div class="text-calendar-7 absolute h-8 font-semibold text-black text-xl text-center tracking-normal">SA</div>
+            </div>
         </div>
 
 
@@ -75,7 +74,7 @@
             <p class="text-time-remaining absolute h-6 font-medium text-white text-base text-center tracking-normal">La alarma sonara en 15 horas y 27 minutos</p>
             <div class="state-text absolute h-12 font-semibold text-white text-4xl text-center tracking-normal">Estado</div>
           </div>
-          <div class="sphere-container absolute w-32 h-16"><div class="sphere relative w-12 h-12 bg-gray-400"></div></div>
+          <div class="sphere-container absolute w-32 h-14"><div class="sphere relative w-12 h-12 bg-gray-400"></div></div>
         </div>
 
 
@@ -118,6 +117,22 @@
           });
         });
   
+
+
+ 
+      const ellipses = document.querySelectorAll('.ellipse, .ellipse-2, .ellipse-3, .ellipse-4, .ellipse-5, .ellipse-6, .ellipse-7');
+
+      ellipses.forEach((ellipse) => {
+        ellipse.addEventListener('click', () => {
+          ellipses.forEach((otherEllipse) => {
+            if (otherEllipse !== ellipse) {
+              otherEllipse.classList.remove('hover');
+            }
+          });
+          ellipse.classList.toggle('hover');
+        });
+      });
+
 
       </script>
   </body>
