@@ -1,5 +1,12 @@
+import { Aside } from "../../components";
+
 function Home() {
-  return <h1>Home</h1>;
+  return (
+    <>
+      <Aside />
+      <h2>Home</h2>
+    </>
+  );
 }
 
 export { Home };

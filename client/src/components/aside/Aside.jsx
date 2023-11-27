@@ -1,4 +1,4 @@
-function Aside() {
+function Aside(props) {
   return <div>Aside</div>;
 }
 

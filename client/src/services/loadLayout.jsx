@@ -1,7 +1,7 @@
 const loadLayout = (Layout, Page) => {
   return (
     <Layout>
-      <Page></Page>
+      <Page />
     </Layout>
   );
 };
