@@ -1,12 +1,19 @@
-const cron = require('node-cron');
+const cron = require("node-cron");
 const Alarm = require("./models/alarms.model");
+const DaysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
-// Función de verificación de alarmas
-async function verificarAlarmas() {
-  console.log("Me ejecuto");
+// ...
+
+// Programar la verificación de alarmas cada minuto (puedes ajustar el cron según tus necesidades)
+cron.schedule("*/10 * * * * *", async () => {
+  console.log("?");
   const currentDateTime = new Date();
-  const currentDay = DAYS_OF_WEEK[new Date().getDay()];
+  console.log("La data", currentDateTime);
+  const currentDay = DaysOfWeek[currentDateTime.getDay()];
+  console.log(currentDay);
 
+  // Verificación
+  Alarm.collection.createIndex({ state: 1, execution: 1, [`days.${currentDay}`]: 1 });
 
   const activeAlarms = await Alarm.find({
     state: true,
@@ -14,8 +21,8 @@ async function verificarAlarmas() {
     [`days.${currentDay}`]: true
   });
 
-  console.log(activeAlarms);
-}
+  // Imprimir resultados en la consola
+  console.log("Active Alarms:", activeAlarms);
 
-
-cron.schedule('* * * * *', async () => { await verificarAlarmas() });
+  // Resto del código de manejo de alarmas (por ejemplo, envío de notificaciones, ejecución de acciones, etc.)
+});

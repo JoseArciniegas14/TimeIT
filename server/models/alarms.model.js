@@ -5,7 +5,7 @@ const mongoose = require("mongoose")
 const AlarmSchema = mongoose.Schema({
   userid: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true
   },
   title: {
@@ -33,30 +33,37 @@ const AlarmSchema = mongoose.Schema({
   days: {
     monday: {
       type: Boolean,
+      index: true,
       default: false
     },
     tuesday: {
       type: Boolean,
+      index: true,
       default: false
     },
     wednesday: {
       type: Boolean,
+      index: true,
       default: false
     },
     thursday: {
       type: Boolean,
+      index: true,
       default: false
     },
     friday: {
       type: Boolean,
+      index: true,
       default: false
     },
     saturday: {
       type: Boolean,
+      index: true,
       default: false
     },
     sunday: {
       type: Boolean,
+      index: true,
       default: false
     },
   },
@@ -67,9 +74,8 @@ const AlarmSchema = mongoose.Schema({
   }
 })
 
-// En implementación
 AlarmSchema.index({ state: 1, execution: 1 }, { name: 'Valide_alarms', partialFilterExpression: { state: true } });
-
+AlarmSchema.index({ state: 1, execution: 1, "days.monday": 1, "days.tuesday": 1, "days.wednesday": 1, "days.thursday": 1, "days.friday": 1, "days.saturday": 1, "days.sunday": 1, }, { name: 'Day_ Alarms' });
 
 module.exports = mongoose.model("Alarm", AlarmSchema)
 

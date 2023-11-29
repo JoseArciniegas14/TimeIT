@@ -43,9 +43,8 @@ async function register(req, res) {
     user.password = hashPassword;
 
     const userStore = await user.save();
-    // ESTO ME VA A REDIRIGIR DIRECTAMENTE AL LOGIN
-    // res.redirect("/auth/login");
-    res.status(201).send({ msg: "ESTE ES EL USUARIO QUE SE GUARDO:", userStore });
+
+    res.status(201).send({ msg: "Usuario registrado con exito :" });
   } catch (error) {
     console.error(error);
     res.status(500).send({ msg: "Error al registrar el usuario" });

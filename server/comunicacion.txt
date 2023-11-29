@@ -1,12 +1,7 @@
-Tengan en cuenta el metodo usado:[POST, GET, PATCH, DELETE, PUT] y demas
+AUTENTIFICACION---------------------------------------------------------------------------------------------------------------
 
-Los corchetes sin informacion, no dependen de informacion enciviada por el frontend
-
-
-
-AUTENTIFICACION++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-POST http://localhost:3000/api/v1/auth/register
+*****************************************ENDPOINT:   POST http://localhost:3000/api/v1/auth/register 
+INFORMACION ESPERADA
 {
 	"name": "Lokesea",
 	"age": 19,
@@ -17,17 +12,54 @@ POST http://localhost:3000/api/v1/auth/register
 	"password": "54321"
 }
 
-POST http://localhost:3000/api/v1/auth/login
+INFORMACION DEVUELTA (MSG)
+Si todo funciona bien
+{
+  res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" })
+}
+
+En caso de errores
+{
+  res.status(400).send({ msg: "Todos los campos son obligatorios" });
+  res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" });
+  res.status(400).send({ msg: "El numero de telefono ya esta en uso por otro usuario" });
+  res.status(500).send({ msg: "Error al registrar el usuario" });
+}
+
+
+
+*******************************************ENDPOINT:   POST http://localhost:3000/api/v1/auth/login
+INFORMACION ESPERADA
 {
 	"email": "lokesea.com",
 	"password": "54321"
 }
 
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  msg: "Informcaion obtenida del usuario, PARA QUE LA USE DE LA FORMA QUE NECESITE",
+  _id: user._id,
+  name: user.name,
+  age: user.age,
+  country: user.country,
+  city: user.city,
+  email: user.email,
+  phone: user.phone
+}
+
+En caso de errores
+{
+  res.status(500).send({ msg: "Error del servidor desde el AUTH" });
+  res.status(500).send({ msg: "Error del servidor desde el GETME" });
+}
 
 
-ALARMAS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-POST http://localhost:3000/api/v1/alarms/
+ALARMAS---------------------------------------------------------------------------------------------------------------------
+
+*****************************************ENDPOINT:   POST http://localhost:3000/api/v1/alarms/
+INFORMACION ESPERADA
 {
   "title": "Nombre de la Alarma",
   "execution": "2023-11-30T12:00:00Z", 
@@ -48,12 +80,65 @@ POST http://localhost:3000/api/v1/alarms/
   }
 }
 
-http://localhost:3000/api/v1/alarms/get
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  title,
+  execution,
+  state,
+  postpone,
+  interval,
+  days
+}
+
+En caso de errores
+{
+  res.status(500).send({ msg: "Error al registrar alarma" });
+}
+
+
+
+*****************************************ENDPOINT:   http://localhost:3000/api/v1/alarms/
+INFORMACION ESPERADA
 {
 
 }
 
-PATCH http://localhost:3000/api/v1/alarms/
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien 
+  {
+    "interval": {
+      "time": 0,
+      "count": 0
+    },
+    "days": {
+      "monday": true,
+      "tuesday": false,
+      "wednesday": true,
+      "thursday": false,
+      "friday": true,
+      "saturday": false,
+      "sunday": true
+    },
+    "_id": "6567bcf7acda221b3e39d139",
+    "userid": "65672b9ba60f9dd95930f2d4",
+    "title": "Nombre de la Alarma",
+    "execution": "2023-11-30T12:00:00.000Z",
+    "postpone": 0,
+    "state": true,
+    "__v": 0
+  }
+
+En caso de errores
+{
+    return res.status(404).json({ msg: "El usuario no tiene alarmas asociadas." });
+    return res.status(500).json({ msg: "Error al obtener las alarmas del usuario." });
+}
+
+
+
+****************************************ENDPOINT:   PATCH http://localhost:3000/api/v1/alarms/
+INFORMACION ESPERADA
 {
   "alarmId": "idRealdealarma",
   "title": "Nuevo contenido",
@@ -75,29 +160,110 @@ PATCH http://localhost:3000/api/v1/alarms/
   }
 }
 
-DELETE http://localhost:3000/api/v1/alarms/
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien 
+  {
+  "interval": {
+    "time": 0,
+    "count": 0
+  },
+  "days": {
+    "monday": true,
+    "tuesday": false,
+    "wednesday": true,
+    "thursday": false,
+    "friday": true,
+    "saturday": false,
+    "sunday": true
+  },
+  "_id": "6567bc9cba73ca67721bb7c0",
+  "userid": "65672b93a60f9dd95930f2d0",
+  "title": "Nuevo contenido",
+  "execution": "2023-11-30T12:00:00.000Z",
+  "postpone": 0,
+  "state": true,
+  "__v": 0
+}
+
+En caso de errores
+{
+  return res.status(404).send({ msg: "La alarma no fue encontrada" });
+  res.status(500).send({ msg: "Error al actualizar la alarma" });
+}
+
+
+
+********************************************ENDPOINT:   DELETE http://localhost:3000/api/v1/alarms/
+INFORMACION ESPERADA
 {
   "alarmIds": ["ID", "ID"] 
 }
 
+INFORMACION DEVUELTA (MSG)
+Si todo funciona bien 
+{
+  return res.status(200).send({ msg: "Alarmas eliminadas correctamente" });
+}
+
+En caso de errores
+{
+  return res.status(400).send({ msg: "La lista de Ids de alarmas no es valida" });
+  return res.status(404).send({ msg: "No se encontraron alarmas" });
+  res.status(500).send({ msg: "Error al eliminar alarmas" });
+}
 
 
 
-USUARIO++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+USUARIO---------------------------------------------------------------------------------------------------------------------
 
-EL LOGIN EJECUTA DIRECTAMENTE EL GET ME ASI QUE LE DEVUELVE LOS DATOS DEL USUARIO AUTOMATICAMENTE
-GET http://localhost:3000/api/v1/user/
+******************************************ENDPOINT:   GET http://localhost:3000/api/v1/user/
+INFORMACION ESPERADA
 {
 
 }
 
-POST http://localhost:3000/api/v1/user/
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  msg: "Informcaion obtenida del usuario, PARA QUE LA USE DE LA FORMA QUE NECESITE",
+  _id: user._id,
+  name: user.name,
+  age: user.age,
+  country: user.country,
+  city: user.city,
+  email: user.email,
+  phone: user.phone
+}
+
+En caso de errores
+{
+  res.status(500).send({ msg: "Error del servidor desde el AUTH" });
+  res.status(500).send({ msg: "Error del servidor desde el GETME" });
+}
+
+
+
+*******************************************ENDPOINT:   POST http://localhost:3000/api/v1/user/logout SI TIENE IDENTIFICACION
+INFORMACION ESPERADA
 {
 
 }
 
+INFORMACION DEVUELTA (MSG)
+Si todo funciona bien
+{
+  res.status(200).send({ msg: "Sesión cerrada exitosamente" });
+}
 
-PATCH http://localhost:3000/api/v1/user/
+En caso de errores
+{
+  res.status(500).send({ msg: "Error al cerrar sesion" });
+}
+    
+
+
+********************************************ENDPOINT:   PATCH http://localhost:3000/api/v1/user/
+INFORMACION ESPERADA
 
 {
 	"name": "Lokesea",
@@ -109,16 +275,108 @@ PATCH http://localhost:3000/api/v1/user/
 	"password": "54321"
 }
 
-DELETE http://localhost:3000/api/v1/user/
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  "_id": "65672b9ba60f9dd95930f2d4",
+  "name": "Robbin",
+  "age": 19,
+  "country": "Colombia",
+  "city": "Bogota",
+  "email": "robbin@gmail.com",
+  "phone": 987654321,
+  "role": "user",
+  "active": true,
+  "password": "$2a$10$rMn4QPhmiuLllD8L1W9cgOArjSi.mfm6JQtRpAggJTHvGUf3E3mBK", AQUI NO SE PUEDE QUITAR LA CONTRASEÑA
+  "__v": 0
+}
+
+En caso de errores
+{
+  return res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" });
+  return res.status(400).send({ msg: "El numero de telefono ya esta en uso por otro usuario" });
+  res.status(500).send({ msg: "Error al actualizar el usuario" });
+}
+
+
+
+**********************************************ENDPOINT:   DELETE http://localhost:3000/api/v1/user/
+INFORMACION ESPERADA
 {
 
+}
+INFORMACION DEVUELTA (MSG)
+Si todo funciona bien
+{
+  res.status(201).send({ msg: "Usuario eliminado de la base de datos junto a su informacion" });
+}
+
+En caso de errores
+{
+  res.status(500).send({ msg: "Error al cerrar sesion" });
+  res.status(500).send({ msg: "Error al eliminar usuario de la base de datos" });
 }
 
 
 
 
+NOTAS---------------------------------------------------------------------------------------------------------------------
+
+***********************************************ENDPOINT:   POST http://localhost:3000/api/v1/notes/
+INFORMACION ESPERADA
+{
+  "title": "NOTA 1",
+  "content": "lorem x50 con saltos de linea y formato de texto y toda esa wea",
+  "alarmId": "En caso de que se relacionen alarma y nota"
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  "userid": "65672b9ba60f9dd95930f2d4",
+  "title": "NOTA 1",
+  "content": "lorem x50 con saltos de linea y formato de texto y toda esa wea",
+  "_id": "6567c69b3b4786a6ad66f66d",
+  "createdAt": "2023-11-29T23:17:47.402Z",
+  "updatedAt": "2023-11-29T23:17:47.403Z",
+  "__v": 0
+}
+
+En caso de errores
+{
+  res.status(500).send({ msg: "Error al registrar Nota" });
+}
 
 
+
+***********************************************ENDPOINT:   PATCH http://localhost:3000/api/v1/notes/
+INFORMACION ESPERADA
+{
+  "noteId": "65679c69d5050274d61283ea",
+  "title": "NOTA 1- actualizada",
+  "content": "lorem x50 con saltos de linea y formato de texto y toda esa wea",
+  "alarmId": ""
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  "_id": "65679c69d5050274d61283ea",
+  "userid": "65672b9ba60f9dd95930f2d4",
+  "alarmId": null,
+  "title": "NOTA 1- actualizada",
+  "content": "lorem x50 con saltos de linea y formato de texto y toda esa wea",
+  "createdAt": "2023-11-29T20:17:45.398Z",
+  "updatedAt": "2023-11-29T23:30:41.556Z",
+  "__v": 0
+}
+
+En caso de errores
+{
+  return res.status(404).send({ msg: "La nota no fue encontrada" });
+  res.status(500).send({ msg: "Error al registrar nota" });
+
+}
 
 
 

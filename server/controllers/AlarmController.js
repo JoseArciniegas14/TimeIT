@@ -1,13 +1,29 @@
 const Alarm = require("../models/alarms.model")
-const cron = require('node-cron');
+const cron = require("node-cron");
 
 async function createAlarm(req, res) {
   try {
     const userId = req.user.userId;
     const { title, execution, state, interval, days, postpone } = req.body;
-    const alarm = await Alarm.create({ userid: userId, title, execution, state, postpone, interval, days, });
+    const alarm = await Alarm.create({
+      userid: userId,
+      title,
+      execution,
+      state,
+      postpone,
+      interval,
+      days
+    });
 
-    res.status(201).send({ msg: "alarma creada con exito" });
+    const filteredAlarm = {
+      title,
+      execution,
+      state,
+      postpone,
+      interval,
+      days
+    }
+    res.status(201).json(filteredAlarm);
   } catch (error) {
     console.error(error);
     console.log(error);
@@ -31,7 +47,7 @@ async function updateAlarm(req, res) {
       return res.status(404).send({ msg: "La alarma no fue encontrada" });
     }
 
-    res.status(200).send({ msg: "Alarma actualizada correctamente" });
+    res.status(200).json(updatedAlarm);
   } catch (error) {
     console.error(error);
     res.status(500).send({ msg: "Error al actualizar la alarma" });
@@ -68,39 +84,15 @@ async function getAllAlarms(req, res) {
 
     const alarms = await Alarm.find({ userid: userId });
 
-    const renderInfo = {
-      "_id": "6566fe59e7f951b1412d9219",
-      "title": "Nombre de la Alarma 5",
-      "execution": "2023-11-30T12:00:00.000Z",
 
-      "days": {
-        "monday": true,
-        "tuesday": false,
-        "wednesday": true,
-        "thursday": false,
-        "friday": true,
-        "saturday": false,
-        "sunday": true
-      },
-
-      "interval": {
-        "time": 0,
-        "count": 0
-      },
-
-      "postpone": 0,
-
-      "state": true,
-    }
 
     if (alarms.length > 0) {
-      return res.status(200).json(renderInfo);
+      return res.status(200).json(alarms);
     } else {
-      return res.status(404).json({ msg: "El usuario no tiene alarmas asociadas." });
+      return res.status(404).send({ msg: "El usuario no tiene alarmas asociadas." });
     }
   } catch (error) {
-    console.error('Error al obtener las alarmas del usuario:', error);
-    return res.status(500).json({ msg: "Error al obtener las alarmas del usuario." });
+    return res.status(500).send({ msg: "Error al obtener las alarmas del usuario." });
   }
 }
 
@@ -124,7 +116,7 @@ const checkAlarms = async () => {
       // utilizar un servicio de notificaciones en tiempo real.
     });
   } catch (error) {
-    console.error('Error al consultar y procesar las alarmas:', error);
+    console.error("Error al consultar y procesar las alarmas:", error);
   }
 };
 

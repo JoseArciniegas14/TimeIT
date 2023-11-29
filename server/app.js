@@ -6,7 +6,7 @@ const MongoStore = require("connect-mongo");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { DB_USER, DB_PASSWORD, DB_HOST, API_VERSION, SECRET_KEY } = require("./constants.js");
-require("./scheduler")
+// require("./scheduler")
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use(
 
 // Configurar el encabezado Content-Type para indicar JSON
 app.use((req, res, next) => {
-  res.header('Content-Type', 'application/json');
+  res.header("Content-Type", "application/json");
   next();
 });
 
@@ -56,6 +56,7 @@ for (const routeGroup in routesConfig) {
   routes.forEach(route => {
     const basePath = `/api/${API_VERSION}/${routeGroup}`;
     const path = route.path === "/" ? basePath : `${basePath}${route.path}`;
+    console.log(path);
     const controller = require(`./controllers/${route.controller}`);
     const action = route.action;
 

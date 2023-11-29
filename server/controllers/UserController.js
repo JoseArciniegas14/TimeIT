@@ -18,12 +18,12 @@ async function getMe(req, res) {
       country: user.country,
       city: user.city,
       email: user.email,
-      phone: user.phone,
+      phone: user.phone
     }
 
-    res.status(200).json({ filteredUser });
+    res.status(200).json(filteredUser);
   } catch (error) {
-    res.status(500).send({ msg: "Error del servidor, en GetMe" });
+    res.status(500).send({ msg: "Error del servidor desde el GETME" });
     console.log(error);
   }
 }
@@ -74,7 +74,7 @@ async function updateUser(req, res) {
       console.log(error);
       res.status(500).send({ msg: "Error al actualizar el usuario" });
     } else {
-      res.status(201).send({ msg: "usuario actualizado con exito, AQUI LE DEJO LA NUEVA INFORMACION DEL USUARIO", updatedUser });
+      res.status(201).json(updatedUser);
     }
   });
 }
@@ -112,10 +112,10 @@ async function deleteUser(req, res) {
       }
     });
 
-    res.status(201).send({ msg: "Usuario BORRADO DE LA BASE DE DATOS y sus alarmas eliminadas" });
+    res.status(201).send({ msg: "Usuario eliminado de la base de datos junto a su informacion" });
   } catch (error) {
     console.log(error);
-    res.status(500).send({ msg: "Error al BORRAR USUARIO DE LA BASE DE DATOS" });
+    res.status(500).send({ msg: "Error al eliminar usuario de la base de datos" });
   }
   console.clear()
 }

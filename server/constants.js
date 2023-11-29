@@ -1,6 +1,6 @@
 const DB_USER = "Admin"; //No se les olvide modificar estos 3
-const DB_PASSWORD = "ysLFbjE8W2DGOV91"; //No se les olvide modificar estos 3
-const DB_HOST = "timeit.9zvjkfp.mongodb.net"; //No se les olvide modificar estos 3
+const DB_PASSWORD = "5JV2rUGwbsJBmfcY"; //No se les olvide modificar estos 3
+const DB_HOST = "timeit.r4mitpw.mongodb.net"; //No se les olvide modificar estos 3
 
 const API_VERSION = "v1";
 const IP_SERVER = "localhost";
