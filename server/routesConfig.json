@@ -15,57 +15,58 @@
       "action": "login"
     }
   ],
-  "alarms": [
-    {
-      "path": "/create",
-      "method": "POST",
-      "middlewares": ["ensureAuthenticated", "userRateLimit"],
-      "controller": "AlarmController",
-      "action": "createAlarm"
-    },
-    {
-      "path": "/delete",
-      "method": "DELETE",
-      "middlewares": ["ensureAuthenticated", "userRateLimit"],
-      "controller": "AlarmController",
-      "action": "deleteAlarms"
-    },
-    {
-      "path": "/update",
-      "method": "PATCH",
-      "middlewares": ["ensureAuthenticated", "userRateLimit"],
-      "controller": "AlarmController",
-      "action": "updateAlarm"
-    }
-  ],
+
   "user": [
     {
-      "path": "/getme",
+      "path": "/",
       "method": "GET",
       "middlewares": ["ensureAuthenticated", "userRateLimit"],
       "controller": "UserController",
       "action": "getMe"
     },
     {
-      "path": "/logout",
+      "path": "/",
       "method": "POST",
       "middlewares": ["ensureAuthenticated"],
       "controller": "UserController",
       "action": "logoutUser"
     },
     {
-      "path": "/:id/update",
+      "path": "/",
       "method": "PATCH",
       "middlewares": ["ensureAuthenticated", "userRateLimit"],
       "controller": "UserController",
       "action": "updateUser"
     },
     {
-      "path": "/:id/delete",
+      "path": "/",
       "method": "DELETE",
       "middlewares": ["ensureAuthenticated"],
       "controller": "UserController",
       "action": "deleteUser"
+    }
+  ],
+  "alarms": [
+    {
+      "path": "/",
+      "method": "POST",
+      "middlewares": ["ensureAuthenticated", "userRateLimit"],
+      "controller": "AlarmController",
+      "action": "createAlarm"
+    },
+    {
+      "path": "/",
+      "method": "DELETE",
+      "middlewares": ["ensureAuthenticated", "userRateLimit"],
+      "controller": "AlarmController",
+      "action": "deleteAlarms"
+    },
+    {
+      "path": "/",
+      "method": "PATCH",
+      "middlewares": ["ensureAuthenticated", "userRateLimit"],
+      "controller": "AlarmController",
+      "action": "updateAlarm"
     }
   ]
 }

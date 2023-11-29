@@ -1,22 +1,30 @@
 const bcrypt = require("bcryptjs")
 const User = require("../models/user.model")
 
-
 async function getMe(req, res) {
   try {
-    const userId = req.user.userId;
-
-    const user = await User.findById(userId);
+    const actualId = req.session.user.userId;
+    const user = await User.findById(actualId);
 
     if (!user) {
       return res.status(404).send({ msg: "Usuario no encontrado" });
     }
 
-    res.status(200).send({ user });
+    const filteredUser = {
+      msg: "Informcaion obtenida del usuario, PARA QUE LA USE DE LA FORMA QUE NECESITE",
+      _id: user._id,
+      name: user.name,
+      age: user.age,
+      country: user.country,
+      city: user.city,
+      email: user.email,
+      phone: user.phone,
+    }
+
+    res.status(200).json({ filteredUser });
   } catch (error) {
-    console.error(error);
+    res.status(500).send({ msg: "Error del servidor, en GetMe" });
     console.log(error);
-    res.status(500).send({ msg: "Error del servidor" });
   }
 }
 
@@ -66,7 +74,7 @@ async function updateUser(req, res) {
       console.log(error);
       res.status(500).send({ msg: "Error al actualizar el usuario" });
     } else {
-      res.status(201).send({ msg: "usuario actualizado con exito", updatedUser });
+      res.status(201).send({ msg: "usuario actualizado con exito, AQUI LE DEJO LA NUEVA INFORMACION DEL USUARIO", updatedUser });
     }
   });
 }
@@ -82,7 +90,6 @@ function logoutUser(req, res) {
   // Destruir la sesion
   req.session.destroy((error) => {
     if (error) {
-      console.error("Error al cerrar sesion:");
       res.status(500).send({ msg: "Error al cerrar sesion" });
     } else {
       res.status(200).send({ msg: "Sesión cerrada exitosamente" });
@@ -90,18 +97,27 @@ function logoutUser(req, res) {
   });
 }
 
-
 async function deleteUser(req, res) {
-  const { id } = req.params
+  const userId = req.user.userId;
 
-  User.findByIdAndDelete(id, (error) => {
-    if (error) {
-      console.log(error);
-      res.status(500).send({ msg: "Error al eliminar el usuario" });
-    } else {
-      res.status(201).send({ msg: "Usuario eliminado" });
-    }
-  })
+  try {
+    await User.findByIdAndDelete(userId);
+
+    // Eliminar todas las alarmas relacionadas con el usuario
+    await Alarm.deleteMany({ userid: userId });
+
+    req.session.destroy((error) => {
+      if (error) {
+        res.status(500).send({ msg: "Error al cerrar sesion" });
+      }
+    });
+
+    res.status(201).send({ msg: "Usuario BORRADO DE LA BASE DE DATOS y sus alarmas eliminadas" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ msg: "Error al BORRAR USUARIO DE LA BASE DE DATOS" });
+  }
+  console.clear()
 }
 
 module.exports = {

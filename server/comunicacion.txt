@@ -1,9 +1,6 @@
-Aqui les dejo las comunicaciones que tengo para enviar datos al servidor, junto con los datos que se esperan, 
-pueden usar thunder client (Extension de VSC) para mandar las peticiones, pueden usar insomnia
-Lo de insmonia lo pueden ver desde la pagina 70 de la guia de Hector. (Prefiero Thunder client)
-
 Tengan en cuenta el metodo usado:[POST, GET, PATCH, DELETE, PUT] y demas
-Cada ratico voy a estar moviendo las rutas asi que esten pendientes que actualizare esto tambien
+
+Los corchetes sin informacion, no dependen de informacion enciviada por el frontend
 
 
 
@@ -20,7 +17,6 @@ POST http://localhost:3000/api/v1/auth/register
 	"password": "54321"
 }
 
-
 POST http://localhost:3000/api/v1/auth/login
 {
 	"email": "lokesea.com",
@@ -31,10 +27,7 @@ POST http://localhost:3000/api/v1/auth/login
 
 ALARMAS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Aun estoy implementando la logica para tomar la fecha d ejecucion
-ademas esto no funciona mas alla de mandar/recibir datos sin el front
-
-POST http://localhost:3000/api/v1/alarms/create
+POST http://localhost:3000/api/v1/alarms/
 {
   "title": "Nombre de la Alarma",
   "execution": "2023-11-30T12:00:00Z", 
@@ -55,7 +48,12 @@ POST http://localhost:3000/api/v1/alarms/create
   }
 }
 
-PATCH http://localhost:3000/api/v1/alarms/update
+http://localhost:3000/api/v1/alarms/get
+{
+
+}
+
+PATCH http://localhost:3000/api/v1/alarms/
 {
   "alarmId": "idRealdealarma",
   "title": "Nuevo contenido",
@@ -77,33 +75,29 @@ PATCH http://localhost:3000/api/v1/alarms/update
   }
 }
 
-Pueden borrarse una o varias alarmas, 
-toca colocar el ID real de la ALARMA no usuario, ALARMA lo encuentran en la db
-
-DELETE http://localhost:3000/api/v1/alarms/delete
+DELETE http://localhost:3000/api/v1/alarms/
 {
   "alarmIds": ["ID", "ID"] 
 }
 
+
+
+
 USUARIO++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-GET http://localhost:3000/api/v1/user/getme
+EL LOGIN EJECUTA DIRECTAMENTE EL GET ME ASI QUE LE DEVUELVE LOS DATOS DEL USUARIO AUTOMATICAMENTE
+GET http://localhost:3000/api/v1/user/
 {
 
 }
 
-POST http://localhost:3000/api/v1/user/logout
+POST http://localhost:3000/api/v1/user/
 {
 
 }
 
-*Donde dice /:id/ eso lo modifican por el id que 
-tiene el elemento en su base de datos 
-(es canson pero toca de momento xd)
-Ejemplo: http://localhost:3000/api/v1/user/ng378b50448ghngtvyywcn/update 
 
-PATCH http://localhost:3000/api/v1/user/:id/update
+PATCH http://localhost:3000/api/v1/user/
 
 {
 	"name": "Lokesea",
@@ -115,7 +109,19 @@ PATCH http://localhost:3000/api/v1/user/:id/update
 	"password": "54321"
 }
 
-DELETE http://localhost:3000/api/v1/user/:id/delete
+DELETE http://localhost:3000/api/v1/user/
 {
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

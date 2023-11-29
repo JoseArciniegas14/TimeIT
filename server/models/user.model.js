@@ -11,7 +11,8 @@ const UserSchema = mongoose.Schema({
   age: {
     type: Number,
     required: true,
-    trim: true
+    trim: true,
+    max: 99
   },
   country: {
     type: String,

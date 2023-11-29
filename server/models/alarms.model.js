@@ -31,8 +31,6 @@ const AlarmSchema = mongoose.Schema({
     }
   },
   days: {
-    type: Boolean,
-    default: false,
     monday: {
       type: Boolean,
       default: false
@@ -70,8 +68,8 @@ const AlarmSchema = mongoose.Schema({
 })
 
 // En implementación
-// AlarmSchema.index({ state: 1, execution: 1 }, { name: 'Valide_alarms', partialFilterExpression: { state: true } });
-// AlarmSchema.index({ days: 1, })
+AlarmSchema.index({ state: 1, execution: 1 }, { name: 'Valide_alarms', partialFilterExpression: { state: true } });
+
 
 module.exports = mongoose.model("Alarm", AlarmSchema)
 

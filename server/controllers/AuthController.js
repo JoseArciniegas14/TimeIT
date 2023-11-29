@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs")
-const User = require("../models/user.model")
+const User = require("../models/user.model");
+const { getMe } = require("./UserController");
 
 async function register(req, res) {
   try {
@@ -42,8 +43,9 @@ async function register(req, res) {
     user.password = hashPassword;
 
     const userStore = await user.save();
-
-    res.status(201).send(userStore);
+    // ESTO ME VA A REDIRIGIR DIRECTAMENTE AL LOGIN
+    // res.redirect("/auth/login");
+    res.status(201).send({ msg: "ESTE ES EL USUARIO QUE SE GUARDO:", userStore });
   } catch (error) {
     console.error(error);
     res.status(500).send({ msg: "Error al registrar el usuario" });
@@ -80,11 +82,11 @@ async function login(req, res) {
       userPhone: userStore.phone
     };
 
+    await getMe(req, res)
 
-    res.status(200).send({ msg: "Inicio de sesion exitoso" });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ msg: "Error del servidor" });
+    res.status(500).send({ msg: "Error del servidor desde el AUTH" });
   }
 }
 

@@ -1,10 +1,10 @@
 function ensureAuthenticated(req, res, next) {
   if (req.session && req.session.user) {
     req.user = req.session.user;
-    console.log("Podes seguir hijo miooooooooooooooooooooooooooooooooooooooooooooooooooo");
+    console.log("SI HAY SESION CREADA");
     return next();
   } else {
-    console.log("PAl LOBBYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+    console.log("NO HAY SESION CREADA PAl LOBBYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
     res.redirect("/auth/login");
   }
 }

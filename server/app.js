@@ -6,6 +6,7 @@ const MongoStore = require("connect-mongo");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { DB_USER, DB_PASSWORD, DB_HOST, API_VERSION, SECRET_KEY } = require("./constants.js");
+require("./scheduler")
 
 const app = express();
 
@@ -21,6 +22,13 @@ app.use(
     }),
   })
 );
+
+// Configurar el encabezado Content-Type para indicar JSON
+app.use((req, res, next) => {
+  res.header('Content-Type', 'application/json');
+  next();
+});
+
 
 // Configurar body parse
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,13 +50,12 @@ const middlewares = middlewareFiles.reduce((acc, filename) => {
   return acc;
 }, {});
 
-
-
 // Configurar rutas desde el JSON
 for (const routeGroup in routesConfig) {
   const routes = routesConfig[routeGroup];
   routes.forEach(route => {
-    const path = `/api/${API_VERSION}/${routeGroup}${route.path}`;
+    const basePath = `/api/${API_VERSION}/${routeGroup}`;
+    const path = route.path === "/" ? basePath : `${basePath}${route.path}`;
     const controller = require(`./controllers/${route.controller}`);
     const action = route.action;
 
