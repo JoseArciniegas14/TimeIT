@@ -5,7 +5,7 @@ function WebLayout(props) {
   return (
     <>
       <HeaderNav></HeaderNav>
-      <main className="main">{children}</main>
+      <div className="home-main">{children}</div>
     </>
   );
 }

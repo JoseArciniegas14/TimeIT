@@ -1,11 +1,12 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { DefineRoute } from "./routes";
+
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <DefineRoute />
-      </BrowserRouter>
+      </Router>
     </>
   );
 }

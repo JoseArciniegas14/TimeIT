@@ -41,10 +41,34 @@ Esta es la version del parte del cliente de la app TIMEIT, esta version usa Reac
 > [!NOTE]
 > Estas tareas seran reemplazadas o eliminadas mediante la creacion de la app, pueden poner tantas tareas como deseen
 
+### Page
+
+- [ ] Crear un sistema de renderizado para auteticacion, contenido de inicio y contenido prinicipal de la app
+- [ ] Crear un sistema de renderizado condicional que permita cambiar solo el contenido principal por medio de parametros json y peticiones fetch
+- [ ] Crear un apartado de configuracion del usuario
+
+### Routes
+
+- [x] Crear un sistema de rutas para auteticacion, contenido de inicio y contenido prinicipal de la app, que tenga su ruta de 404 y sin acceso
+- [ ] Crear un sistema para el login, logout y register de la aplicacion que lleven a la ruta home (guardar "usuarios" en localhost)
+
+### Logic
+
 - [ ] Crear el sistema logico de los los layouts, los componentes y las paginas
 - [ ] Crear el sistema logico de las alarmas, notas y rutinas de la app
+- [ ] Crear el sistema para NO renderizar un formulario de creacion un vez estes en uno
+- [ ] Crear el sistema para renderizar las cards en el aside y el tipo de pagina
+
+### Data Base
+
+- [ ] Crear componentes cards que contengan las respuestas a la peticion de la base de datos
 - [ ] Crear la conexion con la base de datos local:3000 de MongoDB
 - [ ] Crear un sitema que me permita hacer peticion GET, POST, PUT, DELETE
-- [ ] Crear un sistema para el login, logout y register de la aplicacion que lleven a diferente rutas
-- [x] Crear un sistema de rutas para auteticacion, contenido de inicio y contenido prinicipal de la app
-- [ ] Crear un sistema de renderizado condicional que permita cambiar solo el contenido principal por medio de parametros json y peticiones fetch
+
+### Sintetizar
+
+- [ ] Sinteizar la pagina de auteticacion, contenido de inicio y contenido prinicipal de la app
+
+### Opcional
+
+-[ ] Crear un sistema de roles

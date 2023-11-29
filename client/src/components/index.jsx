@@ -1,3 +1,2 @@
-export * from "./header";
-export * from "./aside";
-export * from "./btnUser";
+export * from "./web";
+export * from "./start";

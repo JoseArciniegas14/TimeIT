@@ -1,17 +1,24 @@
 import { Routes, Route } from "react-router-dom";
-import { Start, Auth, Home, Notes, Alarm, Routines } from "../pages";
-import { loadLayout } from "../services";
-import { WebLayout } from "../layouts";
+import { Start, Auth, Home, Notes, Alarms, Routines } from "../pages";
+import { Error, NotFound, NotAccess } from "../pages/error";
+import { loadLayout, ProtectRoute } from "../services";
+import { WebLayout, StartLayout } from "../layouts";
 
 function DefineRoute() {
+  const user = {};
+
   return (
     <Routes>
-      <Route path="/" element={<Start />}></Route>
-      <Route path="/auth" element={loadLayout(WebLayout, Auth)}></Route>
-      <Route path="/home" element={loadLayout(WebLayout, Home)}></Route>
-      <Route path="/notes" element={loadLayout(WebLayout, Notes)}></Route>
-      <Route path="/alarm" element={loadLayout(WebLayout, Alarm)}></Route>
-      <Route path="/routines" element={loadLayout(WebLayout, Routines)}></Route>
+      <Route index element={loadLayout(StartLayout, Start)}></Route>
+      <Route path="/auth" element={<Auth />} />
+      <Route element={<ProtectRoute user={user} />}>
+        <Route path="/home" element={loadLayout(WebLayout, Home)} />
+        <Route path="/notes" element={loadLayout(WebLayout, Notes)} />
+        <Route path="/alarms" element={loadLayout(WebLayout, Alarms)} />
+        <Route path="/routines" element={loadLayout(WebLayout, Routines)} />
+      </Route>
+      <Route path="/notaccess" element={<NotAccess />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
