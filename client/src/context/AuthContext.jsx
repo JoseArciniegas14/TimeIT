@@ -2,17 +2,14 @@ import { useState, useEffect, createContext, Children } from "react";
 
 const AuthContext = createContext();
 
-function AuthProvider() {
-  const [user, setUser] = useState(null);
+function AuthProvider({ children }) {
+  const [user, setUser] = useState({});
 
-  const login = () => {
-    setUser({});
-  };
-  const logout = () => {
-    setUser(null);
-  };
-
-  return <AuthContext.Provider value={data}>{Children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export { AuthContext, AuthProvider };

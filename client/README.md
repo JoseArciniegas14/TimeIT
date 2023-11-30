@@ -49,11 +49,12 @@ Esta es la version del parte del cliente de la app TIMEIT, esta version usa Reac
 
 ### Routes
 
-- [x] Crear un sistema de rutas para auteticacion, contenido de inicio y contenido prinicipal de la app, que tenga su ruta de 404 y sin acceso
+- [x] Crear un sistema de rutas protegido para auteticacion, contenido de inicio y contenido prinicipal de la app, que tenga su ruta de 404 y sin acceso
 - [ ] Crear un sistema para el login, logout y register de la aplicacion que lleven a la ruta home (guardar "usuarios" en localhost)
 
 ### Logic
 
+- [ ] Crear el sistema de validacion de registro y login con expresiones regulares
 - [ ] Crear el sistema logico de los los layouts, los componentes y las paginas
 - [ ] Crear el sistema logico de las alarmas, notas y rutinas de la app
 - [ ] Crear el sistema para NO renderizar un formulario de creacion un vez estes en uno

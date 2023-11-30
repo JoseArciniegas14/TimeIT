@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { BtnUser } from "./BtnUser";
-import "./scss/header.scss";
+import "./header.scss";
 
 function HeaderNav() {
   return (

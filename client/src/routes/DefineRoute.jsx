@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { Start, Auth, Home, Notes, Alarms, Routines } from "../pages";
-import { Error, NotFound, NotAccess } from "../pages/error";
+import { NotFound, NotAccess } from "../pages/error";
 import { loadLayout, ProtectRoute } from "../services";
 import { WebLayout, StartLayout } from "../layouts";
+import { useAuth } from "../hooks";
 
 function DefineRoute() {
-  const user = {};
+  const { user } = useAuth();
 
   return (
     <Routes>

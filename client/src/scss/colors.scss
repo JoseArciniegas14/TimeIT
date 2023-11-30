@@ -20,7 +20,7 @@ $aside-dark: #1d2125;
 $card-dark: #22272b;
 $card-hover-dark: #333c43;
 
-// # BOR DER
+// # BORDER
 $border-dark: #808080;
 
 // # STATUS
@@ -34,4 +34,7 @@ $twitter: #1fa1f2;
 $facebook: #3b5998;
 $linkedin: #0077b5;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "semantic-ui-css/semantic.min.css";

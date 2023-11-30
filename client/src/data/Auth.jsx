@@ -17,8 +17,8 @@ class Auth {
         password: data.password,
       }),
     };
-    let data = await getResBD({ url, method: "POST", params: params });
-    return data;
+    let res = await getResBD({ url, method: "POST", params: params });
+    return res;
   }
 
   async login(data) {
@@ -34,8 +34,8 @@ class Auth {
         password: data.password,
       }),
     };
-    let data = await getResBD({ url, method: "POST", params: params });
-    return data;
+    let res = await getResBD({ url, method: "POST", params: params });
+    return res;
   }
 }
 
