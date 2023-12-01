@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { initialValues } from "../validations/RegisterValidation";
+import { RegisterValues } from "../validations/RegisterValidation";
 
 const useRegister = () => {
-  const [data, setData] = useState(initialValues());
+  const [data, setData] = useState(RegisterValues());
 
   const updateData = (data) => {
     setData(data);
   };
 
   const resetData = () => {
-    setData(initialValues());
+    setData(RegisterValues());
   };
 
   return { data, updateData, resetData };

@@ -91,16 +91,17 @@
             "El numero de telefono ya esta en uso por otro usuario",
             "Error al actualizar el usuario"
           ]
-        },
-
-        "DELETE": {
-          "Res": "Usuario eliminado de la base de datos junto a su informacion",
-          "Error": [
-            "Error al cerrar sesion",
-            "Error al eliminar usuario de la base de datos"
-          ]
         }
       }
+    },
+
+    "DELETE": {
+      "Url": "http://localhost:3000/api/v1/user/delete",
+      "Res": "Usuario eliminado de la base de datos junto a su informacion",
+      "Error": [
+        "Error al cerrar sesion",
+        "Error al eliminar usuario de la base de datos"
+      ]
     },
 
     "LOGOUT": {

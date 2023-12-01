@@ -2,30 +2,34 @@ import { useState } from "react";
 import { useRegister } from "../../hooks";
 import { Form } from "semantic-ui-react";
 import { useFormik } from "formik";
-import { initialValues, valitations } from "../../validations";
-import { FetchError } from "../error/FetchError";
+import { RegisterValues, RegisterValitations } from "../../validations";
 import { Auth } from "../../data/Auth";
 
 const authController = new Auth();
 
 function RegisterForm({ openLogin }) {
   const { updateData } = useRegister();
-  const [error, setError] = useState(null);
+  const [res, setRes] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { values, errors, handleSubmit, handleBlur, handleChange } = useFormik({
-    initialValues: initialValues(),
-    validationSchema: valitations(),
+    initialValues: RegisterValues(),
+    validationSchema: RegisterValitations(),
     validateOnChange: false,
     validateOnBlur: true,
     onSubmit: async (formValue) => {
       try {
-        setError(null);
+        setRes(null);
+        setLoading(true);
         updateData(formValue);
-        const res = await authController.register(formValue);
-        console.log(res);
-        openLogin();
-      } catch (err) {
-        setError(err);
+        const data = await authController.register(formValue);
+        if (typeof data === "object") {
+          setRes(data);
+          openLogin();
+        }
+        setRes(data);
+      } finally {
+        setLoading(false);
       }
     },
   });
@@ -124,10 +128,10 @@ function RegisterForm({ openLogin }) {
           {errors.email && <p className="text-red-500 error">{errors.email}</p>}
         </Form.Field>
       </Form.Group>
-      <Form.Button type="submit" fluid>
-        Register
+      <Form.Button type="submit" fluid disabled={loading}>
+        {loading ? "Registrando..." : "Registrarse"}
       </Form.Button>
-      {error && <FetchError error={error} />}
+      {res && <p className="res">{res}</p>}
     </Form>
   );
 }

@@ -34,7 +34,6 @@ $twitter: #1fa1f2;
 $facebook: #3b5998;
 $linkedin: #0077b5;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";
 @import "semantic-ui-css/semantic.min.css";

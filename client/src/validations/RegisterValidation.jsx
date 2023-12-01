@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-function initialValues() {
+function RegisterValues() {
   return {
     name: "",
     age: "",
@@ -12,7 +12,7 @@ function initialValues() {
   };
 }
 
-function valitations() {
+function RegisterValitations() {
   return Yup.object({
     name: Yup.string()
       .max(30, "Maximo de Caracteres 30")
@@ -38,5 +38,5 @@ function valitations() {
   });
 }
 
-export { initialValues, valitations };
+export { RegisterValitations, RegisterValues };
 // ? TAREA : crear el sistema de validacion con .matches()

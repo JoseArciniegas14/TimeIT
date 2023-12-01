@@ -10,6 +10,7 @@ const ENPOINTS = {
   ROUTES: {
     USER: `/user`,
     LOGOUT: `/user/logout`,
+    DELETE: `/user/delete`,
     ALARM: `/alarms`,
     NOTES: `/notes`,
     ROUTINES: `/routines`,
