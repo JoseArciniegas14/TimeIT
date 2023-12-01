@@ -6,12 +6,12 @@ import { initialValues, valitations } from "../../validations";
 import { FetchError } from "../error/FetchError";
 import { Auth } from "../../data/Auth";
 import "../../css/style.css";
-import "../../tailwindcss/tailwind.css"; // Import Tailwind CSS
+import "../../css/tailwindcss/tailwind.css"; // Import Tailwind CSS
 
 
 const authController = new Auth();
 
-function LoginForm({openLogin}) {
+function LoginForm({ openLogin }) {
 
 
   
@@ -37,53 +37,50 @@ function LoginForm({openLogin}) {
   });
 
   return (
-    <Form className="m-5 p-10" onSubmit={handleSubmit}>
-      <div className="login-black flex flex-col items-center justify-center h-screen">
-        <div className="overlap">
-          {/* Other overlapping elements */}
-          <form action="/login" method="POST" className="gray-950">
-            <div className="titulo-form mb-4">BIENVENIDO</div>
-            <Form.Group widths="equal" className="mb-4">
-              <Form.Input
-                name="email"
-                type="email"
-                placeholder="Email"
-                value={values.email}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                className="email-bloque text-wrapper-2"
-                required
-              />
-              <Form.Input
-                name="password"
-                type="password"
-                placeholder="Contraseña"
-                value={values.password}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                className="password-bloque text-wrapper-2"
-                required
-              />
-            </Form.Group>
-            <Form.Button type="submit" className="iniciar-sesion text-wrapper-4">
-              Iniciar sesión
-            </Form.Button>
-          </form>
-          {/* Other overlapping elements */}
+    <body className="m-5 p-10">
+    <div className="overlap">
+    <div className="background"></div>
+    <div className="swich-mode">
+            <div className="overlap-group">
+                <div className="register-mode"></div>
+                <div className="login-mode"></div>
+            </div>
         </div>
-      </div>
+    <Form className="login-form login-black flex flex-col items-center justify-center h-screen" onSubmit={handleSubmit}>
+    {/* <div className="background "></div> */}
+      <Form.Group widths="equal">
+        <Form.Field required>
+          <label>Email:</label>
+          <Form.Input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={values.email}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="text-red-500 error">{errors.email}</p>}
+        </Form.Field>
+        <Form.Field required>
+          <label>Contraseña:</label>
+          <Form.Input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={values.password}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="text-red-500 error">{errors.password}</p>}
+        </Form.Field>
+      </Form.Group>
+      <Form.Button type="submit" fluid>
+        iniciar sesión
+      </Form.Button>
       {error && <FetchError error={error} />}
-    </Form>,
-
-<div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
-<div className="flex-shrink-0">
-  <img className="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo"/>
-</div>
-<div>
-  <div className="text-xl font-medium text-black">ChitChat</div>
-  <p className="text-gray-500">You have a new message!</p>
-</div>
-</div>  
+    </Form>
+    </div>
+    </body>
   );
 }
 
