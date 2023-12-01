@@ -16,7 +16,7 @@ function Auth() {
       render: () => (
         <Tab.Pane>
           <div className="icon">Icon</div>
-          <LoginForm />
+          <LoginForm openLogin={openLogin} />
         </Tab.Pane>
       ),
     },
@@ -32,7 +32,7 @@ function Auth() {
   ];
 
   return (
-    <div className="auth-container">
+    <div className="auth-container p-10 bg-slate-800">
       <Tab
         panes={panes}
         className="auth-tab"
