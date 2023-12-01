@@ -11,8 +11,11 @@ class Auth {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        firstname: data.firstname,
-        lastname: data.lastname,
+        name: data.name,
+        age: data.age,
+        country: data.country,
+        city: data.city,
+        phone: data.phone,
         email: data.email,
         password: data.password,
       }),
