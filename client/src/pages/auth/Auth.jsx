@@ -32,7 +32,7 @@ function Auth() {
   ];
 
   return (
-    <div className="auth-container p-10 bg-slate-800">
+    <div className="auth-container p-10 ">
       <Tab
         panes={panes}
         className="auth-tab"

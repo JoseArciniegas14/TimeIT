@@ -285,28 +285,28 @@ h1 {
 }
 
 .red {
-  background-image: url(../Img/Jose1.jpg);
+  background-image: url(../assets/Img/Jose.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .green {
-  background-image: url(../Img/Robin.jpg);
+  background-image: url(../assets/Img/Robin.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .blue {
-  background-image: url(../Img/Jesus.jpg);
+  background-image: url(../assets/Img/Jesus.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .pink {
-  background-image: url(../Img/Cristian.jpg);
+  background-image: url(../assets/img/Cristian.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
