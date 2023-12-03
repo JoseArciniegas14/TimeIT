@@ -15,10 +15,10 @@ app.use(
   session({
     secret: SECRET_KEY,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/`,
-      ttl: 7 * 24 * 60 * 60,
+      ttl: 59 * 60,
     }),
   })
 );
@@ -56,16 +56,13 @@ for (const routeGroup in routesConfig) {
   routes.forEach(route => {
     const basePath = `/api/${API_VERSION}/${routeGroup}`;
     const path = route.path === "/" ? basePath : `${basePath}${route.path}`;
-    console.log(path);
     const controller = require(`./controllers/${route.controller}`);
     const action = route.action;
 
     // Filtrar los middlewares válidos para esta ruta
-    const validMiddlewares = route.middlewares
-      .map(middlewareName => middlewares[middlewareName])
-      .filter(Boolean);
+    const validMiddlewares = route.middlewares.map(middlewareName => middlewares[middlewareName]).filter(Boolean)
 
-    app[route.method.toLowerCase()](path, validMiddlewares, controller[action]);
+    app[route.method.toLowerCase()](path, validMiddlewares, controller[action])
   });
 }
 

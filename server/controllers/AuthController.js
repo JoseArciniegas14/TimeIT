@@ -13,14 +13,14 @@ async function register(req, res) {
 
     if (email) {
       // DATO IMPORTANTE: $ne es una variable que significa Not_equal, y sirve como parametro en una busqueda
-      const usedEmail = await User.findOne({ email: email, _id: { $ne: User.email } });
+      const usedEmail = await User.findOne({ email: emailLowerCase, _id: { $ne: User._id } });
       if (usedEmail) {
         return res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" });
       }
     }
 
     if (phone) {
-      const usedPhone = await User.findOne({ phone: phone, _id: { $ne: User.phone } });
+      const usedPhone = await User.findOne({ phone: phone, _id: { $ne: User._id } });
       if (usedPhone) {
         return res.status(400).send({ msg: "El numero de telefono ya esta en uso por otro usuario" });
       }
@@ -44,7 +44,7 @@ async function register(req, res) {
 
     const userStore = await user.save();
 
-    res.status(201).send({ msg: "Usuario registrado con exito :" });
+    res.status(201).send({ msg: "Usuario registrado con exito" });
   } catch (error) {
     console.error(error);
     res.status(500).send({ msg: "Error al registrar el usuario" });
@@ -70,10 +70,6 @@ async function login(req, res) {
       return res.status(400).send({ msg: "Usuario o contraseña incorrecta" });
     }
 
-    if (req.session.user) {
-      delete req.session.user
-    }
-
     // Crear sesion para manejar multiples usuarios (Mi mayor win y orgullo XD)
     req.session.user = {
       userId: userStore._id,
@@ -82,7 +78,6 @@ async function login(req, res) {
     };
 
     await getMe(req, res)
-
   } catch (error) {
     console.error(error);
     res.status(500).send({ msg: "Error del servidor desde el AUTH" });

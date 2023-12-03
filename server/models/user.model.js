@@ -1,7 +1,5 @@
 const mongoose = require("mongoose")
 
-// Lo que se mueva aqui se vera reflejado en la base de datos
-
 const UserSchema = mongoose.Schema({
   name: {
     type: String,

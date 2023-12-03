@@ -18,7 +18,7 @@ const noteSchema = new mongoose.Schema({
     type: String
   }
 }, {
-  timestamps: true  // Esta opción debe estar aquí, como parte de las opciones del esquema
+  timestamps: true
 });
 
 module.exports = mongoose.model("Note", noteSchema);

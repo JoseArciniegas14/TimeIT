@@ -15,7 +15,7 @@ INFORMACION ESPERADA
 INFORMACION DEVUELTA (MSG)
 Si todo funciona bien
 {
-  res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" })
+    res.status(201).send({ msg: "Usuario registrado con exito" });
 }
 
 En caso de errores
@@ -56,6 +56,106 @@ En caso de errores
 
 
 
+USUARIO---------------------------------------------------------------------------------------------------------------------
+
+******************************************ENDPOINT:   GET http://localhost:3000/api/v1/user/
+INFORMACION ESPERADA
+{
+
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  _id: user._id,
+  name: user.name,
+  age: user.age,
+  country: user.country,
+  city: user.city,
+  email: user.email,
+  phone: user.phone
+}
+
+En caso de errores
+{
+  res.status(500).send({ msg: "Error del servidor desde el AUTH" });
+  res.status(500).send({ msg: "Error del servidor desde el GETME" });
+}
+
+
+
+*******************************************ENDPOINT:   POST http://localhost:3000/api/v1/user/logout
+INFORMACION ESPERADA
+{
+
+}
+
+INFORMACION DEVUELTA (MSG)
+Si todo funciona bien
+{
+  res.status(200).send({ msg: "Sesión cerrada exitosamente" });
+}
+
+En caso de errores
+{
+  res.status(500).send({ msg: "Error al cerrar sesion" });
+}
+    
+
+
+********************************************ENDPOINT:   PATCH http://localhost:3000/api/v1/user/
+INFORMACION ESPERADA
+
+{
+	"name": "Lokesea",
+	"age": 19,
+	"country": "Lokesea",
+	"city": "Lokesea",
+	"email": "Lokesea@gmail.com",
+	"phone": 987654321,
+	"password": "54321"
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  "userId": "656c30d8704d60e84ded4d30",
+  "name": "Robbin",
+  "age": 20,
+  "country": "Colombia",
+  "city": "Bogota",
+  "email": "robbin@gmail.com",
+  "phone": 987654321
+}
+
+En caso de errores
+{
+  return res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" });
+  return res.status(400).send({ msg: "El numero de telefono ya esta en uso por otro usuario" });
+  res.status(500).send({ msg: "Error al actualizar el usuario" });
+}
+
+
+
+**********************************************ENDPOINT:   DELETE http://localhost:3000/api/v1/user/
+INFORMACION ESPERADA
+{
+
+}
+INFORMACION DEVUELTA (MSG)
+Si todo funciona bien
+{
+  res.status(201).send({ msg: "Usuario eliminado de la base de datos junto a su informacion" });
+}
+
+En caso de errores
+{
+  res.status(500).send({ msg: "Error al cerrar sesion" });
+  res.status(500).send({ msg: "Error al eliminar usuario de la base de datos" });
+}
+
+
+
 ALARMAS---------------------------------------------------------------------------------------------------------------------
 
 *****************************************ENDPOINT:   POST http://localhost:3000/api/v1/alarms/
@@ -83,12 +183,24 @@ INFORMACION ESPERADA
 INFORMACION DEVUELTA (JSON Y MSG)
 Si todo funciona bien
 {
-  title,
-  execution,
-  state,
-  postpone,
-  interval,
-  days
+  "id": "656c3c7f17c481bc93bb2148",
+  "title": "Nombre prueba de ID",
+  "execution": "2023-11-30T12:00:00Z",
+  "state": true,
+  "postpone": 0,
+  "interval": {
+    "time": 0,
+    "count": 0
+  },
+  "days": {
+    "monday": true,
+    "tuesday": false,
+    "wednesday": true,
+    "thursday": false,
+    "friday": true,
+    "saturday": false,
+    "sunday": true
+  }
 }
 
 En caso de errores
@@ -98,15 +210,18 @@ En caso de errores
 
 
 
-*****************************************ENDPOINT:   http://localhost:3000/api/v1/alarms/
+*****************************************ENDPOINT: GET  http://localhost:3000/api/v1/alarms/all
 INFORMACION ESPERADA
 {
-
 }
 
 INFORMACION DEVUELTA (JSON Y MSG)
 Si todo funciona bien 
   {
+    "_id": "656c3c7f17c481bc93bb2148",
+    "title": "Nombre prueba de ID",
+    "execution": "2023-11-30T12:00:00.000Z",
+    "state": true,
     "interval": {
       "time": 0,
       "count": 0
@@ -119,14 +234,7 @@ Si todo funciona bien
       "friday": true,
       "saturday": false,
       "sunday": true
-    },
-    "_id": "6567bcf7acda221b3e39d139",
-    "userid": "65672b9ba60f9dd95930f2d4",
-    "title": "Nombre de la Alarma",
-    "execution": "2023-11-30T12:00:00.000Z",
-    "postpone": 0,
-    "state": true,
-    "__v": 0
+    }
   }
 
 En caso de errores
@@ -162,7 +270,10 @@ INFORMACION ESPERADA
 
 INFORMACION DEVUELTA (JSON Y MSG)
 Si todo funciona bien 
-  {
+{
+  "title": "Nuevo contenido",
+  "execution": "2023-11-30T12:00:00.000Z",
+  "state": true,
   "interval": {
     "time": 0,
     "count": 0
@@ -175,14 +286,7 @@ Si todo funciona bien
     "friday": true,
     "saturday": false,
     "sunday": true
-  },
-  "_id": "6567bc9cba73ca67721bb7c0",
-  "userid": "65672b93a60f9dd95930f2d0",
-  "title": "Nuevo contenido",
-  "execution": "2023-11-30T12:00:00.000Z",
-  "postpone": 0,
-  "state": true,
-  "__v": 0
+  }
 }
 
 En caso de errores
@@ -214,111 +318,6 @@ En caso de errores
 
 
 
-USUARIO---------------------------------------------------------------------------------------------------------------------
-
-******************************************ENDPOINT:   GET http://localhost:3000/api/v1/user/
-INFORMACION ESPERADA
-{
-
-}
-
-INFORMACION DEVUELTA (JSON Y MSG)
-Si todo funciona bien
-{
-  msg: "Informcaion obtenida del usuario, PARA QUE LA USE DE LA FORMA QUE NECESITE",
-  _id: user._id,
-  name: user.name,
-  age: user.age,
-  country: user.country,
-  city: user.city,
-  email: user.email,
-  phone: user.phone
-}
-
-En caso de errores
-{
-  res.status(500).send({ msg: "Error del servidor desde el AUTH" });
-  res.status(500).send({ msg: "Error del servidor desde el GETME" });
-}
-
-
-
-*******************************************ENDPOINT:   POST http://localhost:3000/api/v1/user/logout SI TIENE IDENTIFICACION
-INFORMACION ESPERADA
-{
-
-}
-
-INFORMACION DEVUELTA (MSG)
-Si todo funciona bien
-{
-  res.status(200).send({ msg: "Sesión cerrada exitosamente" });
-}
-
-En caso de errores
-{
-  res.status(500).send({ msg: "Error al cerrar sesion" });
-}
-    
-
-
-********************************************ENDPOINT:   PATCH http://localhost:3000/api/v1/user/
-INFORMACION ESPERADA
-
-{
-	"name": "Lokesea",
-	"age": 19,
-	"country": "Lokesea",
-	"city": "Lokesea",
-	"email": "Lokesea@gmail.com",
-	"phone": 987654321,
-	"password": "54321"
-}
-
-INFORMACION DEVUELTA (JSON Y MSG)
-Si todo funciona bien
-{
-  "_id": "65672b9ba60f9dd95930f2d4",
-  "name": "Robbin",
-  "age": 19,
-  "country": "Colombia",
-  "city": "Bogota",
-  "email": "robbin@gmail.com",
-  "phone": 987654321,
-  "role": "user",
-  "active": true,
-  "password": "$2a$10$rMn4QPhmiuLllD8L1W9cgOArjSi.mfm6JQtRpAggJTHvGUf3E3mBK", AQUI NO SE PUEDE QUITAR LA CONTRASEÑA
-  "__v": 0
-}
-
-En caso de errores
-{
-  return res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" });
-  return res.status(400).send({ msg: "El numero de telefono ya esta en uso por otro usuario" });
-  res.status(500).send({ msg: "Error al actualizar el usuario" });
-}
-
-
-
-**********************************************ENDPOINT:   DELETE http://localhost:3000/api/v1/user/
-INFORMACION ESPERADA
-{
-
-}
-INFORMACION DEVUELTA (MSG)
-Si todo funciona bien
-{
-  res.status(201).send({ msg: "Usuario eliminado de la base de datos junto a su informacion" });
-}
-
-En caso de errores
-{
-  res.status(500).send({ msg: "Error al cerrar sesion" });
-  res.status(500).send({ msg: "Error al eliminar usuario de la base de datos" });
-}
-
-
-
 
 NOTAS---------------------------------------------------------------------------------------------------------------------
 
@@ -326,20 +325,17 @@ NOTAS---------------------------------------------------------------------------
 INFORMACION ESPERADA
 {
   "title": "NOTA 1",
-  "content": "lorem x50 con saltos de linea y formato de texto y toda esa wea",
-  "alarmId": "En caso de que se relacionen alarma y nota"
+  "content": "lorem x50 XD",
+  "alarmId": ""
 }
 
 INFORMACION DEVUELTA (JSON Y MSG)
 Si todo funciona bien
 {
-  "userid": "65672b9ba60f9dd95930f2d4",
+  "_id": "656c40c655cc9283ad0c8100",
   "title": "NOTA 1",
-  "content": "lorem x50 con saltos de linea y formato de texto y toda esa wea",
-  "_id": "6567c69b3b4786a6ad66f66d",
-  "createdAt": "2023-11-29T23:17:47.402Z",
-  "updatedAt": "2023-11-29T23:17:47.403Z",
-  "__v": 0
+  "content": "lorem x50 XD",
+  "markdownContent": "<p>lorem x50 XD</p>\n"
 }
 
 En caso de errores
@@ -352,30 +348,230 @@ En caso de errores
 ***********************************************ENDPOINT:   PATCH http://localhost:3000/api/v1/notes/
 INFORMACION ESPERADA
 {
-  "noteId": "65679c69d5050274d61283ea",
+  "noteId": "656c40c655cc9283ad0c8100",
   "title": "NOTA 1- actualizada",
-  "content": "lorem x50 con saltos de linea y formato de texto y toda esa wea",
+  "content": "lorem x50 ",
   "alarmId": ""
 }
 
 INFORMACION DEVUELTA (JSON Y MSG)
 Si todo funciona bien
 {
-  "_id": "65679c69d5050274d61283ea",
-  "userid": "65672b9ba60f9dd95930f2d4",
-  "alarmId": null,
+  "_id": "656c40c655cc9283ad0c8100",
   "title": "NOTA 1- actualizada",
-  "content": "lorem x50 con saltos de linea y formato de texto y toda esa wea",
-  "createdAt": "2023-11-29T20:17:45.398Z",
-  "updatedAt": "2023-11-29T23:30:41.556Z",
-  "__v": 0
+  "markdownContent": "<p>lorem x50 </p>\n"
 }
 
 En caso de errores
 {
   return res.status(404).send({ msg: "La nota no fue encontrada" });
   res.status(500).send({ msg: "Error al registrar nota" });
+}
 
+
+
+***********************************************ENDPOINT:   GET http://localhost:3000/api/v1/notes/all
+INFORMACION ESPERADA
+{
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien, junto A todas las notas de un usuario
+{
+  "_id": "656c4090ba99da30b254fac3",
+  "title": "NOTA 1",
+  "content": "lorem x50 con saltos de linea y formato de texto y toda esa wea",
+  "updatedAt": "2023-12-03T08:47:12.262Z"
+}
+
+
+En caso de errores
+{
+  return res.status(404).send({ msg: "La nota no fue encontrada" });
+  res.status(500).send({ msg: "Error al registrar nota" });
+}
+
+
+
+***********************************************ENDPOINT:   DELETE http://localhost:3000/api/v1/notes/
+INFORMACION ESPERADA
+{
+  "notesIds": ["ID", "ID"] 
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  return res.status(200).send({ msg: "Notas eliminadas correctamente" });
+}
+
+En caso de errores
+{
+  return res.status(400).send({ msg: "La lista de Ids de notas no es valida" });
+  return res.status(404).send({ msg: "No se encontraron notas" });
+  res.status(500).send({ msg: "Error al eliminar notas" });
+}
+
+
+
+
+
+Habitos---------------------------------------------------------------------------------------------------------------------
+
+***********************************************ENDPOINT:   POST http://localhost:3000/api/v1/habits/
+INFORMACION ESPERADA
+{
+  "title": "LoKesea"
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+{
+  "id": "656c35c73aeea775d9d999a2",
+  "title": "Hola"
+}
+}
+
+En caso de errores
+{
+    res.status(500).send({ msg: "Error al crear el hábito" })
+}
+
+
+
+***********************************************ENDPOINT:   PATCH http://localhost:3000/api/v1/habits/
+INFORMACION ESPERADA
+{
+  "habitId": "656c39cc0103e750549ac26a",
+  "title": "Old title"
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  "habitId": "656c39cc0103e750549ac26a",
+  "title": "New title"
+}
+
+En caso de errores
+{
+  return res.status(404).send({ msg: "Habito no encontrado" })
+  res.status(500).send({ msg: "Error al actualizar el habito" })
+}
+
+
+
+***********************************************ENDPOINT:   GET http://localhost:3000/api/v1/habits/all
+INFORMACION ESPERADA
+{
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien, junto A todas las notas de un usuario
+{
+  "_id": "656c39cc0103e750549ac26a",
+  "title": "New title",
+  "completionPercentage": 0
+}
+
+
+En caso de errores
+{
+  return res.status(404).send({ msg: "La nota no fue encontrada" });
+  res.status(500).send({ msg: "Error al registrar nota" });
+}
+
+
+
+***********************************************ENDPOINT:   DELETE http://localhost:3000/api/v1/habits/
+INFORMACION ESPERADA
+{
+  "notesIds": ["ID", "ID"] 
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  return res.status(200).send({ msg: "Notas eliminadas correctamente" });
+}
+
+En caso de errores
+{
+  return res.status(400).send({ msg: "La lista de Ids de notas no es valida" });
+  return res.status(404).send({ msg: "No se encontraron notas" });
+  res.status(500).send({ msg: "Error al eliminar notas" });
+}
+
+
+
+***********************************************ENDPOINT:   POST http://localhost:3000/api/v1/habits/task
+INFORMACION ESPERADA
+{
+  "habitId": "656c44a7736b26726f30f767",
+  "taskDescription": "Comprar sin complete aaaaaa",
+  "completed": true
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  "_id": "656c46767d59d0121a0037cb",
+  "description": "Comprar sin complete aaaaaa",
+  "completed": true
+}
+
+En caso de errores
+{
+  return res.status(404).send({ msg: "Hábito no encontrado" })
+  return res.status(400).send({ msg: "Se ha alcanzado el límite de tareas para este hábito" })
+  res.status(500).send({ msg: "Error al crear la tarea" })
+}
+
+
+
+***********************************************ENDPOINT:   PATCH http://localhost:3000/api/v1/habits/task
+INFORMACION ESPERADA
+{
+  "habitId": "656c35c73aeea775d9d999a2",
+  "taskId": "656c370a2fef996b5dc6ea13",
+  "taskDescription": "Holaaaaa",
+  "completed": false
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  "description": "Holaaaaa",
+  "completed": false
+}
+
+En caso de errores
+{
+  return res.status(404).send({ msg: "Hábito no encontrado" });
+  return res.status(404).send({ msg: "Tarea no encontrada" });
+  res.status(500).send({ msg: "Error al actualizar la tarea" });
+}
+
+
+
+***********************************************ENDPOINT:   DELETE http://localhost:3000/api/v1/habits/task
+INFORMACION ESPERADA
+{
+  "taskIds": ["ID TASK" ] 
+}
+
+INFORMACION DEVUELTA (JSON Y MSG)
+Si todo funciona bien
+{
+  return res.status(200).send({ msg: "Tareas eliminadas correctamente" });
+}
+
+En caso de errores
+{
+  return res.status(400).send({ msg: "La lista de Ids de tareas no es valida" });
+  return res.status(404).send({ msg: "No se encontraron tareas" });
+  res.status(500).send({ msg: "Error al eliminar tareas" });
 }
 
 

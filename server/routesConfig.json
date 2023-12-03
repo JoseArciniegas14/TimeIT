@@ -15,7 +15,6 @@
       "action": "login"
     }
   ],
-
   "user": [
     {
       "path": "/",
@@ -39,7 +38,7 @@
       "action": "updateUser"
     },
     {
-      "path": "/",
+      "path": "/delete",
       "method": "DELETE",
       "middlewares": ["ensureAuthenticated"],
       "controller": "UserController",
@@ -55,7 +54,7 @@
       "action": "createAlarm"
     },
     {
-      "path": "/",
+      "path": "/all",
       "method": "GET",
       "middlewares": ["ensureAuthenticated"],
       "controller": "AlarmController",
@@ -90,7 +89,68 @@
       "middlewares": ["ensureAuthenticated"],
       "controller": "NoteController",
       "action": "updateNote"
+    },
+    {
+      "path": "/all",
+      "method": "GET",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "NoteController",
+      "action": "getAllNotes"
+    },
+    {
+      "path": "/",
+      "method": "DELETE",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "NoteController",
+      "action": "deleteNotes"
     }
-    
+  ],
+  "habits":[
+    {
+      "path": "/",
+      "method": "POST",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "HabitsController",
+      "action": "createHabit"
+    },
+    {
+      "path": "/all",
+      "method": "GET",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "HabitsController",
+      "action": "getAllHabits"
+    },
+    {
+      "path": "/",
+      "method": "PATCH",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "HabitsController",
+      "action": "updateHabit"
+    },
+
+
+    {
+      "path": "/task",
+      "method": "POST",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "HabitsController",
+      "action": "createTask"
+    },
+    {
+      "path": "/task",
+      "method": "PATCH",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "HabitsController",
+      "action": "updateTask"
+    },
+    {
+      "path": "/task",
+      "method": "DELETE",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "HabitsController",
+      "action": "deleteTask"
+    }
+
+
   ]
 }

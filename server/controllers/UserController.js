@@ -1,5 +1,8 @@
 const bcrypt = require("bcryptjs")
 const User = require("../models/user.model")
+const Alarm = require("../models/alarms.model")
+const Habit = require("../models/habits.model")
+const Note = require("../models/notes.model")
 
 async function getMe(req, res) {
   try {
@@ -11,7 +14,6 @@ async function getMe(req, res) {
     }
 
     const filteredUser = {
-      msg: "Informcaion obtenida del usuario, PARA QUE LA USE DE LA FORMA QUE NECESITE",
       _id: user._id,
       name: user.name,
       age: user.age,
@@ -29,55 +31,58 @@ async function getMe(req, res) {
 }
 
 async function updateUser(req, res) {
-  const userId = req.user.userId;
-  const userData = req.body
+  try {
+    const userId = req.user.userId;
+    const userData = req.body;
 
-  // updateEmail
-  if (userData.email) {
-    // DATO IMPORTANTE: $ne es una variable que significa Not_equal, y sirve como parametro en una busqueda
-    const usedEmail = await User.findOne({ email: userData.email, _id: { $ne: userId } });
-    if (usedEmail) {
-      return res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" });
+    // updateEmail
+    if (userData.email) {
+      const usedEmail = await User.findOne({ email: userData.email, _id: { $ne: userId } });
+      if (usedEmail) {
+        return res.status(400).send({ msg: "El correo ya está en uso por otro usuario" });
+      }
     }
-  }
 
-  // updatePhone
-  if (userData.phone) {
-    const usedPhone = await User.findOne({ phone: userData.phone, _id: { $ne: userId } });
-    if (usedPhone) {
-      return res.status(400).send({ msg: "El numero de telefono ya esta en uso por otro usuario" });
+    // updatePhone
+    if (userData.phone) {
+      const usedPhone = await User.findOne({ phone: userData.phone, _id: { $ne: userId } });
+      if (usedPhone) {
+        return res.status(400).send({ msg: "El número de teléfono ya está en uso por otro usuario" });
+      }
     }
-  }
 
-  // updatePass
-  if (userData.password) {
-
-    // agregar una verificacion antes de la actualizacion con una current password ++++++++++++++++++++++++++++++++++++++++++++++
-    // if (!currentPassword) {
-    //   return res.status(400).send({ msg: 'Debes proporcionar la contraseña actual' });
-    // }
-    // const user = await User.findById(userId);
-    // const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
-    // if (!isPasswordValid) {
-    //   return res.status(401).send({ msg: 'La contraseña actual no es válida' });
-    // }
-
-    const salt = bcrypt.genSaltSync(10)
-    const hashPassword = bcrypt.hashSync(userData.password, salt)
-    userData.password = hashPassword
-  } else {
-    delete userData.password
-  }
-
-  User.findByIdAndUpdate({ _id: userId }, userData, { new: true }, (error, updatedUser) => {
-    if (error) {
-      console.log(error);
-      res.status(500).send({ msg: "Error al actualizar el usuario" });
+    // updatePass
+    if (userData.password) {
+      const salt = bcrypt.genSaltSync(10);
+      const hashPassword = bcrypt.hashSync(userData.password, salt);
+      userData.password = hashPassword;
     } else {
-      res.status(201).json(updatedUser);
+      delete userData.password;
     }
-  });
+
+    const updatedUser = await User.findByIdAndUpdate({ _id: userId }, userData, { new: true });
+
+    if (!updatedUser) {
+      return res.status(404).send({ msg: "Usuario no encontrado" });
+    }
+
+    const filteredInfo = {
+      userId,
+      name: userData.name,
+      age: userData.age,
+      country: userData.country,
+      city: userData.city,
+      email: userData.email,
+      phone: userData.phone
+    }
+
+    res.status(201).json(filteredInfo);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ msg: "Error al actualizar el usuario" });
+  }
 }
+
 
 function logoutUser(req, res) {
 
@@ -105,6 +110,8 @@ async function deleteUser(req, res) {
 
     // Eliminar todas las alarmas relacionadas con el usuario
     await Alarm.deleteMany({ userid: userId });
+    await Note.deleteMany({ userid: userId });
+    await Habit.deleteMany({ userid: userId });
 
     req.session.destroy((error) => {
       if (error) {
@@ -117,7 +124,6 @@ async function deleteUser(req, res) {
     console.log(error);
     res.status(500).send({ msg: "Error al eliminar usuario de la base de datos" });
   }
-  console.clear()
 }
 
 module.exports = {
