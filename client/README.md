@@ -69,7 +69,3 @@ Esta es la version del parte del cliente de la app TIMEIT, esta version usa Reac
 ### Sintetizar
 
 - [ ] Sinteizar la pagina de auteticacion, contenido de inicio y contenido prinicipal de la app
-
-### Opcional
-
--[ ] Crear un sistema de roles

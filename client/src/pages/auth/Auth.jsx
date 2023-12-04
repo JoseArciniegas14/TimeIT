@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { LoginForm, RegisterForm } from "../../components";
 import { Tab } from "semantic-ui-react";
-import "./Auth.scss";
 
 function Auth() {
   const [activeIndex, setActiveIndex] = useState(0);

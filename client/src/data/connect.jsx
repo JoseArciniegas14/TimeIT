@@ -7,14 +7,15 @@ const ENPOINTS = {
     REGISTER: `/auth/register`,
     LOGIN: `/auth/login`,
   },
-  ROUTES: {
+  USER: {
     USER: `/user`,
     LOGOUT: `/user/logout`,
     DELETE: `/user/delete`,
+  },
+  WEB: {
     ALARM: `/alarms`,
     NOTES: `/notes`,
     ROUTINES: `/routines`,
-    HOME: `/home`,
   },
 };
 

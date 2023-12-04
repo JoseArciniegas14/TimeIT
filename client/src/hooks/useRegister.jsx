@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RegisterValues } from "../validations/RegisterValidation";
+import { RegisterValues } from "../validations";
 
 const useRegister = () => {
   const [data, setData] = useState(RegisterValues());
