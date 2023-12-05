@@ -126,8 +126,14 @@
       "middlewares": ["ensureAuthenticated"],
       "controller": "HabitsController",
       "action": "updateHabit"
+    },    
+    {
+      "path": "/",
+      "method": "DELETE",
+      "middlewares": ["ensureAuthenticated"],
+      "controller": "HabitsController",
+      "action": "deleteHabit"
     },
-
 
     {
       "path": "/task",
@@ -150,7 +156,5 @@
       "controller": "HabitsController",
       "action": "deleteTask"
     }
-
-
   ]
 }
