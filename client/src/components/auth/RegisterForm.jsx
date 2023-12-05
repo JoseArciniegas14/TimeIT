@@ -7,17 +7,16 @@ const authController = new Auth();
 
 function RegisterForm({ openLogin }) {
   const onSubmitForm = async (formValues, setRes) => {
-    updateData(formValues);
     const data = await authController.register(formValues);
-
-    if (typeof data === "object") {
+    if (typeof data !== "object") {
       setRes(data);
-      setTimeout(() => {
-        openLogin();
-      }, 4000);
+      return;
     }
-
-    setRes(data);
+    const { msg } = data;
+    setRes(msg);
+    setTimeout(() => {
+      openLogin();
+    }, 4000);
   };
 
   const {
@@ -123,7 +122,9 @@ function RegisterForm({ openLogin }) {
             onChange={handleChange}
             autoComplete="current-password"
           />
-          {errors.email && <p className="text-red-500 error">{errors.email}</p>}
+          {errors.password && (
+            <p className="text-red-500 error">{errors.password}</p>
+          )}
         </Form.Field>
       </Form.Group>
       <Form.Button type="submit" fluid disabled={loading}>

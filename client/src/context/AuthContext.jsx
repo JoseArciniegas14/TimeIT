@@ -5,7 +5,7 @@ const authController = new Auth();
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  const [user, setUser] = useState({ name: "Jesus Home" });
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,8 +20,9 @@ function AuthProvider({ children }) {
     })();
   }, []);
 
-  const login = async (data) => {
+  const login = (data) => {
     setUser({ ...data });
+    authController.setAccessKey({ id: data._id, name: data.name });
   };
 
   const logout = () => {

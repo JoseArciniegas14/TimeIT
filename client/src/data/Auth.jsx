@@ -42,7 +42,7 @@ class Auth {
   }
 
   setAccessKey(key) {
-    localStorage.setItem("key", key);
+    localStorage.setItem("key", JSON.stringify(key));
   }
 
   getAccessKey() {

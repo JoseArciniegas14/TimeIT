@@ -5,7 +5,7 @@ function BtnUser() {
 
   return (
     <button>
-      <p>{user.name || "Usuario1"}</p>
+      <p>{"Usuario1"}</p>
     </button>
   );
 }

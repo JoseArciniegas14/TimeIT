@@ -10,14 +10,13 @@ function LoginForm() {
 
   const onSubmitLogin = async (formValues, setRes) => {
     const data = await authController.login(formValues);
-    if (typeof data === "object") {
+    if (typeof data !== "object") {
       setRes(data);
-      authController.setAccessKey({ id: data._id, name: data.name });
-      setTimeout(() => {
-        login(data);
-      }, 4000);
+      return;
     }
-    setRes(data);
+    setTimeout(() => {
+      login(data);
+    }, 4000);
   };
 
   const {
@@ -56,7 +55,9 @@ function LoginForm() {
           onChange={handleChange}
           autoComplete="current-password"
         />
-        {errors.email && <p className="text-red-500 error">{errors.email}</p>}
+        {errors.password && (
+          <p className="text-red-500 error">{errors.password}</p>
+        )}
       </Form.Field>
       <Form.Button type="submit" fluid disabled={loading}>
         {loading ? "Iniciando..." : "Iniciar Sesion"}

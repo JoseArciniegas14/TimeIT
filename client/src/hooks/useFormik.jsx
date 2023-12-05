@@ -10,11 +10,11 @@ const useFormikForm = (initialValues, validations, onSubmitCallback) => {
     validationSchema: validations(),
     validateOnChange: false,
     validateOnBlur: true,
-    onSubmit: (formValues) => {
+    onSubmit: async (formValues) => {
       try {
         setRes(null);
         setLoading(true);
-        onSubmitCallback(formValues, setRes);
+        await onSubmitCallback(formValues, setRes);
       } finally {
         setLoading(false);
       }

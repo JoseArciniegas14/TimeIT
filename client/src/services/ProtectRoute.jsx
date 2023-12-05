@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectRoute = (props) => {
   const { user, redirectTo = "/notaccess" } = props;
-  if (!user) return <Navigate to={redirectTo} />;
+  if (typeof user === null) return <Navigate to={redirectTo} />;
   return <Outlet />;
 };
 
