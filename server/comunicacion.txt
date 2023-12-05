@@ -487,20 +487,22 @@ En caso de errores
 ***********************************************ENDPOINT:   DELETE http://localhost:3000/api/v1/habits/
 INFORMACION ESPERADA
 {
-  "notesIds": ["ID", "ID"] 
+
+
+  "habitsIds": ["ID", "ID"] 
 }
 
 INFORMACION DEVUELTA (JSON Y MSG)
 Si todo funciona bien
 {
-  return res.status(200).send({ msg: "Notas eliminadas correctamente" });
+  return res.status(200).send({ msg: "habitos eliminadas correctamente" });
 }
 
 En caso de errores
 {
-  return res.status(400).send({ msg: "La lista de Ids de notas no es valida" });
-  return res.status(404).send({ msg: "No se encontraron notas" });
-  res.status(500).send({ msg: "Error al eliminar notas" });
+  return res.status(400).send({ msg: "La lista de Ids de habitos no es valida" });
+  return res.status(404).send({ msg: "No se encontraron habitos" });
+  res.status(500).send({ msg: "Error al eliminar habitos" });
 }
 
 

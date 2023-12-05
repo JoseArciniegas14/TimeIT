@@ -45,7 +45,7 @@ async function updateHabit(req, res) {
   }
 }
 
-async function deletehabits(req, res) {
+async function deleteHabit(req, res) {
   try {
     const userId = req.user.userId
     const { habitsIds } = req.body
@@ -89,7 +89,6 @@ async function getAllHabits(req, res) {
     return res.status(500).send({ msg: "Error al obtener los hábitos del usuario" });
   }
 }
-
 
 // TAREAS DENTRO DE UN HABITO
 
@@ -202,7 +201,7 @@ function updatePercentage(habit) {
 
 module.exports = {
   createHabit,
-  deletehabits,
+  deleteHabit,
   updateHabit,
   getAllHabits,
   createTask,
