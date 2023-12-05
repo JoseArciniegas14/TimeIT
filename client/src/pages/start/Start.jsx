@@ -1,6 +1,7 @@
 import React from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 import "../../css/style.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,7 +27,6 @@ function Start() {
     // add a media query. When it matches, the associated function will run
     mm.add("(min-width: 600px)", () => {
       // this setup code only runs when viewport is at least 600px wide
-      console.log("desktop");
 
       ScrollTrigger.create({
         trigger: ".gallery",
@@ -96,9 +96,9 @@ function Start() {
             </a>
           </li>
           <li>
-            <a href="login.html" className="text-white">
+            <Link to="/auth" className="text-white">
               Entrar a la app
-            </a>
+            </Link>
           </li>
         </ul>
         <ul
@@ -116,9 +116,9 @@ function Start() {
             </a>
           </li>
           <li>
-            <a href="login.html" className="block py-2">
+            <Link to="/auth" className="block py-2">
               Entrar a la app
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -129,13 +129,12 @@ function Start() {
             TimeIT
           </h1>
           <div className="flex justify-center items-center">
-            <button
+            <Link
+              to="/auth"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => {}} // Fix: Added the closing parenthesis
-              id="btn"
             >
               Ingresar a TimeIT
-            </button>
+            </Link>
           </div>
         </div>
       </section>

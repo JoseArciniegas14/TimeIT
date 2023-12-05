@@ -1,7 +1,11 @@
+import { useAuth } from "../../hooks";
+
 function BtnUser() {
+  const { user } = useAuth();
+
   return (
     <button>
-      <p>Usuario</p>
+      <p>{user.name || "Usuario1"}</p>
     </button>
   );
 }

@@ -1,13 +1,27 @@
-const useFormik = (initialValues, validations) => {
-  const { values, errors, handleSubmit, handleBlur, handleChange, onSubmit } =
-    useFormik({
-      initialValues: initialValues(),
-      validationSchema: validations(),
-      validateOnChange: false,
-      validateOnBlur: true,
-    });
+import { useState } from "react";
+import { useFormik } from "formik";
 
-  return { values, errors, handleSubmit, handleBlur, handleChange, onSubmit };
+const useFormikForm = (initialValues, validations, onSubmitCallback) => {
+  const [res, setRes] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const formik = useFormik({
+    initialValues: initialValues(),
+    validationSchema: validations(),
+    validateOnChange: false,
+    validateOnBlur: true,
+    onSubmit: (formValues) => {
+      try {
+        setRes(null);
+        setLoading(true);
+        onSubmitCallback(formValues, setRes);
+      } finally {
+        setLoading(false);
+      }
+    },
+  });
+
+  return { ...formik, res, loading };
 };
 
-export { useFormik };
+export { useFormikForm };

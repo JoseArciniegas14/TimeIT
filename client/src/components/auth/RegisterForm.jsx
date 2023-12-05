@@ -1,38 +1,34 @@
-import { useState } from "react";
-import { useRegister } from "../../hooks";
+import { useFormikForm } from "../../hooks";
 import { Form } from "semantic-ui-react";
-import { useFormik } from "formik";
 import { RegisterValues, RegisterValitations } from "../../validations";
 import { Auth } from "../../data/Auth";
 
 const authController = new Auth();
 
 function RegisterForm({ openLogin }) {
-  const { updateData } = useRegister();
-  const [res, setRes] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const onSubmitForm = async (formValues, setRes) => {
+    updateData(formValues);
+    const data = await authController.register(formValues);
 
-  const { values, errors, handleSubmit, handleBlur, handleChange } = useFormik({
-    initialValues: RegisterValues(),
-    validationSchema: RegisterValitations(),
-    validateOnChange: false,
-    validateOnBlur: true,
-    onSubmit: async (formValue) => {
-      try {
-        setRes(null);
-        setLoading(true);
-        updateData(formValue);
-        const data = await authController.register(formValue);
-        if (typeof data === "object") {
-          setRes(data);
-          openLogin();
-        }
-        setRes(data);
-      } finally {
-        setLoading(false);
-      }
-    },
-  });
+    if (typeof data === "object") {
+      setRes(data);
+      setTimeout(() => {
+        openLogin();
+      }, 4000);
+    }
+
+    setRes(data);
+  };
+
+  const {
+    values,
+    errors,
+    handleSubmit,
+    handleBlur,
+    handleChange,
+    res,
+    loading,
+  } = useFormikForm(RegisterValues, RegisterValitations, onSubmitForm);
 
   return (
     <Form className="register-form" onSubmit={handleSubmit}>
@@ -112,6 +108,7 @@ function RegisterForm({ openLogin }) {
             value={values.email}
             onBlur={handleBlur}
             onChange={handleChange}
+            autoComplete="username"
           />
           {errors.email && <p className="text-red-500 error">{errors.email}</p>}
         </Form.Field>
@@ -124,6 +121,7 @@ function RegisterForm({ openLogin }) {
             value={values.password}
             onBlur={handleBlur}
             onChange={handleChange}
+            autoComplete="current-password"
           />
           {errors.email && <p className="text-red-500 error">{errors.email}</p>}
         </Form.Field>
