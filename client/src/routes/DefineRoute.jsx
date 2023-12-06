@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Start, Auth, Home, Notes, Alarms, Routines } from "../pages";
 import { NotFound, NotAccess } from "../pages/error";
 import { loadLayout, ProtectRoute } from "../services";
-import { WebLayout, StartLayout } from "../layouts";
+import { WebLayout } from "../layouts";
 import { useAuth } from "../hooks";
 
 function DefineRoute() {
@@ -10,7 +10,7 @@ function DefineRoute() {
 
   return (
     <Routes>
-      <Route index element={loadLayout(StartLayout, Start)}></Route>
+      <Route index element={<Start />}></Route>
       <Route path="/auth" element={<Auth />} />
       <Route element={<ProtectRoute user={user} />}>
         <Route path="/home" element={loadLayout(WebLayout, Home)} />

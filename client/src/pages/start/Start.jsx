@@ -1,8 +1,8 @@
 import React from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 import "../../css/style.css";
-import "../../scss/index.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,63 +12,60 @@ function Start() {
     gsap.from("#btn", { opacity: 0, duration: 1, delay: 0.5 });
     // ... rest of the gsap code
 
-    const details = gsap.utils.toArray(".desktopContentSection:not(:first-child)")
-const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)")
+    const details = gsap.utils.toArray(
+      ".desktopContentSection:not(:first-child)"
+    );
+    const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)");
 
+    gsap.set(photos, { yPercent: 101 });
 
-gsap.set(photos, {yPercent:101})
+    const allPhotos = gsap.utils.toArray(".desktopPhoto");
 
-const allPhotos = gsap.utils.toArray(".desktopPhoto")
+    // create
+    let mm = gsap.matchMedia();
 
+    // add a media query. When it matches, the associated function will run
+    mm.add("(min-width: 600px)", () => {
+      // this setup code only runs when viewport is at least 600px wide
 
-// create
-let mm = gsap.matchMedia();
+      ScrollTrigger.create({
+        trigger: ".gallery",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".right",
+      });
 
-// add a media query. When it matches, the associated function will run
-mm.add("(min-width: 600px)", () => {
+      //create scrolltrigger for each details section
+      //trigger photo animation when headline of each details section
+      //reaches 80% of window height
+      details.forEach((detail, index) => {
+        let headline = detail.querySelector("h1");
+        let animation = gsap
+          .timeline()
+          .to(photos[index], { yPercent: 0 })
+          .set(allPhotos[index], { autoAlpha: 0 });
+        ScrollTrigger.create({
+          trigger: headline,
+          start: "top 80%",
+          end: "top 50%",
+          animation: animation,
+          scrub: true,
+          markers: false,
+        });
+      });
 
-  // this setup code only runs when viewport is at least 600px wide
-  console.log("desktop")
-	
-  ScrollTrigger.create({
-	trigger:".gallery",
-	start:"top top",
-	end:"bottom bottom",
-	pin:".right"
-})
-
-//create scrolltrigger for each details section
-//trigger photo animation when headline of each details section 
-//reaches 80% of window height
-details.forEach((detail, index)=> {
-
-	let headline = detail.querySelector("h1")
-	let animation = gsap.timeline()
-	.to(photos[index], {yPercent:0})
-	.set(allPhotos[index], {autoAlpha:0})
-	ScrollTrigger.create({
-		trigger:headline,
-		start:"top 80%",
-		end:"top 50%",
-		animation:animation,
-		scrub:true,
-		markers:false
-	})
-})
-	
-	
-  
-  return () => { // optional
-    // custom cleanup code here (runs when it STOPS matching)
-console.log("mobile")
-  };
-});
+      return () => {
+        // optional
+        // custom cleanup code here (runs when it STOPS matching)
+        console.log("mobile");
+      };
+    });
   }, []);
 
   return (
     <div className="bg-neutral-900">
       <nav className="bg-transparent fixed top-0 left-0 right-0 flex items-center justify-center p-4">
-      <input type="checkbox" id="menu-toggle" className="hidden" />
+        <input type="checkbox" id="menu-toggle" className="hidden" />
         <label htmlFor="menu-toggle" className="text-white cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -99,9 +96,9 @@ console.log("mobile")
             </a>
           </li>
           <li>
-            <a href="login.html" className="text-white">
+            <Link to="/auth" className="text-white">
               Entrar a la app
-            </a>
+            </Link>
           </li>
         </ul>
         <ul
@@ -119,9 +116,9 @@ console.log("mobile")
             </a>
           </li>
           <li>
-            <a href="login.html" className="block py-2">
+            <Link to="/auth" className="block py-2">
               Entrar a la app
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -132,13 +129,12 @@ console.log("mobile")
             TimeIT
           </h1>
           <div className="flex justify-center items-center">
-            <button
+            <Link
+              to="/auth"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => {}} // Fix: Added the closing parenthesis
-              id="btn"
             >
               Ingresar a TimeIT
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -194,6 +190,15 @@ console.log("mobile")
                 velit.
               </p>
             </div>
+            <div className="desktopContentSection">
+              <h1>Julian</h1>
+              <p>
+                Desarrollador Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Harum obcaecati corporis eaque nemo porro quod,
+                necessitatibus minima culpa, error deleniti similique ea qui,
+                beatae fugit nostrum natus magnam accusantium. Perferendis.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -215,7 +220,13 @@ console.log("mobile")
             <div className="mobilePhoto blue"></div>
             <h1>Cristian</h1>
             <p>Desarrollador</p>
+
+            <div className="mobilePhoto black"></div>
+            <h1>Julian</h1>
+            <p>Desarrollador</p>
           </div>
+
+
 
           {/* <!-- desktop content --> */}
           <div className="desktopPhotos">
@@ -223,12 +234,61 @@ console.log("mobile")
             <div className="desktopPhoto green"></div>
             <div className="desktopPhoto pink"></div>
             <div className="desktopPhoto blue"></div>
+            <div className="desktopPhoto black"></div>
           </div>
         </div>
       </div>
 
       <div className="spacer"></div>
+      <section
+    id="documentacion">
+      <h1 className="text-white mb-4 text-center">Documentación</h1>
+            <div class="ui raised very padded text container segment">
+  <h2 class="ui header">Hola</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati in cupiditate numquam beatae pariatur maxime nulla? Nobis cum consequuntur, delectus facilis reiciendis doloribus debitis ducimus harum quasi sint soluta dolore.</p>
+  <p></p>
+</div>
+    </section>
+
+<section id="footer">
+  {/* Footer */}
+  <footer className="bg-gray-800 py-4">
+    <div className="container mx-auto px-4">
+      <div className="flex flex-wrap items-center justify-between">
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h2 className="text-white text-lg font-semibold">TimeIT</h2>
+          <p className="text-gray-400 mt-2">Tu plataforma de gestión de tiempo</p>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h3 className="text-white text-lg font-semibold mb-2">Enlaces</h3>
+          <ul className="text-gray-400">
+            <li className="mb-1"><a href="#" className="hover:text-white">Inicio</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Acerca de</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Contacto</a></li>
+          </ul>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h3 className="text-white text-lg font-semibold mb-2">Redes Sociales</h3>
+          <ul className="text-gray-400">
+            <li className="mb-1"><a href="#" className="hover:text-white">Facebook</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Twitter</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Instagram</a></li>
+          </ul>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h3 className="text-white text-lg font-semibold mb-2">Contacto</h3>
+          <p className="text-gray-400">Email: info@timeit.com</p>
+          <p className="text-gray-400">Teléfono: +1234567890</p>
+        </div>
+      </div>
     </div>
+  </footer>
+</section>
+    
+
+
+    </div>
+
   );
 }
 

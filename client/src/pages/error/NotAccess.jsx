@@ -1,8 +1,6 @@
-// Desc: Not Access page
 import React from "react";
 import { Container, Header, Icon } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import "../../scss/index.scss";
 
 function NotAccess() {
   return (

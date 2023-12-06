@@ -40,6 +40,18 @@ class Auth {
     let res = await getResBD({ url, method: "POST", params: params });
     return res;
   }
+
+  setAccessKey(key) {
+    localStorage.setItem("key", JSON.stringify(key));
+  }
+
+  getAccessKey() {
+    return localStorage.getItem("key");
+  }
+
+  removeAccessKey() {
+    localStorage.removeItem("key");
+  }
 }
 
 export { Auth };

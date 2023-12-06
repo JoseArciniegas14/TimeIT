@@ -1,5 +1,4 @@
 import { Container, Header, Icon } from "semantic-ui-react";
-import "../../scss/index.scss";
 
 function NotFound() {
   return (

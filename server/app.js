@@ -18,7 +18,7 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/`,
-      ttl: 59 * 60,
+      ttl: 7 * 24 * 60 * 60,
     }),
   })
 );

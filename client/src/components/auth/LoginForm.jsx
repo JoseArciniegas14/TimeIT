@@ -1,12 +1,70 @@
-import { useState } from "react";
-import { useRegister } from "../../hooks";
+import { useFormikForm, useAuth } from "../../hooks";
 import { Form } from "semantic-ui-react";
-import { useFormik } from "formik";
-import { RegisterValues, RegisterValitations } from "../../validations";
+import { LoginValues, LoginValitations } from "../../validations";
 import { Auth } from "../../data/Auth";
 
+const authController = new Auth();
+
 function LoginForm() {
-  return <div>LoginForm</div>;
+  const { login } = useAuth();
+
+  const onSubmitLogin = async (formValues, setRes) => {
+    const data = await authController.login(formValues);
+    if (typeof data !== "object") {
+      setRes(data);
+      return;
+    }
+    setTimeout(() => {
+      login(data);
+    }, 4000);
+  };
+
+  const {
+    values,
+    errors,
+    handleSubmit,
+    handleBlur,
+    handleChange,
+    res,
+    loading,
+  } = useFormikForm(LoginValues, LoginValitations, onSubmitLogin);
+
+  return (
+    <Form className="login-form" onSubmit={handleSubmit}>
+      <Form.Field required>
+        <label>Email:</label>
+        <Form.Input
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={values.email}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          autoComplete="username"
+        />
+        {errors.email && <p className="text-red-500 error">{errors.email}</p>}
+      </Form.Field>
+      <Form.Field required>
+        <label>Contraseña:</label>
+        <Form.Input
+          name="password"
+          type="password"
+          placeholder="Password"
+          value={values.password}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          autoComplete="current-password"
+        />
+        {errors.password && (
+          <p className="text-red-500 error">{errors.password}</p>
+        )}
+      </Form.Field>
+      <Form.Button type="submit" fluid disabled={loading}>
+        {loading ? "Iniciando..." : "Iniciar Sesion"}
+      </Form.Button>
+      {res && <p className="res">{res}</p>}
+    </Form>
+  );
 }
 
 export { LoginForm };
