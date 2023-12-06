@@ -10,7 +10,7 @@ function HeaderNav() {
         <div className="items-center justify-between h-16">
           <div className="flex-shrink-0">
           <div className="logo-with-text absolute w-48 h-12">
-            <img className="icono-menu absolute w-12 h-12 top-0 left-0" src="img/icono-menu.svg" />
+            <img className="icono-menu absolute w-12 h-12 top-0 left-0" src="client\src\assets\img\ICONO.svg" />
         <div className="titulo absolute h-10 font-semibold text-3xl text-center tracking-normal">TimeiT</div>
         </div>
           </div>
