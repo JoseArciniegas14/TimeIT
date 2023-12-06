@@ -1,11 +1,12 @@
 import { Aside } from "../../components";
+import "../../css/inicio/style.css";
+
 
 function Home() {
   return (
-    <>
+    <div>
       <Aside />
-      <h2>Home</h2>
-    </>
+    </div>
   );
 }
 

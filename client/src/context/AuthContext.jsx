@@ -21,11 +21,11 @@ function AuthProvider({ children }) {
   useEffect(() => {
     (async () => {
       const keyAccess = authController.getAccessKey();
-      if (!keyAccess) {
-        logout();
-        setLoading(false);
-        return;
-      }
+      // if (!keyAccess) {
+      //   logout();
+      //   setLoading(false);
+      //   return;
+      // }
       setLoading(false);
     })();
   }, []);
