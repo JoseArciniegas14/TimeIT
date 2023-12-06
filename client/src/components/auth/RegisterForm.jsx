@@ -2,6 +2,7 @@ import { useFormikForm } from "../../hooks";
 import { Form } from "semantic-ui-react";
 import { RegisterValues, RegisterValitations } from "../../validations";
 import { Auth } from "../../data/Auth";
+import PropTypes from 'prop-types';
 
 const authController = new Auth();
 
@@ -134,6 +135,10 @@ function RegisterForm({ openLogin }) {
     </Form>
   );
 }
+
+RegisterForm.propTypes = {
+  openLogin: PropTypes.func.isRequired,
+};
 
 export { RegisterForm };
 // ? TAREA : crear el sistema de validacion individual de cada input del formulario

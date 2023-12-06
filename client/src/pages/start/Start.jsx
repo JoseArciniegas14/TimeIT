@@ -3,10 +3,16 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import "../../css/style.css";
+import  { useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Start() {
+
+
+
+  const [isOpen, setIsOpen] = useState(false);
+
   React.useEffect(() => {
     gsap.from("#title", { opacity: 0, duration: 1, y: -50 });
     gsap.from("#btn", { opacity: 0, duration: 1, delay: 0.5 });
@@ -62,11 +68,12 @@ function Start() {
     });
   }, []);
 
+  
+
   return (
     <div className="bg-neutral-900">
       <nav className="bg-transparent fixed top-0 left-0 right-0 flex items-center justify-center p-4">
-        <input type="checkbox" id="menu-toggle" className="hidden" />
-        <label htmlFor="menu-toggle" className="text-white cursor-pointer">
+        <button onClick={() => setIsOpen(!isOpen)} className="text-white cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -79,9 +86,9 @@ function Start() {
           >
             <path d="M3 12h18M3 6h18M3 18h18"></path>
           </svg>
-        </label>
+        </button>
         <h1 className="menu text-white text-lg font-bold ml-2">Menú</h1>
-        <ul className="flex space-x-4">
+        <ul className="hidden sm:flex space-x-4">
           <li>
             <a href="#inicio" className="text-white"></a>
           </li>
@@ -101,27 +108,30 @@ function Start() {
             </Link>
           </li>
         </ul>
-        <ul
-          className="hidden absolute top-12 left-0 right-0 bg-white text-black p-4"
-          id="menu"
-        >
-          <li>
-            <a href="#quienes-somos" className="block py-2">
-              Quiénes somos
-            </a>
-          </li>
-          <li>
-            <a href="#documentacion" className="block py-2">
-              Documentación
-            </a>
-          </li>
-          <li>
-            <Link to="/auth" className="block py-2">
-              Entrar a la app
-            </Link>
-          </li>
-        </ul>
+        {isOpen && (
+          <ul
+            className="sm:hidden absolute top-12 left-0 right-0 bg-white text-black p-4"
+            id="menu"
+          >
+            <li>
+              <a href="#quienes-somos" className="block py-2">
+                Quiénes somos
+              </a>
+            </li>
+            <li>
+              <a href="#documentacion" className="block py-2">
+                Documentación
+              </a>
+            </li>
+            <li>
+              <Link to="/auth" className="block py-2">
+                Entrar a la app
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
+
 
       <section id="Inicio">
         <div className="flex flex-col items-center justify-center min-h-screen">
@@ -190,6 +200,15 @@ function Start() {
                 velit.
               </p>
             </div>
+            <div className="desktopContentSection">
+              <h1>Julian</h1>
+              <p>
+                Desarrollador Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Harum obcaecati corporis eaque nemo porro quod,
+                necessitatibus minima culpa, error deleniti similique ea qui,
+                beatae fugit nostrum natus magnam accusantium. Perferendis.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -211,7 +230,13 @@ function Start() {
             <div className="mobilePhoto blue"></div>
             <h1>Cristian</h1>
             <p>Desarrollador</p>
+
+            <div className="mobilePhoto black"></div>
+            <h1>Julian</h1>
+            <p>Desarrollador</p>
           </div>
+
+
 
           {/* <!-- desktop content --> */}
           <div className="desktopPhotos">
@@ -219,12 +244,61 @@ function Start() {
             <div className="desktopPhoto green"></div>
             <div className="desktopPhoto pink"></div>
             <div className="desktopPhoto blue"></div>
+            <div className="desktopPhoto black"></div>
           </div>
         </div>
       </div>
 
       <div className="spacer"></div>
+      <section
+    id="documentacion">
+      <h1 className="text-white mb-4 text-center">Documentación</h1>
+            <div className="ui raised very padded text container segment">
+  <h2 className="ui header">Hola</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati in cupiditate numquam beatae pariatur maxime nulla? Nobis cum consequuntur, delectus facilis reiciendis doloribus debitis ducimus harum quasi sint soluta dolore.</p>
+  <p></p>
+</div>
+    </section>
+
+<section id="footer">
+  {/* Footer */}
+  <footer className="bg-gray-800 py-4">
+    <div className="container mx-auto px-4">
+      <div className="flex flex-wrap items-center justify-between">
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h2 className="text-white text-lg font-semibold">TimeIT</h2>
+          <p className="text-gray-400 mt-2">Tu plataforma de gestión de tiempo</p>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h3 className="text-white text-lg font-semibold mb-2">Enlaces</h3>
+          <ul className="text-gray-400">
+            <li className="mb-1"><a href="#" className="hover:text-white">Inicio</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Acerca de</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Contacto</a></li>
+          </ul>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h3 className="text-white text-lg font-semibold mb-2">Redes Sociales</h3>
+          <ul className="text-gray-400">
+            <li className="mb-1"><a href="#" className="hover:text-white">Facebook</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Twitter</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Instagram</a></li>
+          </ul>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h3 className="text-white text-lg font-semibold mb-2">Contacto</h3>
+          <p className="text-gray-400">Email: info@timeit.com</p>
+          <p className="text-gray-400">Teléfono: +1234567890</p>
+        </div>
+      </div>
     </div>
+  </footer>
+</section>
+    
+
+
+    </div>
+
   );
 }
 
