@@ -1,8 +1,7 @@
-
-
 import { useState } from "react";
 import { gsap } from "gsap";
 import { Button } from "semantic-ui-react";
+import "../../css/style.css";
 
 function Aside() {
   const [isAsideOpen, setIsAsideOpen] = useState(false);
@@ -34,38 +33,25 @@ function Aside() {
         </div>
         {/* Botones */}
         <div className="buttons">
-          <Button
-            onClick={createAlarm}
-            color="blue"
-            className="font-bold"
-          >
+          <Button onClick={createAlarm} color="blue" className="font-bold">
             Crear Alarma
           </Button>
-          <Button
-            onClick={deleteAlarm}
-            color="red"
-            className="font-bold"
-          >
+          <Button onClick={deleteAlarm} color="red" className="font-bold">
             Eliminar Alarma
           </Button>
         </div>
       </div>
 
-      <div className="box">
+
         <h2>Inicio</h2>
-        <Button
-          onClick={toggleAside}
-          color="gray"
-          className="font-bold"
-        >
+        <Button onClick={toggleAside} color="gray" className="font-bold">
           Alternar Aside
         </Button>
-      </div>
+
     </>
   );
 }
-  
+
 export { Aside };
 
-
-
+// FILEPATH: c:\Users\SENA\Documents\TimeIT\client\src\components\web\Aside.css

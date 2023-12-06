@@ -190,6 +190,15 @@ function Start() {
                 velit.
               </p>
             </div>
+            <div className="desktopContentSection">
+              <h1>Julian</h1>
+              <p>
+                Desarrollador Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Harum obcaecati corporis eaque nemo porro quod,
+                necessitatibus minima culpa, error deleniti similique ea qui,
+                beatae fugit nostrum natus magnam accusantium. Perferendis.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -211,7 +220,13 @@ function Start() {
             <div className="mobilePhoto blue"></div>
             <h1>Cristian</h1>
             <p>Desarrollador</p>
+
+            <div className="mobilePhoto black"></div>
+            <h1>Julian</h1>
+            <p>Desarrollador</p>
           </div>
+
+
 
           {/* <!-- desktop content --> */}
           <div className="desktopPhotos">
@@ -219,12 +234,61 @@ function Start() {
             <div className="desktopPhoto green"></div>
             <div className="desktopPhoto pink"></div>
             <div className="desktopPhoto blue"></div>
+            <div className="desktopPhoto black"></div>
           </div>
         </div>
       </div>
 
       <div className="spacer"></div>
+      <section
+    id="documentacion">
+      <h1 className="text-white mb-4 text-center">Documentación</h1>
+            <div class="ui raised very padded text container segment">
+  <h2 class="ui header">Hola</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati in cupiditate numquam beatae pariatur maxime nulla? Nobis cum consequuntur, delectus facilis reiciendis doloribus debitis ducimus harum quasi sint soluta dolore.</p>
+  <p></p>
+</div>
+    </section>
+
+<section id="footer">
+  {/* Footer */}
+  <footer className="bg-gray-800 py-4">
+    <div className="container mx-auto px-4">
+      <div className="flex flex-wrap items-center justify-between">
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h2 className="text-white text-lg font-semibold">TimeIT</h2>
+          <p className="text-gray-400 mt-2">Tu plataforma de gestión de tiempo</p>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h3 className="text-white text-lg font-semibold mb-2">Enlaces</h3>
+          <ul className="text-gray-400">
+            <li className="mb-1"><a href="#" className="hover:text-white">Inicio</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Acerca de</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Contacto</a></li>
+          </ul>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h3 className="text-white text-lg font-semibold mb-2">Redes Sociales</h3>
+          <ul className="text-gray-400">
+            <li className="mb-1"><a href="#" className="hover:text-white">Facebook</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Twitter</a></li>
+            <li className="mb-1"><a href="#" className="hover:text-white">Instagram</a></li>
+          </ul>
+        </div>
+        <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
+          <h3 className="text-white text-lg font-semibold mb-2">Contacto</h3>
+          <p className="text-gray-400">Email: info@timeit.com</p>
+          <p className="text-gray-400">Teléfono: +1234567890</p>
+        </div>
+      </div>
     </div>
+  </footer>
+</section>
+    
+
+
+    </div>
+
   );
 }
 

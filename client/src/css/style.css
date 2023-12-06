@@ -310,6 +310,13 @@ h1 {
   background-size: cover;
 }
 
+.black {
+  background-image: url(../assets/img/Cediel.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* small screen / mobile layout */
 .mobileContent {
   display: none;
@@ -395,4 +402,25 @@ svg .svg-elem-4 {
 }
 svg.active .svg-elem-4 {
   stroke-dashoffset: 0;
+}
+
+
+.aside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #f1f1f1;
+  z-index: 9999;
+  overflow: hidden;
+  transition: width 0.3s, opacity 0.3s;
+}
+
+.aside.open {
+  width: 100%;
+}
+
+.box {
+  margin-left: 200px; /* Adjust the margin to create space for the aside */
 }
