@@ -20,7 +20,8 @@ async function getMe(req, res) {
       country: user.country,
       city: user.city,
       email: user.email,
-      phone: user.phone
+      phone: user.phone,
+      password: user.password
     }
 
     res.status(200).json(filteredUser);
