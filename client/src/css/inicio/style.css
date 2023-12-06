@@ -1,4 +1,15 @@
-
+*{
+    margin: 0;
+}
+body {
+    background-color: #060F10;
+}
+.MENU {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: #2d3033;
+}
 .MENU .logo-with-text {
     top: 25px;
     left: 62px;
