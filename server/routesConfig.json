@@ -75,7 +75,7 @@
       "action": "updateAlarm"
     }
   ],
-  "notes":[
+  "notes": [
     {
       "path": "/",
       "method": "POST",
@@ -105,7 +105,7 @@
       "action": "deleteNotes"
     }
   ],
-  "habits":[
+  "habits": [
     {
       "path": "/",
       "method": "POST",
@@ -126,7 +126,7 @@
       "middlewares": ["ensureAuthenticated"],
       "controller": "HabitsController",
       "action": "updateHabit"
-    },    
+    },
     {
       "path": "/",
       "method": "DELETE",

@@ -5,7 +5,13 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { DB_USER, DB_PASSWORD, DB_HOST, API_VERSION, SECRET_KEY } = require("./constants.js");
+const {
+  DB_USER,
+  DB_PASSWORD,
+  DB_HOST,
+  API_VERSION,
+  SECRET_KEY,
+} = require("./constants.js");
 // require("./scheduler")
 
 const app = express();
@@ -14,7 +20,7 @@ const app = express();
 app.use(
   session({
     secret: SECRET_KEY,
-    resave: false,
+    resave: true,
     saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/`,
@@ -28,7 +34,6 @@ app.use((req, res, next) => {
   res.header("Content-Type", "application/json");
   next();
 });
-
 
 // Configurar body parse
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,7 +50,10 @@ const middlewaresFolder = path.join(__dirname, "middlewares");
 const middlewareFiles = fs.readdirSync(middlewaresFolder);
 const middlewares = middlewareFiles.reduce((acc, filename) => {
   const middlewareName = path.parse(filename).name;
-  const middlewareFunction = require(path.join(middlewaresFolder, middlewareName));
+  const middlewareFunction = require(path.join(
+    middlewaresFolder,
+    middlewareName
+  ));
   acc = middlewareFunction;
   return acc;
 }, {});
@@ -53,16 +61,18 @@ const middlewares = middlewareFiles.reduce((acc, filename) => {
 // Configurar rutas desde el JSON
 for (const routeGroup in routesConfig) {
   const routes = routesConfig[routeGroup];
-  routes.forEach(route => {
+  routes.forEach((route) => {
     const basePath = `/api/${API_VERSION}/${routeGroup}`;
     const path = route.path === "/" ? basePath : `${basePath}${route.path}`;
     const controller = require(`./controllers/${route.controller}`);
     const action = route.action;
 
     // Filtrar los middlewares válidos para esta ruta
-    const validMiddlewares = route.middlewares.map(middlewareName => middlewares[middlewareName]).filter(Boolean)
+    const validMiddlewares = route.middlewares
+      .map((middlewareName) => middlewares[middlewareName])
+      .filter(Boolean);
 
-    app[route.method.toLowerCase()](path, validMiddlewares, controller[action])
+    app[route.method.toLowerCase()](path, validMiddlewares, controller[action]);
   });
 }
 

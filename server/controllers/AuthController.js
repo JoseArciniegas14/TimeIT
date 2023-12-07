@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
 const User = require("../models/user.model");
 const { getMe } = require("./UserController");
 
@@ -13,16 +13,26 @@ async function register(req, res) {
 
     if (email) {
       // DATO IMPORTANTE: $ne es una variable que significa Not_equal, y sirve como parametro en una busqueda
-      const usedEmail = await User.findOne({ email: emailLowerCase, _id: { $ne: User._id } });
+      const usedEmail = await User.findOne({
+        email: emailLowerCase,
+        _id: { $ne: User._id },
+      });
       if (usedEmail) {
-        return res.status(400).send({ msg: "El correo ya esta en uso por otro usuario" });
+        return res
+          .status(400)
+          .send({ msg: "El correo ya esta en uso por otro usuario" });
       }
     }
 
     if (phone) {
-      const usedPhone = await User.findOne({ phone: phone, _id: { $ne: User._id } });
+      const usedPhone = await User.findOne({
+        phone: phone,
+        _id: { $ne: User._id },
+      });
       if (usedPhone) {
-        return res.status(400).send({ msg: "El numero de telefono ya esta en uso por otro usuario" });
+        return res.status(400).send({
+          msg: "El numero de telefono ya esta en uso por otro usuario",
+        });
       }
     }
 
@@ -34,7 +44,7 @@ async function register(req, res) {
       city,
       age,
       active: true,
-      role: "user"
+      role: "user",
     });
 
     // Hash de la contraseña
@@ -74,10 +84,11 @@ async function login(req, res) {
     req.session.user = {
       userId: userStore._id,
       email: userStore.email,
-      userPhone: userStore.phone
+      userPhone: userStore.phone,
     };
+    console.log("LA SESION SE CREO", req.session.user);
 
-    await getMe(req, res)
+    await getMe(req, res);
   } catch (error) {
     console.error(error);
     res.status(500).send({ msg: "Error del servidor desde el AUTH" });
@@ -87,4 +98,4 @@ async function login(req, res) {
 module.exports = {
   login,
   register,
-}
+};

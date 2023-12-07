@@ -1,8 +1,8 @@
-const bcrypt = require("bcryptjs")
-const User = require("../models/user.model")
-const Alarm = require("../models/alarms.model")
-const Habit = require("../models/habits.model")
-const Note = require("../models/notes.model")
+const bcrypt = require("bcryptjs");
+const User = require("../models/user.model");
+const Alarm = require("../models/alarms.model");
+const Habit = require("../models/habits.model");
+const Note = require("../models/notes.model");
 
 async function getMe(req, res) {
   try {
@@ -21,8 +21,8 @@ async function getMe(req, res) {
       city: user.city,
       email: user.email,
       phone: user.phone,
-      password: user.password
-    }
+      password: user.password,
+    };
 
     res.status(200).json(filteredUser);
   } catch (error) {
@@ -38,17 +38,27 @@ async function updateUser(req, res) {
 
     // updateEmail
     if (userData.email) {
-      const usedEmail = await User.findOne({ email: userData.email, _id: { $ne: userId } });
+      const usedEmail = await User.findOne({
+        email: userData.email,
+        _id: { $ne: userId },
+      });
       if (usedEmail) {
-        return res.status(400).send({ msg: "El correo ya está en uso por otro usuario" });
+        return res
+          .status(400)
+          .send({ msg: "El correo ya está en uso por otro usuario" });
       }
     }
 
     // updatePhone
     if (userData.phone) {
-      const usedPhone = await User.findOne({ phone: userData.phone, _id: { $ne: userId } });
+      const usedPhone = await User.findOne({
+        phone: userData.phone,
+        _id: { $ne: userId },
+      });
       if (usedPhone) {
-        return res.status(400).send({ msg: "El número de teléfono ya está en uso por otro usuario" });
+        return res.status(400).send({
+          msg: "El número de teléfono ya está en uso por otro usuario",
+        });
       }
     }
 
@@ -61,7 +71,11 @@ async function updateUser(req, res) {
       delete userData.password;
     }
 
-    const updatedUser = await User.findByIdAndUpdate({ _id: userId }, userData, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(
+      { _id: userId },
+      userData,
+      { new: true }
+    );
 
     if (!updatedUser) {
       return res.status(404).send({ msg: "Usuario no encontrado" });
@@ -74,8 +88,8 @@ async function updateUser(req, res) {
       country: userData.country,
       city: userData.city,
       email: userData.email,
-      phone: userData.phone
-    }
+      phone: userData.phone,
+    };
 
     res.status(201).json(filteredInfo);
   } catch (error) {
@@ -84,9 +98,8 @@ async function updateUser(req, res) {
   }
 }
 
-
 function logoutUser(req, res) {
-
+  console.log("sesion", req.session.user);
   for (const key in req.body) {
     delete req.body[key];
   }
@@ -120,10 +133,14 @@ async function deleteUser(req, res) {
       }
     });
 
-    res.status(201).send({ msg: "Usuario eliminado de la base de datos junto a su informacion" });
+    res.status(201).send({
+      msg: "Usuario eliminado de la base de datos junto a su informacion",
+    });
   } catch (error) {
     console.log(error);
-    res.status(500).send({ msg: "Error al eliminar usuario de la base de datos" });
+    res
+      .status(500)
+      .send({ msg: "Error al eliminar usuario de la base de datos" });
   }
 }
 
@@ -132,4 +149,4 @@ module.exports = {
   updateUser,
   logoutUser,
   deleteUser,
-}
+};
