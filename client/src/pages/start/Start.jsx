@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import "../../css/style.css";
 import { useState, useEffect, useRef } from "react";
 import docFile from '../../assets/Docs/PROPUESTA DE DESARROLLO DE SOFTWARE Y MANUAL DE TIMEIT.docx';
+import "../../css/SVG-start.css";
+
 
 // Remove the import statement for gsap
 // import gsap from "gsap";
