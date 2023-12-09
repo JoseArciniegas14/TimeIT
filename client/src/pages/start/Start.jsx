@@ -4,7 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import "../../css/style.css";
 import { useState, useEffect, useRef } from "react";
-import "../../assets/Docs/PROPUESTA DE DESARROLLO DE SOFTWARE Y MANUAL DE TIMEIT.docx";
+import docFile from '../../assets/Docs/PROPUESTA DE DESARROLLO DE SOFTWARE Y MANUAL DE TIMEIT.docx';
 
 // Remove the import statement for gsap
 // import gsap from "gsap";
@@ -1065,18 +1065,19 @@ z" className="svg-elem-33"></path>
         <div className="ui raised very padded text container segment">
           <h2 className="ui header">Hola</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-            in cupiditate numquam beatae pariatur maxime nulla? Nobis cum
-            consequuntur, delectus facilis reiciendis doloribus debitis ducimus
-            harum quasi sint soluta dolore.
+Aquí puedes encontrar la documentación de nuestro proyecto en formato de documento de Word en la que podrás encontrar la propuesta de desarrollo de TimeIT.
           </p>
           <div>
-      <a href="PROPUESTA DE DESARROLLO DE SOFTWARE Y MANUAL DE TIMEIT.docx" download>
+      <a href={ docFile } download>
         Descargar archivo
       </a>
     </div>
         </div>
       </section>
+
+      
+<br />
+<br />
 <br />
 
       <section id="footer">
