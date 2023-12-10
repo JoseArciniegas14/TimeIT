@@ -6,7 +6,7 @@ import "../../css/style.css";
 import { useState, useEffect, useRef } from "react";
 import docFile from '../../assets/Docs/PROPUESTA DE DESARROLLO DE SOFTWARE Y MANUAL DE TIMEIT.docx';
 import "../../css/SVG-start.css";
-
+import LoadingPage from '../../components/Loading/Loading'; // Asegúrate de que la ruta sea correcta
 
 // Remove the import statement for gsap
 // import gsap from "gsap";
@@ -16,6 +16,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Start() {
 
+
+	
   const svgRef = useRef();
 
   useEffect(() => {
@@ -111,20 +113,20 @@ function Start() {
         <h1 className="menu text-white text-lg font-bold ml-2">Menú</h1>
         <ul className="hidden sm:flex space-x-4">
           <li>
-            <a href="#inicio" className="text-white"></a>
+            <a href="#inicio" className="text-white hover:text-white"></a>
           </li>
           <li>
-            <a href="#quienes-somos" className="text-white">
+            <a href="#quienes-somos" className="text-white hover:text-white">
               Quiénes somos
             </a>
           </li>
           <li>
-            <a href="#documentacion" className="text-white">
+            <a href="#documentacion" className="text-white hover:text-white">
               Documentación
             </a>
           </li>
           <li>
-            <Link to="/auth" className="text-white">
+            <Link to="/auth" className="text-white hover:text-white">
               Entrar a la app
             </Link>
           </li>
@@ -955,7 +957,7 @@ z" className="svg-elem-33"></path>
           <div className="flex justify-center items-center">
             <Link
               to="/auth"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-neutral-900 hover:bg-neutral-700 text-white hover:text-white font-bold py-2 px-4 rounded"
             >
               Ingresar a TimeIT
             </Link>
@@ -1061,7 +1063,9 @@ z" className="svg-elem-33"></path>
         </div>
       </div>
 
-      <div className="spacer"></div>
+      <br />
+	<br />
+	<br />
       <section id="documentacion">
         <h1 className="text-white mb-4 text-center">Documentación</h1>
         <div className="ui raised very padded text container segment">

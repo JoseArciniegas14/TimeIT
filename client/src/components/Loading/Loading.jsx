@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import '../../Loading.css';
+import '../../css/inicio/Svg-loading.css';
 
 function LoadingPage() {
   useEffect(() => {
