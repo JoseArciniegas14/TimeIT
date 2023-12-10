@@ -1,21 +1,31 @@
-import { useFormikForm } from "../../hooks";
+import { useFormikForm, useAuth } from "../../hooks";
 import { Form } from "semantic-ui-react";
-import { RegisterValues, RegisterValitations } from "../../validations";
-import { Auth } from "../../data";
+import { UserValues, UserValitations } from "../../validations";
 
-const authController = new Auth();
+function UserForm() {
+  const { user, updateUser } = useAuth();
 
-function RegisterForm({ openLogin }) {
-  const onSubmitRegister = async (formValues, setRes) => {
-    const data = await authController.register(formValues);
-    if (typeof data !== "object") {
-      setRes(data);
+  const newValueForm = (preValue, newValue) => {
+    let newObject = { ...preValue };
+    for (let key in newValue) {
+      if (preValue.hasOwnProperty(key) && newValue[key] !== "") {
+        newObject[key] = newValue[key];
+      }
+    }
+    return newObject;
+  };
+
+  const onSubmitUser = (formValues, setRes) => {
+    const nullValidation = Object.values(formValues).every((valor) => !valor);
+    if (nullValidation) {
+      setRes("No envies datos vacios");
       return;
     }
-    const { msg } = data;
-    setRes(msg);
+
+    const newFormValue = newValueForm(user, formValues);
+    updateUser(newFormValue);
     setTimeout(() => {
-      openLogin();
+      location.reload();
     }, 3000);
   };
 
@@ -27,12 +37,12 @@ function RegisterForm({ openLogin }) {
     handleChange,
     res,
     loading,
-  } = useFormikForm(RegisterValues, RegisterValitations, onSubmitRegister);
+  } = useFormikForm(UserValues, UserValitations, onSubmitUser);
 
   return (
     <Form className="register-form" onSubmit={handleSubmit}>
       <Form.Group widths="equal">
-        <Form.Field required>
+        <Form.Field>
           <label>
             Nombre:
             <Form.Input
@@ -46,7 +56,7 @@ function RegisterForm({ openLogin }) {
           </label>
           {errors.name && <p className="text-red-500 error">{errors.name}</p>}
         </Form.Field>
-        <Form.Field required>
+        <Form.Field>
           <label>
             Edad:
             <Form.Input
@@ -62,7 +72,7 @@ function RegisterForm({ openLogin }) {
         </Form.Field>
       </Form.Group>
       <Form.Group widths="equal">
-        <Form.Field required>
+        <Form.Field>
           <label>
             Pais:
             <Form.Input
@@ -78,7 +88,7 @@ function RegisterForm({ openLogin }) {
             <p className="text-red-500 error">{errors.country}</p>
           )}
         </Form.Field>
-        <Form.Field required>
+        <Form.Field>
           <label>
             Ciudad:
             <Form.Input
@@ -93,7 +103,7 @@ function RegisterForm({ openLogin }) {
           {errors.city && <p className="text-red-500 error">{errors.city}</p>}
         </Form.Field>
       </Form.Group>
-      <Form.Field required>
+      <Form.Field>
         <label>
           Telefono:
           <Form.Input
@@ -108,7 +118,7 @@ function RegisterForm({ openLogin }) {
         {errors.phone && <p className="text-red-500 error">{errors.phone}</p>}
       </Form.Field>
       <Form.Group widths="equal">
-        <Form.Field required>
+        <Form.Field>
           <label>
             Email:
             <Form.Input
@@ -123,7 +133,7 @@ function RegisterForm({ openLogin }) {
           </label>
           {errors.email && <p className="text-red-500 error">{errors.email}</p>}
         </Form.Field>
-        <Form.Field required>
+        <Form.Field>
           <label>
             Contraseña:
             <Form.Input
@@ -141,13 +151,12 @@ function RegisterForm({ openLogin }) {
           )}
         </Form.Field>
       </Form.Group>
-      <Form.Button type="submit" fluid disabled={loading}>
-        {loading ? "Registrando..." : "Registrarse"}
-      </Form.Button>
       {res && <p className="res">{res}</p>}
+      <Form.Button type="submit" fluid disabled={loading}>
+        {loading ? "Actualizando..." : "Actualizar"}
+      </Form.Button>
     </Form>
   );
 }
 
-export { RegisterForm };
-// ? TAREA : crear el sistema de validacion individual de cada input del formulario
+export { UserForm };

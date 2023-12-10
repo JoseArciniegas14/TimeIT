@@ -97,7 +97,9 @@ function Start() {
             <path d="M3 12h18M3 6h18M3 18h18"></path>
           </svg>
         </button>
-        <h1 className="menu text-white text-lg font-bold ml-2 md:hidden">Menú</h1>
+        <h1 className="menu text-white text-lg font-bold ml-2 md:hidden">
+          Menú
+        </h1>
         <ul className="hidden sm:flex space-x-4">
           <li>
             <a href="#inicio" className="text-white hover:text-white"></a>

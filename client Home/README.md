@@ -15,3 +15,8 @@ lastimosamente no pude terminar el proceso logico de la aplicacion, me quedo fal
 - uuid: 9.0.1,
 
 Si desea decorar, puede decorar todas las paginas de la carpeta page, todos los componente de componentes, el layout de layouts
+
+REVISAR DATA 
+
+
+USE GENERAL

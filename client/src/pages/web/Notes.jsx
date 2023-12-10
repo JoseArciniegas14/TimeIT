@@ -1,7 +1,16 @@
-function Notes() {
+import { FormNote } from "../../components";
+import { useWeb } from "../../hooks";
+import { Home } from "./Home";
+
+function Notes({ info, handleInfo }) {
+  const { formState } = useWeb();
   return (
     <>
-      <h1>Notas</h1>
+      {formState.formNotes ? (
+        <FormNote info={info} handleInfo={handleInfo} />
+      ) : (
+        <Home />
+      )}
     </>
   );
 }
