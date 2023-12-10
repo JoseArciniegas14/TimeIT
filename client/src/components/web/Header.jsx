@@ -9,9 +9,11 @@ function HeaderNav() {
         <div className="items-center justify-between h-16">
           <div className="flex-shrink-0">
             <div className="logo-with-text absolute w-48 h-12">
-              <img
+              <link
+                type="svg+xml"
+                href="../src/assets/img/ICONO.svg"
                 className="icono-menu absolute w-12 h-12 top-0 left-0"
-                src="client\src\assets\img\ICONO.svg"
+                src="../../assets/img/ICONO.svg"
               />
               <div className="titulo absolute h-10 font-semibold text-3xl text-center tracking-normal">
                 TimeiT
@@ -23,7 +25,7 @@ function HeaderNav() {
               <NavLink
                 to="/home"
                 activeClassName="text-white"
-                className="text-gray-300 text-xl hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md top-10"
+                className="text-gray-300 text-xl mt-7 hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md "
               >
                 Inicio
               </NavLink>
@@ -31,21 +33,21 @@ function HeaderNav() {
               <NavLink
                 to="/alarms"
                 activeClassName="text-white"
-                className="text-gray-300 text-xl hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md"
+                className="text-gray-300 text-xl mt-7 hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md"
               >
                 Recordatorios
               </NavLink>
               <NavLink
                 to="/notes"
                 activeClassName="text-white"
-                className="text-gray-300 text-xl hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md"
+                className="text-gray-300 text-xl mt-7 hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md"
               >
                 Notas
               </NavLink>
               <NavLink
                 to="/routines"
                 activeClassName="text-white"
-                className="text-gray-300 text-xl hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md"
+                className="text-gray-300 text-xl mt-7 hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md"
               >
                 Hábitos
               </NavLink>
