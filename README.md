@@ -1,10 +1,7 @@
-# Como para iniciar el proyecto
+# 🚀 Cómo iniciar el proyecto
 
-> [!IMPORTANT]
-> Tener en cuenta las dependencias que se usan y las
-> versiones de estas, también unas del lado
-> del servidor y otras del lado del cliente.
-> El cliente está construido con Vite y React.
+> ⚠️ **Importante:** Tener en cuenta las dependencias que se usan y las versiones de estas. Hay algunas del lado del servidor y otras del lado del cliente. El cliente está construido con Vite y React.
+
 ## 📦 Dependencias del Servidor
 
 | Dependencia | Versión |
@@ -28,26 +25,27 @@
 | react-dom | 18.2.0 |
 | react-router-dom | 6.19.0 |
 | yup | 1.3.2 |
-## Iniciar el servidor/cliente
 
-> [!Note]
-> Esto se hace para no mezclar todas las dependencias cliente/servidor en un mismo Json
-- Entrar en la carpeta [server o client]
-- Ejecutar: yarn dev [Siendo la carpeta principal alguna de las 2]
+## 🚀 Iniciar el servidor/cliente
 
-### Cosas a revisar:
+> 📝 **Nota:** Esto se hace para no mezclar todas las dependencias cliente/servidor en un mismo Json.
 
-- [ ] Crear modelos (Api/controller/router) para guardar informacion de las notas en la db
-- [ ] Crear modelos (Api/controller/router) para guardar informacion de las alarmas en la db (??)
-- [ ] Crear modelos (Api/controller/router) para guardar informacion de las rutinas en la db
-- [ ] REVISAR LO DE LA PAGINACION **(158)**
-- [ ] Frontend **(190)**
-- [ ] El Pt responsive
-- [ ] La logica del programa
-- [ ] Gestion de errores
+1. Entrar en la carpeta `server` o `client`.
+2. Ejecutar: `yarn dev` (Siendo la carpeta principal alguna de las 2).
 
-## Organizacion
+## 📋 Tareas pendientes
 
-Panas, tratemos de llevar un orden en el proyecto y no llenar de archivos/Código innecesario las carpetas ya que podemos comprometer todo.
+- [ ] Crear modelos (Api/controller/router) para guardar información de las notas en la db.
+- [ ] Crear modelos (Api/controller/router) para guardar información de las alarmas en la db (??).
+- [ ] Crear modelos (Api/controller/router) para guardar información de las rutinas en la db.
+- [ ] REVISAR LO DE LA PAGINACION **(158)**.
+- [ ] Frontend **(190)**.
+- [ ] El Pt responsive.
+- [ ] La lógica del programa.
+- [ ] Gestión de errores.
+
+## 🤝 Organización
+
+Panas, tratemos de llevar un orden en el proyecto y no llenar de archivos/código innecesario las carpetas ya que podemos comprometer todo.
 
 Ninguno de nosostros hemos leido esta monda a la final xD
