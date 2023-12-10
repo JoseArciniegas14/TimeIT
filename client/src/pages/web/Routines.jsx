@@ -1,13 +1,13 @@
-import { FormNote } from "../../components";
+import { FormRoutine } from "../../components";
 import { useWeb } from "../../hooks";
 import { Home } from "./Home";
 
-function Notes({ info, handleInfo }) {
+function Routines({ info, handleInfo }) {
   const { formState } = useWeb();
   return (
     <>
-      {formState.formNotes ? (
-        <FormNote info={info} handleInfo={handleInfo} />
+      {formState.formRoutiones ? (
+        <FormRoutine info={info} handleInfo={handleInfo} />
       ) : (
         <Home />
       )}
@@ -15,4 +15,4 @@ function Notes({ info, handleInfo }) {
   );
 }
 
-export { Notes };
+export { Routines };
