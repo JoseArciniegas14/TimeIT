@@ -23,7 +23,7 @@ function HeaderNav() {
               <NavLink
                 to="/home"
                 activeClassName="text-white"
-                className="text-gray-300 text-xl hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md"
+                className="text-gray-300 text-xl hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md top-10"
               >
                 Inicio
               </NavLink>

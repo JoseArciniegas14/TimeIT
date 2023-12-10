@@ -1032,24 +1032,24 @@ z" className="svg-elem-33"></path>
           {/* <!-- mobile content --> */}
           <div className="mobileContent">
             <div className="mobilePhoto red"></div>
-            <h1>Jose</h1>
-            <p>Desarrollador</p>
+            <h1 className="text-white">Jose</h1>
+            <p className="text-white">Desarrollador</p>
 
             <div className="mobilePhoto green"></div>
-            <h1>Robin</h1>
-            <p>Desarrollador</p>
+            <h1 className="text-white">Robin</h1>
+            <p className="text-white">Desarrollador</p>
 
             <div className="mobilePhoto pink"></div>
-            <h1>Jesús</h1>
-            <p>Desarrollador</p>
+            <h1 className="text-white">Jesús</h1>
+            <p className="text-white">Desarrollador</p>
 
             <div className="mobilePhoto blue"></div>
-            <h1>Cristian</h1>
-            <p>Desarrollador</p>
+            <h1 className="text-white">Cristian</h1>
+            <p className="text-white">Desarrollador</p>
 
             <div className="mobilePhoto black"></div>
-            <h1>Julian</h1>
-            <p>Desarrollador</p>
+            <h1 className="text-white">Julian</h1>
+            <p className="text-white">Desarrollador</p>
           </div>
 
           {/* <!-- desktop content --> */}
@@ -1088,7 +1088,7 @@ Aquí puedes encontrar la documentación de nuestro proyecto en formato de docum
 
       <section id="footer">
         {/* Footer */}
-        <footer className="bg-gray-800 py-4">
+        <footer className="bg-gray-500 py-4">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center justify-between">
               <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
