@@ -5,26 +5,29 @@
 > versiones de estas, también unas del lado
 > del servidor y otras del lado del cliente.
 > El cliente está construido con Vite y React.
-## Dependencias del server:
+## 📦 Dependencias del Servidor
 
-- bcryptjs: 2.4.3
-- body-parser: 1.20.0
-- connect-multiparty: 2.2.0
-- cors: 2.8.5
-- express: 4.18.1
-- jsonwebtoken: 8.5.1
-- mongoose: 6.6.1
-- nodemon: 2.0.20
+| Dependencia | Versión |
+| ----------- | ------- |
+| bcryptjs | 2.4.3 |
+| body-parser | 1.20.0 |
+| connect-multiparty | 2.2.0 |
+| cors | 2.8.5 |
+| express | 4.18.1 |
+| jsonwebtoken | 8.5.1 |
+| mongoose | 6.6.1 |
+| nodemon | 2.0.20 |
 
-## Dependencias actuales del Cliente:
+## 📦 Dependencias del Cliente
 
-- formik: 2.4.5
-- lodash: 4.17.21
-- react: 18.2.0
-- react-dom: 18.2.0
-- react-router-dom: 6.19.0
-- yup: 1.3.2
-
+| Dependencia | Versión |
+| ----------- | ------- |
+| formik | 2.4.5 |
+| lodash | 4.17.21 |
+| react | 18.2.0 |
+| react-dom | 18.2.0 |
+| react-router-dom | 6.19.0 |
+| yup | 1.3.2 |
 ## Iniciar el servidor/cliente
 
 > [!Note]
