@@ -12,6 +12,8 @@ function Alarms({ info, handleInfo }) {
         <Home />
       )}
     </>
+
+    
   );
 }
 

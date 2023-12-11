@@ -2,20 +2,31 @@ import { Aside } from "../../components";
 import "../../css/inicio/style.css";
 import "semantic-ui-css/semantic.min.css";
 
+import "../../css/web/Home.css"
+
 function Home() {
   return (
     <div>
       <Aside />
-      <div className="ui raised very padded text container segment">
-        <h2 className="ui header">Hola</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati in
-          cupiditate numquam beatae pariatur maxime nulla? Nobis cum
-          consequuntur, delectus facilis reiciendis doloribus debitis ducimus
-          harum quasi sint soluta dolore.
-        </p>
-        <p></p>
+      <div className="nuevo-diseo-inicio">
+      <div className="recuadro">
+        <div className="overlap">
+   
+            <div className="overlap-group">
+           
+            </div>
+  
+        </div>
+        <div className="overlap-2">
+     
+          <div className="titulo">TimeiT</div>
+        </div>
+        <p className="subtitulo">El orden conlleva al éxito.</p>
       </div>
+    </div>
+
+      
+
     </div>
   );
 }

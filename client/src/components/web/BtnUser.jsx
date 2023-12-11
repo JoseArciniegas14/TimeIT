@@ -26,7 +26,7 @@ function BtnUser() {
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>
+      <Button className="ml-right" onClick={() => setOpen(true)}>
         {user.name} <Icon name="user" />
       </Button>
 

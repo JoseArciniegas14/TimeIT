@@ -9,12 +9,55 @@ function HeaderNav() {
         <div className="items-center justify-between h-16">
           <div className="flex-shrink-0">
             <div className="logo-with-text absolute w-48 h-12">
-              <link
-                type="svg+xml"
-                href="../src/assets/img/ICONO.svg"
+              <svg
                 className="icono-menu absolute w-12 h-12 top-0 left-0"
-                src="../../assets/img/ICONO.svg"
-              />
+                width="100"
+                height="100"
+                viewBox="0 0 100 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="16.6665"
+                  y="16.666"
+                  width="25"
+                  height="25"
+                  rx="1"
+                  stroke="#363636"
+                  strokeWidth="10"
+                  strokeLinejoin="round"
+                />
+                <rect
+                  x="16.6665"
+                  y="58.334"
+                  width="25"
+                  height="25"
+                  rx="1"
+                  stroke="black"
+                  strokeWidth="10"
+                  strokeLinejoin="round"
+                />
+                <rect
+                  x="58.3335"
+                  y="58.334"
+                  width="25"
+                  height="25"
+                  rx="1"
+                  stroke="white"
+                  strokeWidth="10"
+                  strokeLinejoin="round"
+                />
+                <rect
+                  x="58.3335"
+                  y="16.666"
+                  width="25"
+                  height="25"
+                  rx="1"
+                  stroke="#878787"
+                  strokeWidth="10"
+                  strokeLinejoin="round"
+                />
+              </svg>
               <div className="titulo absolute h-10 font-semibold text-3xl text-center tracking-normal">
                 TimeiT
               </div>
@@ -51,10 +94,10 @@ function HeaderNav() {
               >
                 Hábitos
               </NavLink>
+              <BtnUser />
             </div>
           </div>
         </div>
-        <BtnUser />
       </div>
     </nav>
   );
