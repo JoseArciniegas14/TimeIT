@@ -10,7 +10,7 @@ function HeaderNav() {
           <div className="flex-shrink-0">
             <div className="logo-with-text absolute w-48 h-12">
               <svg
-                className="icono-menu absolute w-12 h-12 top-0 left-0"
+                className=" absolute w-12 h-12 top-0 left-0"
                 width="100"
                 height="100"
                 viewBox="0 0 100 100"
@@ -61,7 +61,7 @@ function HeaderNav() {
 
               
               <div className="titulo absolute h-10 font-semibold text-3xl text-center tracking-normal">
-                TimeiT
+                TimeIT
               </div>
             </div>
           </div>

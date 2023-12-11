@@ -1,174 +1,103 @@
 import React, { useState } from 'react';
-import { useFormik } from 'formik';
+import { Formik, Field, Form } from 'formik';
 
 const Routines = () => {
-  // Estado para almacenar la lista de hábitos
   const [habits, setHabits] = useState([]);
-  // Estado para almacenar el hábito actualmente seleccionado
-  const [selectedHabit, setSelectedHabit] = useState(null);
+  const [selectedHabit, setSelectedHabit] = useState(null); // Nuevo estado para el hábito seleccionado
 
-  // Configuración de Formik para crear hábito
-  const createHabitFormik = useFormik({
-    initialValues: {
-      habitTitle: '',
-    },
-    onSubmit: (values, { resetForm }) => {
-      const newHabit = {
-        title: values.habitTitle,
-        tasks: [],
-      };
-      setHabits([...habits, newHabit]);
-      resetForm();
-    },
-  });
+  const handleCreateHabit = (values) => {
+    const newHabit = { id: Date.now(), title: values.title, tasks: [] };
+    setHabits([...habits, newHabit]);
+  };
 
-  // Configuración de Formik para agregar tarea a hábito
-  const addTaskFormik = useFormik({
-    initialValues: {
-      taskDescription: '',
-      completed: false,
-    },
-    onSubmit: (values, { resetForm }) => {
-      if (selectedHabit !== null) {
-        const updatedHabits = [...habits];
-        const habit = updatedHabits[selectedHabit];
-        habit.tasks.push({
-          description: values.taskDescription,
-          completed: values.completed,
-        });
-        setHabits(updatedHabits);
-        resetForm();
-      }
-    },
-  });
-
-  // Función para borrar un hábito
-  const deleteHabit = (index) => {
-    const updatedHabits = [...habits];
-    updatedHabits.splice(index, 1);
+  const handleAddTask = (habitId, values) => {
+    const updatedHabits = habits.map((habit) =>
+      habit.id === habitId ? { ...habit, tasks: [...habit.tasks, values] } : habit
+    );
     setHabits(updatedHabits);
-    // Si el hábito eliminado es el que está seleccionado, limpiar la selección
-    if (selectedHabit === index) {
-      setSelectedHabit(null);
-    }
+  };
+
+  const handleDeleteHabit = (habitId) => {
+    const updatedHabits = habits.filter((habit) => habit.id !== habitId);
+    setHabits(updatedHabits);
+  };
+
+  const handleHabitClick = (habit) => {
+    setSelectedHabit(habit);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedHabit(null);
   };
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Rutinas</h1>
-
-      {/* Crear hábito */}
-      <div className="mb-4">
-        <h2 className="text-lg font-bold mb-2">Crear Hábito</h2>
-        <form onSubmit={createHabitFormik.handleSubmit}>
-          <input
-            type="text"
-            name="habitTitle"
-            placeholder="Ingrese el título del hábito"
-            onChange={createHabitFormik.handleChange}
-            onBlur={createHabitFormik.handleBlur}
-            value={createHabitFormik.values.habitTitle}
-            className="border border-gray-300 rounded px-2 py-1"
-          />
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded ml-2"
-          >
-            Crear Nuevo Hábito
-          </button>
-        </form>
-      </div>
-
-      {/* Agregar tarea a un hábito */}
-      <div className="mb-4">
-        <h2 className="text-lg font-bold mb-2">Agregar Tarea a Hábito</h2>
-        <select
-          value={selectedHabit !== null ? selectedHabit : ''}
-          onChange={(e) =>
-            setSelectedHabit(e.target.value !== '' ? parseInt(e.target.value) : null)
-          }
-          className="border border-gray-300 rounded px-2 py-1"
-        >
-          <option value="">Selecciona un hábito</option>
-          {habits.map((habit, index) => (
-            <option key={index} value={index}>
-              {habit.title}
-            </option>
-          ))}
-        </select>
-        <form onSubmit={addTaskFormik.handleSubmit}>
-          <input
-            type="text"
-            name="taskDescription"
-            placeholder="Descripción de la tarea"
-            onChange={addTaskFormik.handleChange}
-            onBlur={addTaskFormik.handleBlur}
-            value={addTaskFormik.values.taskDescription}
-            className="border border-gray-300 rounded px-2 py-1"
-          />
-          <label className="ml-2">
-            <input
-              type="checkbox"
-              name="completed"
-              onChange={addTaskFormik.handleChange}
-              checked={addTaskFormik.values.completed}
-            />
-            Completada
-          </label>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded ml-2"
-          >
-            Agregar Tarea
-          </button>
-        </form>
-      </div>
-
-      {/* Borrar hábito */}
-      <div className="mb-4">
-        <h2 className="text-lg font-bold mb-2">Borrar Hábito</h2>
-        <select
-          value={selectedHabit !== null ? selectedHabit : ''}
-          onChange={(e) =>
-            setSelectedHabit(e.target.value !== '' ? parseInt(e.target.value) : null)
-          }
-          className="border border-gray-300 rounded px-2 py-1"
-        >
-          <option value="">Selecciona un hábito</option>
-          {habits.map((habit, index) => (
-            <option key={index} value={index}>
-              {habit.title}
-            </option>
-          ))}
-        </select>
-        <button
-          onClick={() => deleteHabit(selectedHabit)}
-          className="bg-red-500 text-white px-4 py-2 rounded ml-2"
-        >
-          Borrar Hábito
-        </button>
-      </div>
-
-      {/* Mostrar hábitos y tareas */}
-      <div>
-        <h2 className="text-lg font-bold mb-2">Hábitos</h2>
+    <div className="flex h-screen bg-neutral-950 p-5">
+      {/* Sección de hábitos en la parte izquierda */}
+      <div className="w-2/4 p-4 border-r">
+        <h2 className='text-white'>Tus Hábitos</h2>
         <ul>
-          {habits.map((habit, index) => (
-            <li key={index}>
-              <strong>{habit.title}</strong>
-              <ul>
-                {habit.tasks.map((task, taskIndex) => (
-                  <li key={taskIndex}>
-                    {task.description} - {task.completed ? 'Completada' : 'Pendiente'}
-                  </li>
-                ))}
-              </ul>
+          {habits.map((habit) => (
+            <li
+              className='cursor-pointer mb-4 ml-5 bg-custom-gray rounded-lg h-10 w-4/6 left-0 top-0 mt-10 text-white font-medium p-2'
+              key={habit.id}
+              onClick={() => handleHabitClick(habit)}>
+              {habit.title}
+              {habit.description}
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* Centro de la pantalla para crear hábito, agregar tarea, etc. */}
+      <div className="flex-1 p-4 text-center">
+        <h1 className='text-white'>Rutinas</h1>
+
+        {/* Formulario para crear hábito */}
+        <Formik initialValues={{ title: '' }} onSubmit={handleCreateHabit}>
+          <Form className='p-5'>
+            <h2 className='text-white'>Crear un Hábito</h2>
+            <Field type="text" name="title" placeholder="Ingrese el título del hábito" className="w-4/6 mb-2 p-2 rounded-lg" />
+            <br />
+            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Confirmar</button>
+          </Form>
+        </Formik>
+
+        {/* Formulario para agregar tarea */}
+        <Formik initialValues={{ description: '', completed: false }} onSubmit={(values) => handleAddTask(1, values)}>
+          <Form className='p-5'>
+            <h2 className='text-white '>Agregar Tareas a un Hábito</h2>
+            <Field type="text" name="description" placeholder="Ingrese la descripción de la tarea" className="w-4/6 mb-2 p-2 rounded-lg" />
+            <br />
+            <Field type="checkbox" name="completed" />
+            <label className='text-white'>Completada</label>
+            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded ml-5 ">Guardar tarea</button>
+          </Form>
+        </Formik>
+
+        {/* Formulario para borrar hábito */}
+        <Formik initialValues={{}} onSubmit={() => handleDeleteHabit(1)}>
+          <Form className='p-5'>
+            <button type="submit" className="bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
+          </Form>
+        </Formik>
+
+
+         {/* Ventana emergente para mostrar detalles del hábito */}
+         {selectedHabit && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+            <div className="bg-white p-8 rounded">
+              <h2 className='text-black'>{selectedHabit.title}</h2>
+              <p className='text-black'>{selectedHabit.description}</p>
+              <button onClick={handleCloseModal} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">Cerrar</button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export  {Routines};
+export { Routines };
+
+
+

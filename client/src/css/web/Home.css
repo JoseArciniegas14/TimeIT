@@ -127,3 +127,77 @@
   top: 609px;
   width: 267px;
 }
+
+
+.recuadro .logo-grande {
+  height: 163px !important;
+  left: 0 !important;
+  position: absolute !important;
+  top: 1px !important;
+  width: 161px !important;
+}
+
+.recuadro .icono-menu-instance {
+  border: 15px solid !important;
+  height: 56px !important;
+  left: 19px !important;
+  top: 20px !important;
+  width: 55px !important;
+}
+
+.recuadro .design-component-instance-node {
+  border: 15px solid !important;
+  border-color: #000000 !important;
+  height: 56px !important;
+  left: 19px !important;
+  top: 88px !important;
+  width: 55px !important;
+}
+
+.recuadro .logo-grande-2 {
+  border: 15px solid !important;
+  border-color: #ffffff !important;
+  height: 56px !important;
+  left: 86px !important;
+  top: 88px !important;
+  width: 55px !important;
+}
+
+.recuadro .logo-grande-3 {
+  border: 15px solid !important;
+  height: 56px !important;
+  left: 86px !important;
+  top: 20px !important;
+  width: 55px !important;
+}
+
+.recuadro .titulo {
+  color: #ffffff;
+  font-family: "Rubik One-Regular", Helvetica;
+  font-size: 80px;
+  font-weight: 400;
+  height: 150px;
+  left: 80px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 492px;
+}
+
+.recuadro .subtitulo {
+  color: #ffffff;
+  font-family: "Rubik One-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  height: 48px;
+  left: 581px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 609px;
+  width: 267px;
+}
+

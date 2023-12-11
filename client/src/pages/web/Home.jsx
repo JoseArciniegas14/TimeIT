@@ -7,7 +7,7 @@ import { Bar } from "../../components/app/Home/Bar-Home";
 
 function Home() {
   return (
-    <div className="bg-neutral-950 border border-gray-500">
+    <div className="bg-neutral-950 ">
       
       <div className="nuevo-diseo-inicio">
         <Bar />
