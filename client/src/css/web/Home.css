@@ -5,8 +5,8 @@
 }
 
 .nuevo-diseo-inicio .recuadro {
-  background-color: #050f0f;
-  height: 1017px;
+  background-color: #0a0a0a;
+  height: 840px;
   left: 300px;
   position: relative;
 
@@ -15,7 +15,7 @@
 
 .nuevo-diseo-inicio .overlap {
   background-color: #1d2125;
-  height: 1017px;
+  height: 840px;
   left: -300px;
   position: absolute;
   top: 0;

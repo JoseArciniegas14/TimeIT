@@ -4,7 +4,7 @@ import "../../css/inicio/style.css";
 
 function HeaderNav() {
   return (
-    <nav className="MENU relative w-full h-24">
+    <nav className="MENU relative w-full h-24 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="items-center justify-between h-16">
           <div className="flex-shrink-0">
@@ -58,6 +58,8 @@ function HeaderNav() {
                   strokeLinejoin="round"
                 />
               </svg>
+
+              
               <div className="titulo absolute h-10 font-semibold text-3xl text-center tracking-normal">
                 TimeiT
               </div>

@@ -1,171 +1,7 @@
-import React from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { Link } from "react-router-dom";
-import "../../css/style.css";
-import { useState, useEffect, useRef } from "react";
-import pdf from "../../assets/Docs/Manual de Usuario de TimeIT.pdf";
-import "../../css/SVG-start.css";
-import LoadingPage from "../../components/Loading/Loading"; // Asegúrate de que la ruta sea correcta
-
-// Remove the import statement for gsap
-// import gsap from "gsap";
-
-gsap.registerPlugin(ScrollTrigger);
-
-function Start() {
-
-
-	
-  const svgRef = useRef();
-
-  useEffect(() => {
-    svgRef.current.classList.add("active");
-  }, []);
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  React.useEffect(() => {
-    gsap.from("#title", { opacity: 0, duration: 1, y: -50 });
-    gsap.from("#btn", { opacity: 0, duration: 1, delay: 0.5 });
-    // ... rest of the gsap code
-
-    const details = gsap.utils.toArray(
-      ".desktopContentSection:not(:first-child)"
-    );
-    const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)");
-
-    gsap.set(photos, { yPercent: 101 });
-
-    const allPhotos = gsap.utils.toArray(".desktopPhoto");
-
-    // create
-    let mm = gsap.matchMedia();
-
-    // add a media query. When it matches, the associated function will run
-    mm.add("(min-width: 600px)", () => {
-      // this setup code only runs when viewport is at least 600px wide
-
-      ScrollTrigger.create({
-        trigger: ".gallery",
-        start: "top top",
-        end: "bottom bottom",
-        pin: ".right",
-      });
-
-      //create scrolltrigger for each details section
-      //trigger photo animation when headline of each details section
-      //reaches 80% of window height
-      details.forEach((detail, index) => {
-        let headline = detail.querySelector("h1");
-        let animation = gsap
-          .timeline()
-          .to(photos[index], { yPercent: 0 })
-          .set(allPhotos[index], { autoAlpha: 0 });
-        ScrollTrigger.create({
-          trigger: headline,
-          start: "top 80%",
-          end: "top 50%",
-          animation: animation,
-          scrub: true,
-          markers: false,
-        });
-      });
-
-      return () => {
-        // optional
-        // custom cleanup code here (runs when it STOPS matching)
-        console.log("mobile");
-      };
-    });
-  }, []);
-
-  return (
-    <div className="bg-black">
-      <nav className="bg-transparent fixed top-0 left-0 right-0 flex items-center justify-center p-4">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-white cursor-pointer"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-6 h-6"
-          >
-            <path d="M3 12h18M3 6h18M3 18h18"></path>
-          </svg>
-        </button>
-        <h1 className="menu text-white text-lg font-bold ml-2 md:hidden">
-          Menú
-        </h1>
-        <ul className="hidden sm:flex space-x-4">
-          <li>
-            <a href="#inicio" className="text-white hover:text-white"></a>
-          </li>
-          <li>
-            <a href="#quienes-somos" className="text-white hover:text-white">
-              Quiénes somos
-            </a>
-          </li>
-          <li>
-            <a href="#documentacion" className="text-white hover:text-white">
-              Documentación
-            </a>
-          </li>
-          <li>
-            <Link to="/auth" className="text-white hover:text-white">
-              Entrar a la app
-            </Link>
-          </li>
-        </ul>
-        {isOpen && (
-          <ul
-            className="sm:hidden absolute top-12 left-0 right-0 bg-white text-black p-4"
-            id="menu"
-          >
-            <li>
-              <a href="#quienes-somos" className="block py-2">
-                Quiénes somos
-              </a>
-            </li>
-            <li>
-              <a href="#documentacion" className="block py-2">
-                Documentación
-              </a>
-            </li>
-            <li>
-              <Link to="/auth" className="block py-2">
-                Entrar a la app
-              </Link>
-            </li>
-          </ul>
-        )}
-      </nav>
-
-      <section id="Inicio">
-        <div className="flex flex-col items-center justify-center min-h-screen">
-          <svg
-            version="1.1"
-            ref={svgRef}
-            id="Layer_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            width="100%"
-            viewBox="0 0 1024 1024"
-            height="400"
-          >
-            <path
-              fill="#000000"
-              opacity="1.000000"
-              stroke="none"
-              d="
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100%" viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" xml:space="preserve">
+<path fill="#000000" opacity="1.000000" stroke="none" 
+	d="
 M681.000000,1025.000000 
 	C454.000000,1025.000000 227.500000,1025.000000 1.000000,1025.000000 
 	C1.000000,683.666687 1.000000,342.333344 1.000000,1.000000 
@@ -526,14 +362,9 @@ M357.007599,478.827606
 	C338.133179,473.503235 334.591431,478.293152 335.999512,486.698303 
 	C336.957886,492.419159 343.741852,496.392273 349.962067,494.946564 
 	C356.214630,493.493347 359.322906,486.847107 357.007599,478.827606 
-z"
-              className="svg-elem-1"
-            ></path>
-            <path
-              fill="#FDFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FDFDFD" opacity="1.000000" stroke="none" 
+	d="
 M477.977844,494.002777 
 	C495.742218,484.685913 513.260742,475.639008 530.473022,466.042908 
 	C543.702881,458.667114 557.169800,451.455383 569.371826,442.577148 
@@ -576,14 +407,9 @@ M477.977844,494.002777
 	C400.375000,558.298157 410.561493,543.495605 423.216827,530.507629 
 	C435.220795,518.188232 449.757690,509.102570 464.893799,501.024109 
 	C469.157806,498.748322 473.366272,496.368500 477.977844,494.002777 
-z"
-              className="svg-elem-2"
-            ></path>
-            <path
-              fill="#FDFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FDFDFD" opacity="1.000000" stroke="none" 
+	d="
 M605.183716,480.135712 
 	C599.268188,488.369019 590.312805,492.367554 581.801697,497.026642 
 	C569.204041,503.922821 556.459473,510.591064 544.203674,518.056152 
@@ -602,14 +428,9 @@ M605.183716,480.135712
 	C546.410461,494.403900 561.921814,486.569763 576.955200,477.997955 
 	C583.408936,474.318115 589.810852,470.547272 596.751953,467.060974 
 	C604.108215,468.989166 605.627197,473.957092 605.183716,480.135712 
-z"
-              className="svg-elem-3"
-            ></path>
-            <path
-              fill="#FDFDFE"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FDFDFE" opacity="1.000000" stroke="none" 
+	d="
 M593.000000,732.990723 
 	C516.519653,732.988953 440.539337,732.990479 364.558990,732.979797 
 	C355.094330,732.978455 351.424713,726.578857 355.820679,718.376465 
@@ -619,14 +440,9 @@ M593.000000,732.990723
 	C687.142517,715.018066 689.744263,716.706482 690.917969,721.840027 
 	C692.306519,727.913391 687.836792,732.972168 680.976807,732.977112 
 	C651.817871,732.998169 622.658936,732.988647 593.000000,732.990723 
-z"
-              className="svg-elem-4"
-            ></path>
-            <path
-              fill="#FDFEFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FDFEFD" opacity="1.000000" stroke="none" 
+	d="
 M688.282349,259.205566 
 	C685.193115,260.680023 682.396973,262.869873 679.583496,262.892303 
 	C645.929626,263.160767 612.273132,263.125702 578.617371,263.134521 
@@ -636,14 +452,9 @@ M688.282349,259.205566
 	C363.354340,244.951721 364.358154,245.001480 365.357849,245.001465 
 	C469.662872,245.000763 573.967896,244.999664 678.272888,245.002060 
 	C688.109253,245.002274 691.278015,249.295197 688.282349,259.205566 
-z"
-              className="svg-elem-5"
-            ></path>
-            <path
-              fill="#717276"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#717276" opacity="1.000000" stroke="none" 
+	d="
 M456.000000,747.994385 
 	C523.121948,747.995361 589.743835,747.996582 656.365784,748.000122 
 	C658.031067,748.000183 659.718079,747.856995 661.357849,748.068237 
@@ -655,14 +466,9 @@ M456.000000,747.994385
 	C376.053741,762.769348 374.435913,760.466980 374.986389,755.108154 
 	C375.439117,750.701477 378.507660,748.044495 383.548401,748.033936 
 	C407.532196,747.983826 431.516113,748.001404 456.000000,747.994385 
-z"
-              className="svg-elem-6"
-            ></path>
-            <path
-              fill="#FCFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FCFDFD" opacity="1.000000" stroke="none" 
+	d="
 M646.000000,686.939453 
 	C646.000854,668.616821 646.219543,650.780212 645.940002,632.951477 
 	C645.671692,615.836304 641.367981,599.527100 634.450256,583.946960 
@@ -677,14 +483,9 @@ M646.000000,686.939453
 	C665.102173,698.776306 661.457336,701.166748 654.292175,700.980286 
 	C648.940125,700.840942 646.025940,698.014099 646.001160,692.928833 
 	C645.992249,691.095581 645.999878,689.262207 646.000000,686.939453 
-z"
-              className="svg-elem-7"
-            ></path>
-            <path
-              fill="#FDFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FDFDFD" opacity="1.000000" stroke="none" 
+	d="
 M514.091919,899.248413 
 	C511.018921,899.676270 508.071838,900.478760 505.499359,899.819519 
 	C501.644623,898.831665 499.968536,895.636841 499.997833,891.568726 
@@ -714,14 +515,9 @@ M514.091919,899.248413
 	C517.258850,832.861206 516.990417,841.868225 516.991577,850.861755 
 	C516.993408,864.352051 517.131409,877.844788 516.882202,891.330383 
 	C516.834900,893.891052 515.257141,896.423401 514.091919,899.248413 
-z"
-              className="svg-elem-8"
-            ></path>
-            <path
-              fill="#FDFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FDFDFD" opacity="1.000000" stroke="none" 
+	d="
 M474.984253,556.951416 
 	C461.616974,567.303284 451.618713,580.069458 444.555786,594.989136 
 	C437.897614,609.053894 433.811066,623.834961 433.950134,639.611755 
@@ -735,14 +531,9 @@ M474.984253,556.951416
 	C483.611877,529.255676 487.173950,529.524109 490.462280,533.994568 
 	C493.252411,537.787720 492.296722,543.778442 487.850983,547.522705 
 	C483.872101,550.873718 479.526611,553.789429 474.984253,556.951416 
-z"
-              className="svg-elem-9"
-            ></path>
-            <path
-              fill="#FCFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FCFDFD" opacity="1.000000" stroke="none" 
+	d="
 M585.785217,573.263916 
 	C576.923645,565.384399 568.415222,557.638672 559.671692,550.168030 
 	C553.326843,544.746826 551.874878,541.751892 553.843811,536.036499 
@@ -755,14 +546,9 @@ M585.785217,573.263916
 	C613.164673,701.050049 610.032043,698.352905 610.015381,692.503601 
 	C609.967957,675.853577 609.914551,659.202820 610.018677,642.553345 
 	C610.180420,616.686340 602.210815,593.686890 585.785217,573.263916 
-z"
-              className="svg-elem-10"
-            ></path>
-            <path
-              fill="#FDFEFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FDFEFD" opacity="1.000000" stroke="none" 
+	d="
 M568.993408,874.002563 
 	C569.002014,882.033081 569.002014,882.026489 576.447876,882.016479 
 	C584.773865,882.005249 593.102417,881.883301 601.424683,882.057129 
@@ -783,14 +569,9 @@ M568.993408,874.002563
 	C603.988953,862.904785 601.231262,865.896240 595.476624,865.969604 
 	C589.150085,866.050293 582.821777,866.004517 576.494263,865.998779 
 	C568.986816,865.992004 568.986816,865.985046 568.993408,874.002563 
-z"
-              className="svg-elem-11"
-            ></path>
-            <path
-              fill="#FBFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FBFCFC" opacity="1.000000" stroke="none" 
+	d="
 M390.571777,413.645416 
 	C387.716400,404.603546 383.677124,395.739746 382.284058,386.477936 
 	C380.211212,372.696960 379.501678,358.648071 379.132935,344.688904 
@@ -803,14 +584,9 @@ M390.571777,413.645416
 	C410.476166,414.528778 411.108582,417.371735 411.996765,420.863525 
 	C407.152557,427.215820 402.859772,427.525757 397.840790,422.334015 
 	C395.222992,419.626160 392.982605,416.553375 390.571777,413.645416 
-z"
-              className="svg-elem-12"
-            ></path>
-            <path
-              fill="#FCFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FCFDFD" opacity="1.000000" stroke="none" 
+	d="
 M632.061890,420.998291 
 	C635.462769,410.107758 639.467651,399.359558 642.077026,388.282562 
 	C644.238281,379.107635 645.622131,369.563965 645.827454,360.150421 
@@ -821,14 +597,9 @@ M632.061890,420.998291
 	C664.162170,370.723816 661.171753,384.460724 658.914368,398.810608 
 	C654.526733,406.946777 651.182861,415.001984 646.263672,421.940277 
 	C641.680176,428.405121 636.469299,427.545349 632.061890,420.998291 
-z"
-              className="svg-elem-13"
-            ></path>
-            <path
-              fill="#FDFDFE"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FDFDFE" opacity="1.000000" stroke="none" 
+	d="
 M512.000610,393.000000 
 	C512.004761,371.526245 511.979126,350.552399 512.026428,329.578735 
 	C512.044067,321.773651 515.426514,317.973724 522.082397,317.997925 
@@ -839,14 +610,9 @@ M512.000610,393.000000
 	C522.563477,457.285706 518.661438,457.765564 516.075928,454.796814 
 	C513.862000,452.254700 512.250916,448.301086 512.175964,444.931671 
 	C511.794739,427.794952 512.000000,410.645203 512.000610,393.000000 
-z"
-              className="svg-elem-14"
-            ></path>
-            <path
-              fill="#FCFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FCFCFC" opacity="1.000000" stroke="none" 
+	d="
 M728.424927,860.979370 
 	C728.466553,870.334717 728.683838,879.199097 728.452209,888.051819 
 	C728.373779,891.052612 727.601746,894.223755 726.359802,896.959900 
@@ -862,14 +628,9 @@ M728.424927,860.979370
 	C754.130554,827.855225 750.273315,832.720581 746.310791,832.966858 
 	C740.540344,833.325623 734.760437,833.531860 728.424927,833.829407 
 	C728.424927,842.991455 728.424927,851.737610 728.424927,860.979370 
-z"
-              className="svg-elem-15"
-            ></path>
-            <path
-              fill="#FDFEFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FDFEFD" opacity="1.000000" stroke="none" 
+	d="
 M324.109100,857.622803 
 	C324.135437,850.150696 324.210083,843.114014 323.851715,836.099548 
 	C323.796326,835.015625 321.824341,833.253723 320.618591,833.145691 
@@ -885,14 +646,9 @@ M324.109100,857.622803
 	C341.999023,896.409424 338.367065,901.024414 333.424957,900.980652 
 	C328.281525,900.935120 324.096466,896.242065 324.032898,890.039368 
 	C323.923706,879.382507 324.010773,868.723572 324.109100,857.622803 
-z"
-              className="svg-elem-16"
-            ></path>
-            <path
-              fill="#727276"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#727276" opacity="1.000000" stroke="none" 
+	d="
 M390.390228,414.015503 
 	C392.982605,416.553375 395.222992,419.626160 397.840790,422.334015 
 	C402.859772,427.525757 407.152557,427.215820 412.089325,421.255554 
@@ -903,14 +659,9 @@ M390.390228,414.015503
 	C446.030548,485.047760 439.728333,480.904877 433.874390,476.260101 
 	C419.653259,464.976501 408.388062,450.976715 399.211609,435.447327 
 	C395.360107,428.929321 393.159698,421.435669 390.390228,414.015503 
-z"
-              className="svg-elem-17"
-            ></path>
-            <path
-              fill="#FCFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FCFCFC" opacity="1.000000" stroke="none" 
+	d="
 M646.451538,899.751831 
 	C642.029724,897.788696 641.111938,894.000854 641.082092,890.320801 
 	C640.912231,869.366089 640.839600,848.407288 641.082092,827.453918 
@@ -919,14 +670,9 @@ M646.451538,899.751831
 	C659.454956,836.370667 659.841187,849.111938 659.876526,861.847290 
 	C659.904541,871.925049 659.365112,882.006104 658.992249,892.082581 
 	C658.715637,899.557678 653.773193,902.700073 646.451538,899.751831 
-z"
-              className="svg-elem-18"
-            ></path>
-            <path
-              fill="#FBFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FBFDFD" opacity="1.000000" stroke="none" 
+	d="
 M392.935333,843.000000 
 	C392.941986,836.513977 392.941772,830.527954 392.955780,824.541870 
 	C392.965851,820.235352 394.894104,817.469360 399.351288,816.995911 
@@ -937,14 +683,9 @@ M392.935333,843.000000
 	C402.083313,902.306702 397.243378,901.274292 394.460480,896.820862 
 	C393.423340,895.161133 392.949951,892.888245 392.937439,890.890442 
 	C392.838593,875.094238 392.913269,859.296936 392.935333,843.000000 
-z"
-              className="svg-elem-19"
-            ></path>
-            <path
-              fill="#717276"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#717276" opacity="1.000000" stroke="none" 
+	d="
 M631.747803,421.148804 
 	C636.469299,427.545349 641.680176,428.405121 646.263672,421.940277 
 	C651.182861,415.001984 654.526733,406.946777 658.869873,399.189880 
@@ -955,14 +696,9 @@ M631.747803,421.148804
 	C598.137756,465.097107 599.120178,463.356171 600.514160,462.056854 
 	C612.697754,450.700989 622.805725,437.799133 630.176880,422.812439 
 	C630.458252,422.240417 631.008667,421.800720 631.747803,421.148804 
-z"
-              className="svg-elem-20"
-            ></path>
-            <path
-              fill="#FCFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FCFDFD" opacity="1.000000" stroke="none" 
+	d="
 M513.065125,182.791077 
 	C516.550537,176.740326 521.020386,174.427002 525.629578,176.311447 
 	C529.239319,177.787277 531.108276,180.544357 531.047241,184.739883 
@@ -970,14 +706,9 @@ M513.065125,182.791077
 	C530.979980,222.739319 528.048706,225.876190 522.833618,225.983109 
 	C517.187622,226.098831 513.090271,222.565460 513.036682,217.140320 
 	C512.924866,205.833191 513.007935,194.524124 513.065125,182.791077 
-z"
-              className="svg-elem-21"
-            ></path>
-            <path
-              fill="#FAFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FAFCFC" opacity="1.000000" stroke="none" 
+	d="
 M758.999573,494.015930 
 	C762.152832,494.009735 764.810974,493.992188 767.468994,494.000092 
 	C773.949707,494.019379 777.674194,496.726715 778.104004,501.714844 
@@ -986,14 +717,9 @@ M758.999573,494.015930
 	C742.706238,509.439484 740.325073,505.144562 741.029541,500.014252 
 	C741.659790,495.424805 744.677551,493.825439 749.035767,493.981689 
 	C752.188354,494.094727 755.347961,494.011688 758.999573,494.015930 
-z"
-              className="svg-elem-22"
-            ></path>
-            <path
-              fill="#FBFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FBFCFC" opacity="1.000000" stroke="none" 
+	d="
 M269.932373,506.709137 
 	C267.012268,499.709595 270.101440,493.205017 278.338837,493.907166 
 	C284.434875,494.426788 290.611359,493.950012 296.750397,494.034637 
@@ -1001,14 +727,9 @@ M269.932373,506.709137
 	C304.369049,506.961212 302.986389,509.409302 297.783844,509.919495 
 	C290.909180,510.593597 283.962494,511.000732 277.070831,510.778046 
 	C274.688263,510.701111 272.377655,508.397705 269.932373,506.709137 
-z"
-              className="svg-elem-23"
-            ></path>
-            <path
-              fill="#FAFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FAFCFC" opacity="1.000000" stroke="none" 
+	d="
 M767.737183,452.990234 
 	C774.022522,453.057495 777.919373,456.008820 777.943481,460.368408 
 	C777.973511,465.797852 774.325256,468.966797 767.980957,468.981628 
@@ -1016,14 +737,9 @@ M767.737183,452.990234
 	C743.796326,468.890015 740.885803,465.799652 741.008484,460.074554 
 	C741.118042,454.956207 743.378174,453.018890 749.345459,452.996490 
 	C755.321045,452.974030 761.296814,452.990509 767.737183,452.990234 
-z"
-              className="svg-elem-24"
-            ></path>
-            <path
-              fill="#FBFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FBFCFC" opacity="1.000000" stroke="none" 
+	d="
 M269.708008,465.187256 
 	C266.914886,456.555878 269.523407,452.988312 278.144440,452.990906 
 	C284.307678,452.992767 290.471649,452.943756 296.633942,453.023834 
@@ -1031,14 +747,9 @@ M269.708008,465.187256
 	C304.069550,466.376282 302.012939,468.890747 296.826965,468.968506 
 	C289.999023,469.070923 283.150146,469.265625 276.349304,468.822052 
 	C274.165344,468.679626 272.105072,466.640869 269.708008,465.187256 
-z"
-              className="svg-elem-25"
-            ></path>
-            <path
-              fill="#FAFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FAFCFC" opacity="1.000000" stroke="none" 
+	d="
 M316.757690,615.055420 
 	C312.632355,617.968506 307.104370,617.834900 304.394531,614.836853 
 	C301.031128,611.115784 301.116028,606.318787 304.901947,602.650024 
@@ -1046,14 +757,9 @@ M316.757690,615.055420
 	C319.937561,589.518005 325.916077,590.050903 329.016388,593.604309 
 	C332.060638,597.093445 331.613220,601.929382 327.532806,605.876587 
 	C324.226501,609.074951 320.617462,611.960266 316.757690,615.055420 
-z"
-              className="svg-elem-26"
-            ></path>
-            <path
-              fill="#FAFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FAFCFC" opacity="1.000000" stroke="none" 
+	d="
 M741.365784,357.022400 
 	C736.845886,360.863007 732.647522,364.486176 728.352539,367.990845 
 	C725.243469,370.527771 719.758972,370.772095 717.465088,368.639343 
@@ -1061,14 +767,9 @@ M741.365784,357.022400
 	C720.923767,351.829224 725.585999,347.917023 730.467346,344.404846 
 	C733.798401,342.008148 737.831360,342.807617 740.614380,345.568787 
 	C743.798218,348.727600 743.931580,352.778381 741.365784,357.022400 
-z"
-              className="svg-elem-27"
-            ></path>
-            <path
-              fill="#FAFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FAFCFC" opacity="1.000000" stroke="none" 
+	d="
 M317.235474,368.035706 
 	C312.812042,364.378540 308.715576,360.851410 304.732910,357.200134 
 	C301.345917,354.094940 300.959778,350.524261 303.733368,346.814697 
@@ -1076,14 +777,9 @@ M317.235474,368.035706
 	C319.654297,348.044037 324.772430,352.265411 329.187347,357.018677 
 	C332.241730,360.307129 331.091248,364.898407 328.204285,367.960968 
 	C325.131866,371.220245 321.190887,370.755737 317.235474,368.035706 
-z"
-              className="svg-elem-28"
-            ></path>
-            <path
-              fill="#FAFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FAFCFC" opacity="1.000000" stroke="none" 
+	d="
 M735.604309,598.308167 
 	C737.665039,600.266846 739.558472,601.909546 741.162598,603.797974 
 	C743.812500,606.917175 743.649109,611.570068 740.993958,614.490906 
@@ -1092,14 +788,9 @@ M735.604309,598.308167
 	C716.398682,604.038147 715.192505,599.922607 715.237244,596.501892 
 	C715.301575,591.575562 722.188110,589.174072 727.063110,592.094055 
 	C729.968445,593.834167 732.569275,596.082642 735.604309,598.308167 
-z"
-              className="svg-elem-29"
-            ></path>
-            <path
-              fill="#FAFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FAFCFC" opacity="1.000000" stroke="none" 
+	d="
 M456.084625,220.004654 
 	C453.350830,218.742554 450.267090,218.033630 448.882629,216.104950 
 	C445.824615,211.844803 443.389404,207.079926 441.147888,202.310516 
@@ -1107,14 +798,9 @@ M456.084625,220.004654
 	C447.389343,191.295700 451.910248,189.610123 454.984619,193.731140 
 	C458.719788,198.737991 462.177582,204.123352 464.700500,209.812744 
 	C467.029144,215.064056 462.747559,219.838974 456.084625,220.004654 
-z"
-              className="svg-elem-30"
-            ></path>
-            <path
-              fill="#FBFDFD"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FBFDFD" opacity="1.000000" stroke="none" 
+	d="
 M602.823914,204.508423 
 	C600.320129,208.534760 598.037842,212.235489 595.626404,215.850006 
 	C592.704529,220.229523 587.230957,221.535706 582.979126,218.981247 
@@ -1122,240 +808,22 @@ M602.823914,204.508423
 	C583.045837,203.865570 585.037354,200.189941 587.143616,196.588058 
 	C589.440552,192.659973 595.929810,190.513718 599.635315,192.290314 
 	C603.836609,194.304642 605.067932,198.657974 602.823914,204.508423 
-z"
-              className="svg-elem-31"
-            ></path>
-            <path
-              fill="#FAFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FAFCFC" opacity="1.000000" stroke="none" 
+	d="
 M688.595093,476.923218 
 	C692.623840,472.516602 697.104736,471.170441 702.388062,473.176636 
 	C707.669556,475.182129 710.373840,480.970184 708.950256,487.005249 
 	C707.688721,492.353180 702.348083,495.671570 696.104431,494.986847 
 	C690.762451,494.401031 686.871033,490.031769 686.994568,484.306183 
 	C687.045959,481.926178 687.840210,479.562256 688.595093,476.923218 
-z"
-              className="svg-elem-32"
-            ></path>
-            <path
-              fill="#FAFCFC"
-              opacity="1.000000"
-              stroke="none"
-              d="
+z"/>
+<path fill="#FAFCFC" opacity="1.000000" stroke="none" 
+	d="
 M357.064697,479.232544 
 	C359.322906,486.847107 356.214630,493.493347 349.962067,494.946564 
 	C343.741852,496.392273 336.957886,492.419159 335.999512,486.698303 
 	C334.591431,478.293152 338.133179,473.503235 346.167114,472.273010 
 	C350.565643,471.599487 355.159271,473.717163 357.064697,479.232544 
-z"
-              className="svg-elem-33"
-            ></path>
-          </svg>
-
-          <div className="flex justify-center items-center">
-            <Link
-              to="/auth"
-              className="bg-neutral-900 hover:bg-neutral-700 text-white hover:text-white font-bold py-2 px-4 rounded"
-            >
-              Ingresar a TimeIT
-            </Link>
-          </div>
-        </div>
-      </section>
-      <section
-        id="quienes-somos"
-        className="flex flex-row items-center justify-center min-h-screen"
-      >
-        <div className="w-full flex flex-col items-center justify-center">
-          <h2 className="text-4xl text-white mb-8">Quiénes somos</h2>
-          <p className="text-white mb-4">Jose - Desarrollador Full Stack</p>
-          <p className="text-white mb-4">Robin - Desarrollador Backend</p>
-          <p className="text-white mb-4">Jesus - Ingeniero de Software</p>
-          <p className="text-white mb-4">Cristian - Analista de Datos</p>
-        </div>
-      </section>
-      <div className="gallery">
-        <div className="left text-white mb-4">
-          <div className="desktopContent">
-            <div className="desktopContentSection">
-              <h1>Jose</h1>
-              <p>
-                Desarrollador Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit. Explicabo soluta, voluptas quidem modi magnam
-                optio tenetur at voluptatum, magni neque odit laboriosam
-                architecto nisi laborum. Incidunt et ab fugit temporibus!
-              </p>
-            </div>
-            <div className="desktopContentSection">
-              <h1>Robin</h1>
-              <p>
-                Desarrollador Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Harum obcaecati corporis eaque nemo porro quod,
-                necessitatibus minima culpa, error deleniti similique ea qui,
-                beatae fugit nostrum natus magnam accusantium. Perferendis.
-              </p>
-            </div>
-            <div className="desktopContentSection">
-              <h1>Cristian</h1>
-              <p>
-                Desarrollador Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Porro quia quo nesciunt quod eaque, ut quisquam minima!
-                Delectus iure fugit quae minima illo, sed alias, molestias optio
-                similique quam iusto.
-              </p>
-            </div>
-            <div className="desktopContentSection">
-              <h1>Jesus</h1>
-              <p>
-                Desarrollador Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Enim sapiente, aliquam debitis, assumenda itaque
-                repudiandae voluptatum natus facilis corrupti adipisci impedit
-                in ex perferendis eaque nemo, molestias laudantium possimus
-                velit.
-              </p>
-            </div>
-            <div className="desktopContentSection">
-              <h1>Julian</h1>
-              <p>
-                Desarrollador Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Harum obcaecati corporis eaque nemo porro quod,
-                necessitatibus minima culpa, error deleniti similique ea qui,
-                beatae fugit nostrum natus magnam accusantium. Perferendis.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="right">
-          {/* <!-- mobile content --> */}
-          <div className="mobileContent">
-            <div className="mobilePhoto red"></div>
-            <h1 className="text-white">Jose</h1>
-            <p className="text-white">Desarrollador</p>
-
-            <div className="mobilePhoto green"></div>
-            <h1 className="text-white">Robin</h1>
-            <p className="text-white">Desarrollador</p>
-
-            <div className="mobilePhoto pink"></div>
-            <h1 className="text-white">Jesús</h1>
-            <p className="text-white">Desarrollador</p>
-
-            <div className="mobilePhoto blue"></div>
-            <h1 className="text-white">Cristian</h1>
-            <p className="text-white">Desarrollador</p>
-
-            <div className="mobilePhoto black"></div>
-            <h1 className="text-white">Julian</h1>
-            <p className="text-white">Desarrollador</p>
-          </div>
-
-          {/* <!-- desktop content --> */}
-          <div className="desktopPhotos">
-            <div className="desktopPhoto red"></div>
-            <div className="desktopPhoto green"></div>
-            <div className="desktopPhoto pink"></div>
-            <div className="desktopPhoto blue"></div>
-            <div className="desktopPhoto black"></div>
-          </div>
-        </div>
-      </div>
-
-      <br />
-      <br />
-      <br />
-      <section id="documentacion">
-        <h1 className="text-white mb-4 text-center">Documentación</h1>
-        <div className="ui raised very padded text container segment">
-          <h2 className="ui header">Hola</h2>
-          <p>
-            Aquí puedes encontrar la documentación de nuestro proyecto en
-            formato de documento de Word en la que podrás encontrar la propuesta
-            de desarrollo de TimeIT.
-          </p>
-          <div>
-			<embed src="../../assets/Docs/Manual de Usuario de TimeIT.pdf" type="application/pdf" />
-            <a href={pdf} download>
-              Descargar archivo
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <br />
-      <br />
-      <br />
-
-      <section id="footer">
-        {/* Footer */}
-        <footer className="bg-neutral-950 py-4 shadow-lg">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap items-center justify-between">
-              <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
-                <h2 className="text-white text-lg font-semibold">TimeIT</h2>
-                <p className="text-gray-400 mt-2">
-                  Tu plataforma de gestión de tiempo
-                </p>
-              </div>
-              <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
-                <h3 className="text-white text-lg font-semibold mb-2">
-                  Enlaces
-                </h3>
-                <ul className="text-gray-400">
-                  <li className="mb-1">
-                    <a href="#" className="hover:text-white text-white">
-                      Inicio
-                    </a>
-                  </li>
-                  <li className="mb-1">
-                    <a href="#" className="hover:text-white text-white">
-                      Acerca de
-                    </a>
-                  </li>
-                  <li className="mb-1">
-                    <a href="#" className="hover:text-white text-white">
-                      Contacto
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
-                <h3 className="text-white text-lg font-semibold mb-2">
-                  Redes Sociales
-                </h3>
-                <ul className="text-gray-400">
-                  <li className="mb-1">
-                    <a href="#" className="hover:text-white text-white">
-                      Facebook
-                    </a>
-                  </li>
-                  <li className="mb-1">
-                    <a href="#" className="hover:text-white text-white">
-                      Twitter
-                    </a>
-                  </li>
-                  <li className="mb-1">
-                    <a href="#" className="hover:text-white text-white">
-                      Instagram
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0">
-                <h3 className="text-white text-lg font-semibold mb-2">
-                  Contacto
-                </h3>
-                <p className="text-gray-400">Email: info@timeit.com</p>
-                <p className="text-gray-400">Teléfono: +1234567890</p>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </section>
-    </div>
-  );
-}
-
-export { Start };
+z"/>
+</svg>
