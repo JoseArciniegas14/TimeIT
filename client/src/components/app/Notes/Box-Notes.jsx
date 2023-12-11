@@ -1,4 +1,4 @@
-import "../../css/web/Home.css";
+import "../../../css/web/Home.css";
 
 const Box = () => {
   return (

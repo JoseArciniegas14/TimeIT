@@ -4,7 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import "../../css/style.css";
 import { useState, useEffect, useRef } from "react";
-import docFile from "../../assets/Docs/PROPUESTA DE DESARROLLO DE SOFTWARE Y MANUAL DE TIMEIT.docx";
+import pdf from "../../assets/Docs/Manual de Usuario de TimeIT.pdf";
 import "../../css/SVG-start.css";
 import LoadingPage from "../../components/Loading/Loading"; // Asegúrate de que la ruta sea correcta
 
@@ -1273,7 +1273,7 @@ z"
             de desarrollo de TimeIT.
           </p>
           <div>
-            <a href={docFile} download>
+            <a href={pdf} download>
               Descargar archivo
             </a>
           </div>

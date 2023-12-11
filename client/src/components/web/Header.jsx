@@ -73,13 +73,7 @@ function HeaderNav() {
                 Inicio
               </NavLink>
 
-              <NavLink
-                to="/alarms"
-                activeClassName="text-white"
-                className="text-gray-300 text-xl mt-7 hover:text-white font-bold tracking-normal text-center no-underline px-3 py-2 rounded-md"
-              >
-                Recordatorios
-              </NavLink>
+        
               <NavLink
                 to="/notes"
                 activeClassName="text-white"
