@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Formik, Field, Form } from 'formik';
+import gsap from 'gsap';
 
 const Routines = () => {
   const [habits, setHabits] = useState([]);
   const [selectedHabit, setSelectedHabit] = useState(null); // Nuevo estado para el hábito seleccionado
+  const habitRef = useRef(null);
+
+  useEffect(() => {
+    gsap.from(habitRef.current, { opacity: 0, y: -20, duration: 0.5 });
+  }, [habits]);
 
   const handleCreateHabit = (values) => {
-    const newHabit = { id: Date.now(), title: values.title, tasks: [] };
+    const newHabit = { id: Date.now(), title: values.title, description: values.description, tasks: [] };
     setHabits([...habits, newHabit]);
   };
 
@@ -18,8 +24,10 @@ const Routines = () => {
   };
 
   const handleDeleteHabit = (habitId) => {
-    const updatedHabits = habits.filter((habit) => habit.id !== habitId);
-    setHabits(updatedHabits);
+    gsap.to(habitRef.current, { opacity: 0, y: -20, duration: 0.5, onComplete: () => {
+      const updatedHabits = habits.filter((habit) => habit.id !== habitId);
+      setHabits(updatedHabits);
+    }});
   };
 
   const handleHabitClick = (habit) => {
@@ -40,7 +48,8 @@ const Routines = () => {
             <li
               className='cursor-pointer mb-4 ml-5 bg-custom-gray rounded-lg h-10 w-4/6 left-0 top-0 mt-10 text-white font-medium p-2'
               key={habit.id}
-              onClick={() => handleHabitClick(habit)}>
+              onClick={() => handleHabitClick(habit)}
+              ref={habitRef}>
               {habit.title}
               {habit.description}
             </li>
@@ -53,31 +62,24 @@ const Routines = () => {
         <h1 className='text-white'>Rutinas</h1>
 
         {/* Formulario para crear hábito */}
-        <Formik initialValues={{ title: '' }} onSubmit={handleCreateHabit}>
+        <Formik initialValues={{ title: '', description: '' }} onSubmit={handleCreateHabit}>
           <Form className='p-5'>
-            <h2 className='text-white'>Crear un Hábito</h2>
+            <h2 className='text-white'>Título</h2>
             <Field type="text" name="title" placeholder="Ingrese el título del hábito" className="w-4/6 mb-2 p-2 rounded-lg" />
             <br />
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Confirmar</button>
+            <h2 className='text-white'>Descripción</h2>
+            <Field type="text" name="description" placeholder="Ingrese la descripción del hábito" className="w-4/6 mb-2 p-2 rounded-lg" />
+            <br />
+            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Crear Hábito</button>
           </Form>
         </Formik>
 
-        {/* Formulario para agregar tarea */}
-        <Formik initialValues={{ description: '', completed: false }} onSubmit={(values) => handleAddTask(1, values)}>
-          <Form className='p-5'>
-            <h2 className='text-white '>Agregar Tareas a un Hábito</h2>
-            <Field type="text" name="description" placeholder="Ingrese la descripción de la tarea" className="w-4/6 mb-2 p-2 rounded-lg" />
-            <br />
-            <Field type="checkbox" name="completed" />
-            <label className='text-white'>Completada</label>
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded ml-5 ">Guardar tarea</button>
-          </Form>
-        </Formik>
+  
 
         {/* Formulario para borrar hábito */}
         <Formik initialValues={{}} onSubmit={() => handleDeleteHabit(1)}>
           <Form className='p-5'>
-            <button type="submit" className="bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
+     
           </Form>
         </Formik>
 
@@ -88,6 +90,7 @@ const Routines = () => {
             <div className="bg-white p-8 rounded">
               <h2 className='text-black'>{selectedHabit.title}</h2>
               <p className='text-black'>{selectedHabit.description}</p>
+              <button onClick={() => handleDeleteHabit(selectedHabit.id)} className="bg-red-500 text-white px-4 py-2 rounded ml-5 mr-4">Eliminar Hábito</button>
               <button onClick={handleCloseModal} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">Cerrar</button>
             </div>
           </div>
@@ -98,6 +101,3 @@ const Routines = () => {
 };
 
 export { Routines };
-
-
-

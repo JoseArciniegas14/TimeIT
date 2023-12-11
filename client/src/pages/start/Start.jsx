@@ -4,9 +4,11 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import "../../css/style.css";
 import { useState, useEffect, useRef } from "react";
-import pdf from "../../assets/Docs/Manual de Usuario de TimeIT.pdf";
+import manual from "../../Docs/Manual de Usuario de TimeIT.pdf";
+import propuesta from "../../Docs/PROPUESTA DE DESARROLLO DE SOFTWARE.pdf"
 import "../../css/SVG-start.css";
-import LoadingPage from "../../components/Loading/Loading"; // Asegúrate de que la ruta sea correcta
+
+import { Document, Page } from "react-pdf";
 
 // Remove the import statement for gsap
 // import gsap from "gsap";
@@ -14,9 +16,6 @@ import LoadingPage from "../../components/Loading/Loading"; // Asegúrate de que
 gsap.registerPlugin(ScrollTrigger);
 
 function Start() {
-
-
-	
   const svgRef = useRef();
 
   useEffect(() => {
@@ -1271,16 +1270,23 @@ z"
         <div className="ui raised very padded text container segment">
           <h2 className="ui header">Hola</h2>
           <p>
-            Aquí puedes encontrar la documentación de nuestro proyecto en
-            formato de documento de Word en la que podrás encontrar la propuesta
-            de desarrollo de TimeIT.
+            Aquí puedes encontrar la documentación de nuestro proyecto así como
+            el manual de uso en formato de documento de pdf para que puedas
+            descargarlo y consultarlo cuando lo necesites.
           </p>
           <div>
-			<embed src="../../assets/Docs/Manual de Usuario de TimeIT.pdf" type="application/pdf" />
-            <a href={pdf} download>
-              Descargar archivo
-            </a>
+            <div>
+              <h1>El manual de uso de TimeIT</h1>
+              <Document file={manual}>
+                <Page pageNumber={1} />
+              </Document>
+              <h1>La propuesta de desarrollo de TimeIT</h1>
+              <Document file={propuesta}>
+                <Page pageNumber={1} />
+              </Document>
+            </div>
           </div>
+    
         </div>
       </section>
 

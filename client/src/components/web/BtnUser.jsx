@@ -33,15 +33,15 @@ function BtnUser() {
       <Modal closeIcon open={open} onClose={() => setOpen(false)}>
         <Header icon="user" content={`Bienvenido ${user.name}`} />
         <Modal.Content scrolling>
-          <Header icon="info" content="Tu Informacion" />
+          <Header icon="info" content="Tu Información" />
           <p>ID: {user._id}</p>
           <p>Nombre: {user.name}</p>
           <p>Edad: {user.age}</p>
           <p>Ciudad: {user.city}</p>
-          <p>Pais: {user.country}</p>
-          <p>Telefono: {user.phone}</p>
+          <p>País: {user.country}</p>
+          <p>Teléfono: {user.phone}</p>
           <p>Email: {user.email}</p>
-          <p>Passoword: {user.password}</p>
+          <p>Contraseña: {user.password}</p>
         </Modal.Content>
 
         <Modal.Actions>
@@ -52,7 +52,7 @@ function BtnUser() {
             <Icon name="trash" /> Borrar Usuario
           </Button>
           <Button color="red" inverted onClick={handleLogout}>
-            <Icon name="remove" /> Cerrar Sesion
+            <Icon name="remove" /> Cerrar Sesión
           </Button>
         </Modal.Actions>
 
