@@ -35,14 +35,7 @@
 
 ## 📋 Tareas pendientes
 
-- [ ] Crear modelos (Api/controller/router) para guardar información de las notas en la db.
-- [ ] Crear modelos (Api/controller/router) para guardar información de las alarmas en la db (??).
-- [ ] Crear modelos (Api/controller/router) para guardar información de las rutinas en la db.
-- [ ] REVISAR LO DE LA PAGINACION **(158)**.
-- [ ] Frontend **(190)**.
-- [ ] El Pt responsive.
-- [ ] La lógica del programa.
-- [ ] Gestión de errores.
+- [X] Acabado. :D 
 
 ## 🤝 Organización
 
